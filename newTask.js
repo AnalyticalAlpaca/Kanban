@@ -30,11 +30,11 @@ function afterLow() {
     document.getElementById('low-img').src = "img/low-after.png";
 }
 
-function changeBtn(){
+function changeBtn() {
     document.getElementById('subtask').classList.remove('input-trans')
     document.getElementById('subtask').classList.add('input-trans-after')
     document.getElementById('addBtn1').classList.add('d-none')
     document.getElementById('addBtn2').classList.remove('d-none')
     document.getElementById('addBtn3').classList.remove('d-none')
-    document.getElementById('vl2').classList.remove('d-none')  
+    document.getElementById('vl2').classList.remove('d-none')
 }
