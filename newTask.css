@@ -356,20 +356,17 @@ justify-content: space-between;
 #addBtn1{
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 #addBtn2{
     background-color: transparent;
     border: none;
-    
+    cursor: pointer;
 }
 #addBtn3{
     background-color: transparent;
     border: none;
-    
-}
-
-.rotate-img{
-    transform: rotate()
+    cursor: pointer;
 }
 
 .sub-task-btn{
