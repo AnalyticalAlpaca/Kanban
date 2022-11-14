@@ -53,19 +53,17 @@ function renderSummary(){
                 </div>
             </div>
             <div class="last_row">
-                <div class="summary_todo_container">
-                    <div>
-                    <div class="img_todo"><img class="img_pencil" src="./img/pencil.png"></div>
-                    </div>
-                    <div class="summary_todo">
-                        <b id="amount_todos">1</b>              
+                <div class="summary_todo_container" id="task_box_5" onmouseover=onmouseoverTodo() onmouseout=onmouseoutTodo()>
+                        <div id="img_todo" class="img_todo"><img id="img_pencil" class="img_pencil" src="./img/pencil.png"></div>
+                        <div class="summary_todo">
+                        <div><b id="amount_todos" class="amount_todos">1</b></div>           
                         <div>To-do</div>
                     </div>
                 </div>
-                <div class="summary_todo_container">
-                    <div class="img_todo"><img class="img_done" src="./img/done.png"></div>
+                <div class="summary_todo_container" id="task_box_6" onmouseover=onmouseoverDone() onmouseout=onmouseoutDone()>
+                    <div id="img_done" class="img_done"><img id="img_check" src="./img/done.png"></div>
                     <div class="summary_todo">
-                        <b id="amount_done">1</b>              
+                        <div><b id="amount_done" class="amount_done">1</b></div>           
                         <div>Done</div>
                     </div>
                 </div>
@@ -139,6 +137,49 @@ function onmouseoutUrgent(){
     document.getElementById('urgent_task').classList.remove('urgent_task_mouseover');
     document.getElementById('urgent_task').classList.add('urgent_task');
     document.getElementById('current_date').classList.remove('current_date_mouseover');
-    document.getElementById('current_date').classList.add('current_date');
-   
+    document.getElementById('current_date').classList.add('current_date');   
+}
+
+function onmouseoverTodo(){
+    document.getElementById('task_box_5').classList.remove('summary_todo_container');
+    document.getElementById('task_box_5').classList.add('summary_todo_container_mouseover');
+
+    document.getElementById('img_todo').classList.remove('img_todo');
+    document.getElementById('img_todo').classList.add('img_todo_mouseover');
+    document.getElementById('img_pencil').src="./img/pencil_blue.png";
+    document.getElementById('amount_todos').classList.remove('amount_todos');
+    document.getElementById('amount_todos').classList.add('amount_todos_mouseover');
+
+}
+
+function onmouseoutTodo(){
+    document.getElementById('task_box_5').classList.remove('summary_todo_container_mouseover');
+    document.getElementById('task_box_5').classList.add('summary_todo_container');
+    document.getElementById('img_todo').classList.remove('img_todo_mouseover');
+    document.getElementById('img_todo').classList.add('img_todo');
+    document.getElementById('img_pencil').src="./img/pencil.png";
+    document.getElementById('amount_todos').classList.remove('amount_todos_mouseover');
+    document.getElementById('amount_todos').classList.add('amount_todos');
+}
+
+
+function onmouseoverDone(){
+    document.getElementById('task_box_6').classList.remove('summary_todo_container');
+    document.getElementById('task_box_6').classList.add('summary_todo_container_mouseover');
+    document.getElementById('img_done').classList.remove('img_done');
+    document.getElementById('img_done').classList.add('img_done_mouseover');
+    document.getElementById('img_check').src="./img/done_blue.png";
+    document.getElementById('amount_done').classList.remove('amount_done');
+    document.getElementById('amount_done').classList.add('amount_done_mouseover');
+
+}
+
+function onmouseoutDone(){
+    document.getElementById('task_box_6').classList.remove('summary_todo_container_mouseover');
+    document.getElementById('task_box_6').classList.add('summary_todo_container');
+    document.getElementById('img_done').classList.remove('img_done_mouseover');
+    document.getElementById('img_done').classList.add('img_done');
+    document.getElementById('img_check').src="./img/done.png";
+    document.getElementById('amount_done').classList.remove('amount_done_mouseover');
+    document.getElementById('amount_done').classList.add('amount_done');
 }

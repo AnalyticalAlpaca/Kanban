@@ -249,8 +249,28 @@ h2 {
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+    cursor:pointer;
+    color: rgba(42, 54, 71, 1);
 }
+
+.summary_todo_container_mouseover{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 38px 19px;
+    gap: 18px;
+    width: 272.5px;
+    height: 150px;
+    background: #2A3647;
+    border-radius: 30px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transform: scale(108%);
+    animation-timing-function: ease-in-out;
+    animation-duration: 120ms;   
+    color:white;
+}
+
 
 .summary_todo{
     display:flex;
@@ -258,13 +278,18 @@ h2 {
     justify-content: center;
     align-items:center; 
     gap:25px;
-    font-size:16px;
-    color: rgba(42, 54, 71, 1);
 }
-
 
 .img_todo{     
     background-color:#2A3647;
+    padding:10px;
+    border-radius:100px;
+    width:69px;
+    height:69px;
+}
+
+.img_todo_mouseover{     
+    background-color:white;
     padding:10px;
     border-radius:100px;
     width:69px;
@@ -277,20 +302,50 @@ h2 {
 }
 
 .img_done{
+    background-color:#2A3647;
+    padding:10px;
+    border-radius:100px;
+    width:69px;
+    height:69px
+
+}
+
+#img_check{
+    margin-left:5px;
+    margin-top:8px
+}
+
+.img_done_mouseover{
+    background-color:white;
+    padding:10px;
+    border-radius:100px;
+    width:69px;
+    height:69px;
     margin-left:5px;
     margin-top:8px
 }
 
 
-#amount_todos{
+.amount_todos{
     font-size:64px;
     color: rgba(0, 0, 0, 1);
    }
 
-#amount_done{
+.amount_todos_mouseover{
+    font-size:64px;
+    color: white;
+   }
+
+.amount_done{
     font-size:64px;
     color: rgba(0, 0, 0, 1);
    }
+
+.amount_done_mouseover{
+    font-size:64px;
+    color: white;
+   }
+
 
    .greeting_container{
     display:flex;
