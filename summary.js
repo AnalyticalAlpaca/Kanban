@@ -44,8 +44,6 @@ function renderSummary(){
                             <div>Urgent</div>
                         </div>                    
                 </div>
-
-
                 <div><img src="./img/line_urgent.png"></div>
                 <div class="date_container">
                     <div><b id="current_date" class="current_date">October 16, 2022</b></div>
@@ -70,13 +68,27 @@ function renderSummary(){
             </div>
         </div>
         <div class="greeting_container">
-            <div id="greeting">Good morning,</div>
+            <div id="greeting"></div>
             <div id="name_contact">Sofia Müller</div>                
         </div>
     </div>
     
 </div>        
 </div>`;
+
+renderGreeting();
+
+}
+
+function renderGreeting(){
+    let greetingOutput = document.getElementById('greeting');
+    greetingOutput.innerHTML = checkGreetingForm();
+}
+function checkGreetingForm() {
+    let hour = new Date().getHours();
+    if(hour > 5 && hour < 12) return 'Good morning';
+    if(hour > 12 && hour < 18) return 'Good afternoon';
+    return 'Good evening';   
 }
 
 function onmouseoverBoard(){
@@ -143,7 +155,6 @@ function onmouseoutUrgent(){
 function onmouseoverTodo(){
     document.getElementById('task_box_5').classList.remove('summary_todo_container');
     document.getElementById('task_box_5').classList.add('summary_todo_container_mouseover');
-
     document.getElementById('img_todo').classList.remove('img_todo');
     document.getElementById('img_todo').classList.add('img_todo_mouseover');
     document.getElementById('img_pencil').src="./img/pencil_blue.png";
