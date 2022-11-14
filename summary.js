@@ -41,15 +41,15 @@ function renderSummary(){
                         <img class="arrows" src="./img/arrow_urgent.png">  
                         <div class="urgent_amount">
                             <div><b id="urgent_task" class="urgent_task">1</b></div>              
-                            <div class="text_urgent">Urgent</div>
+                            <div>Urgent</div>
                         </div>                    
                 </div>
 
 
                 <div><img src="./img/line_urgent.png"></div>
                 <div class="date_container">
-                    <div><b id="current_date">October 16, 2022</b></div>
-                    <div class="text">Upcoming Deadline</div>
+                    <div><b id="current_date" class="current_date">October 16, 2022</b></div>
+                    <div>Upcoming Deadline</div>
                 </div>
             </div>
             <div class="last_row">
@@ -128,11 +128,17 @@ function onmouseoverUrgent(){
     document.getElementById('task_box_4').classList.add('summary_urgent_mouseover');
     document.getElementById('urgent_task').classList.remove('urgent_task');
     document.getElementById('urgent_task').classList.add('urgent_task_mouseover');
+    document.getElementById('current_date').classList.remove('current_date');
+    document.getElementById('current_date').classList.add('current_date_mouseover');
+
 }
 
 function onmouseoutUrgent(){
     document.getElementById('task_box_4').classList.remove('summary_urgent_mouseover');
     document.getElementById('task_box_4').classList.add('summary_urgent');
     document.getElementById('urgent_task').classList.remove('urgent_task_mouseover');
-    document.getElementById('').classList.add('urgent_task');
+    document.getElementById('urgent_task').classList.add('urgent_task');
+    document.getElementById('current_date').classList.remove('current_date_mouseover');
+    document.getElementById('current_date').classList.add('current_date');
+   
 }

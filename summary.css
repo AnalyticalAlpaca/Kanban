@@ -147,6 +147,7 @@ h2 {
     border-radius: 30px;
     width:580px;
     cursor: pointer;
+    color: rgba(0, 0, 0, 1);
 }
 
 .summary_urgent_mouseover{
@@ -163,8 +164,11 @@ h2 {
      border-radius: 30px;
      width:580px;
      cursor: pointer;
-     color: white
-    
+     color: white;
+     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);   
+     transform: scale(108%);
+     animation-timing-function: ease-in-out;
+     animation-duration: 120ms;    
  }
 
 
@@ -188,15 +192,17 @@ h2 {
     color: rgba(0, 0, 0, 1);
 }
 
+.urgent_task_mouseover{
+    font-size:47px;
+    color: white
+}
 
 .urgent_amount{
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    color: rgba(0, 0, 0, 1);
 }
-
 
 
 .date_container{
@@ -206,10 +212,15 @@ h2 {
     gap:10px
 }
 
-#current_date{
+.current_date{
     font-size: 21px;
     font-weight: 700;    
     color: rgba(42, 54, 71, 1);
+}
+.current_date_mouseover{
+    font-size: 21px;
+    font-weight: 700;    
+    color: white;
 }
 
 .text{
@@ -217,6 +228,8 @@ h2 {
     font-size:16px;
     Line-height: 19.2px;
 }
+
+
 
 .last_row{
     display:flex; 
