@@ -14,27 +14,59 @@
 
     <script src="nav.js"></script>
     <script src="summary.js"></script>
+    <script src="login.js"></script>
 </head>
 <body>
-    <div class="login_container">
-        <div class="login_card">
-            <h1>Log in</h1>
-            <img src="./img/line_horizontal.png">
-            <input type="email" id="email" name="email" placeholder="Email" onkeydown="" required>
-            <input type="password" id="password" name="password" placeholder="Password" onkeydown="" required>
-            <div class="display_flex">
-                <div class="text_margin">
-                    <input id="rememberme" name="rememberme" type="checkbox" > 
-                    <span class="text_rememberme">Remember Me</span>
+    <div id="login_container">
+        <div class="login_container">
+            <div class="headline">
+                <img src="./img/logo_join_dark.png">
+                <div class="display_flex">
+                    <span class="text_black text_margin">Not a Join User?</span>
+                    <button class="btn_darkblue"  onclick="loadSignUp()" >Sign up</button>
                 </div>
-                <span class="text_password">Forgot my password</span>
             </div>
-            <div>
-                <button>Login</button>
-                <button>Guest Login</button>
+            <div class="login_card">
+                <h1>Log in</h1>
+                <img src="./img/line_horizontal.png">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <div class="display_flex gap">
+                    <div>
+                        <input id="rememberme" name="rememberme" type="checkbox" > 
+                        <span class="text_black">Remember Me</span>
+                    </div>
+                    <span class="text_password">Forgot my password</span>
+                </div>
+                <div class="display_flex gap" >
+                    <button class="btn_darkblue">Login</button>
+                    <button class="btn_light">Guest Login</button>
 
-            </div>
-        </div> 
+                </div>
+            </div> 
+        </div>
+    </div>
+
+        <!-- Sign up card -->
+        <div id="signup_container" class="d-none">   
+            <div class="login_container">
+                <div class="headline">
+                    <img src="./img/logo_join_dark.png">                    
+                </div>
+            <div class="login_card">
+                <div>
+                    <img class="arrow" src="./img/arrow.png"  onclick="loadSignIn()">
+                    <h1>Sign up</h1>
+                </div>
+                <img src="./img/line_horizontal.png">
+                <input type="text" id="name" name="name" placeholder="Name"  required>
+                <input type="email" id="email_signup" name="email_signup" placeholder="Email" required>
+                <input type="password" id="password_signup" name="password_signup" placeholder="Password" required>
+                <div>
+                    <button class="btn_darkblue">Sign up</button>   
+                </div> 
+            </div> 
+        </div>
     </div>
 </body>
 </html>
