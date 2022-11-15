@@ -1,14 +1,6 @@
 
-function renderAddTask(){
-    document.getElementById('summary').classList.remove('clicked');
-    document.getElementById('sideTask').classList.add('clicked');
-    document.getElementById('content').innerHTML = '';
-    document.getElementById('content').innerHTML =`
-    Halloasdasdddddddddddddddddddddddddddddddddddddddddddddddasdasddddddddddddddddddddddddddddddddddddddddddddddd`
-    
-}
 
-function renderSummary(){
+function renderSummary() {
 
     document.getElementById('sideTask').classList.remove('clicked');
     document.getElementById('summary').classList.add('clicked');
@@ -76,64 +68,64 @@ function renderSummary(){
 </div>        
 </div>`;
 
-renderGreeting();
+    renderGreeting();
 
 }
 
-function renderGreeting(){
+function renderGreeting() {
     let greetingOutput = document.getElementById('greeting');
     greetingOutput.innerHTML = checkGreetingForm();
 }
 function checkGreetingForm() {
     let hour = new Date().getHours();
-    if(hour > 5 && hour < 12) return 'Good morning';
-    if(hour > 12 && hour < 18) return 'Good afternoon';
-    return 'Good evening';   
+    if (hour > 5 && hour < 12) return 'Good morning';
+    if (hour > 12 && hour < 18) return 'Good afternoon';
+    return 'Good evening';
 }
 
-function onmouseoverBoard(){
+function onmouseoverBoard() {
     document.getElementById('task_box_1').classList.remove('tasks');
     document.getElementById('task_box_1').classList.add('tasks_mouseover');
     document.getElementById('tasks_in_board').classList.remove('tasks_in_board');
     document.getElementById('tasks_in_board').classList.add('tasks_in_board_mouseover');
 }
 
-function onmouseoutBoard(){
+function onmouseoutBoard() {
     document.getElementById('task_box_1').classList.remove('tasks_mouseover');
     document.getElementById('task_box_1').classList.add('tasks');
     document.getElementById('tasks_in_board').classList.remove('tasks_in_board_mouseover');
     document.getElementById('tasks_in_board').classList.add('tasks_in_board');
 }
 
-function onmouseoverProgress(){
+function onmouseoverProgress() {
     document.getElementById('task_box_2').classList.remove('tasks');
     document.getElementById('task_box_2').classList.add('tasks_mouseover');
     document.getElementById('tasks_in_progress').classList.remove('tasks_progress');
     document.getElementById('tasks_in_progress').classList.add('tasks_progress_mouseover');
 }
 
-function onmouseoutProgress(){
+function onmouseoutProgress() {
     document.getElementById('task_box_2').classList.remove('tasks_mouseover');
     document.getElementById('task_box_2').classList.add('tasks');
     document.getElementById('tasks_in_progress').classList.remove('tasks_progress_mouseover');
     document.getElementById('tasks_in_progress').classList.add('tasks_progress');
 }
 
-function onmouseoverFeedback(){
+function onmouseoverFeedback() {
     document.getElementById('task_box_3').classList.remove('tasks');
     document.getElementById('task_box_3').classList.add('tasks_mouseover');
     document.getElementById('tasks_feedback').classList.remove('tasks_feedback');
     document.getElementById('tasks_feedback').classList.add('tasks_feedback_mouseover');
 }
 
-function onmouseoutFeedback(){
+function onmouseoutFeedback() {
     document.getElementById('task_box_3').classList.remove('tasks_mouseover');
     document.getElementById('task_box_3').classList.add('tasks');
     document.getElementById('tasks_feedback').classList.remove('tasks_feedback_mouseover');
     document.getElementById('tasks_feedback').classList.add('tasks_feedback');
 }
 
-function onmouseoverUrgent(){
+function onmouseoverUrgent() {
     document.getElementById('task_box_4').classList.remove('summary_urgent');
     document.getElementById('task_box_4').classList.add('summary_urgent_mouseover');
     document.getElementById('urgent_task').classList.remove('urgent_task');
@@ -143,54 +135,54 @@ function onmouseoverUrgent(){
 
 }
 
-function onmouseoutUrgent(){
+function onmouseoutUrgent() {
     document.getElementById('task_box_4').classList.remove('summary_urgent_mouseover');
     document.getElementById('task_box_4').classList.add('summary_urgent');
     document.getElementById('urgent_task').classList.remove('urgent_task_mouseover');
     document.getElementById('urgent_task').classList.add('urgent_task');
     document.getElementById('current_date').classList.remove('current_date_mouseover');
-    document.getElementById('current_date').classList.add('current_date');   
+    document.getElementById('current_date').classList.add('current_date');
 }
 
-function onmouseoverTodo(){
+function onmouseoverTodo() {
     document.getElementById('task_box_5').classList.remove('summary_todo_container');
     document.getElementById('task_box_5').classList.add('summary_todo_container_mouseover');
     document.getElementById('img_todo').classList.remove('img_todo');
     document.getElementById('img_todo').classList.add('img_todo_mouseover');
-    document.getElementById('img_pencil').src="./img/pencil_blue.png";
+    document.getElementById('img_pencil').src = "./img/pencil_blue.png";
     document.getElementById('amount_todos').classList.remove('amount_todos');
     document.getElementById('amount_todos').classList.add('amount_todos_mouseover');
 
 }
 
-function onmouseoutTodo(){
+function onmouseoutTodo() {
     document.getElementById('task_box_5').classList.remove('summary_todo_container_mouseover');
     document.getElementById('task_box_5').classList.add('summary_todo_container');
     document.getElementById('img_todo').classList.remove('img_todo_mouseover');
     document.getElementById('img_todo').classList.add('img_todo');
-    document.getElementById('img_pencil').src="./img/pencil.png";
+    document.getElementById('img_pencil').src = "./img/pencil.png";
     document.getElementById('amount_todos').classList.remove('amount_todos_mouseover');
     document.getElementById('amount_todos').classList.add('amount_todos');
 }
 
 
-function onmouseoverDone(){
+function onmouseoverDone() {
     document.getElementById('task_box_6').classList.remove('summary_todo_container');
     document.getElementById('task_box_6').classList.add('summary_todo_container_mouseover');
     document.getElementById('img_done').classList.remove('img_done');
     document.getElementById('img_done').classList.add('img_done_mouseover');
-    document.getElementById('img_check').src="./img/done_blue.png";
+    document.getElementById('img_check').src = "./img/done_blue.png";
     document.getElementById('amount_done').classList.remove('amount_done');
     document.getElementById('amount_done').classList.add('amount_done_mouseover');
 
 }
 
-function onmouseoutDone(){
+function onmouseoutDone() {
     document.getElementById('task_box_6').classList.remove('summary_todo_container_mouseover');
     document.getElementById('task_box_6').classList.add('summary_todo_container');
     document.getElementById('img_done').classList.remove('img_done_mouseover');
     document.getElementById('img_done').classList.add('img_done');
-    document.getElementById('img_check').src="./img/done.png";
+    document.getElementById('img_check').src = "./img/done.png";
     document.getElementById('amount_done').classList.remove('amount_done_mouseover');
     document.getElementById('amount_done').classList.add('amount_done');
 }
