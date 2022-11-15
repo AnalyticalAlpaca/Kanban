@@ -38,8 +38,7 @@ h2 {
     display:flex;
     justify-content:flex-start;
     align-items:center;
-    width:100%
-    
+    width:100%    
 }
 
 .summary_tasks{
@@ -103,10 +102,8 @@ h2 {
    
    .tasks_in_board_mouseover{
     font-size:64px;
-    color: white;
-    
+    color: white;    
    }
-
   
    .tasks_progress{
     font-size:64px;
@@ -230,7 +227,6 @@ h2 {
 }
 
 
-
 .last_row{
     display:flex; 
     justify-content:space-between;
@@ -324,7 +320,6 @@ h2 {
     margin-left:5px;
     margin-top:8px
 }
-
 
 .amount_todos{
     font-size:64px;
