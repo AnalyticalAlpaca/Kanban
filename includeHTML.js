@@ -1,4 +1,5 @@
 async function init(){
+    setURL('http://developerakademie.com/smallest_backend_ever');
     await includeHTML('w3-include-html');
 }
 
