@@ -57,7 +57,10 @@ height: 229px;
     padding-bottom: 15px;
     margin: 0 auto;
     padding-left:40px;
-          
+      
+}
+.menu_links:hover {
+    background-color: #091931;
 }
 
 .top_header {
@@ -87,3 +90,17 @@ height: 229px;
     background-color: #091931;
 }
 
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.none-link{
+    color: #CDCDCD;
+    text-decoration: none;
+}
+
+.margin-right{
+    margin-right: 16px;
+}
