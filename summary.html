@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="summary.css">
     <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="body.css">
     <script src="nav.js"></script>
     <script src="summary.js"></script>
 
@@ -20,19 +21,29 @@
         <img src="./img/logo_join.png">
         <div class="menu">
 
-            <div id="summary" class="menu_links">
+            <div id="summary" class="menu_links" onclick="renderSummary()">
                 <img src="./img/img_summary.png">
                 <span>Summary</span>
             </div>
             <div class="menu_links">
-                <img src="./img/img_board.png">
+                <a href="index.html" class="none-link">
+                <div class="flex">
+                <img src="./img/img_board.png" class="margin-right">
                 <span>Board</span>
+                </div>
+            </a>
             </div>
-            <div id="sideTask" class="menu_links" onclick="renderAddTask()">
-                <img src="./img/img_add_task.png">
+             
+            <div id="sideTask" class="menu_links">
+                <a href="newTask.html" class="none-link">
+               <div class="flex">
+                <img src="./img/img_add_task.png" class="margin-right">
                 <span>Add Task</span>
+                </div>
+            </a>   
             </div>
-            <div  class="menu_links">
+            
+            <div class="menu_links">
                 <img src="./img/img_contacts.png">
                 <span>Contacts</span>
             </div>
@@ -42,9 +53,7 @@
         <img src="./img/img_legal.png">
         <span>Legal notice</span>
         </div>
-
     </div>
-
     <div>
         <div class="top_header">
             <h3>Kanban Project Management Tool</h3>
