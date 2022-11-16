@@ -2,6 +2,11 @@
     display:none;
 }
 
+.join_logo{
+  z-index: 1000;
+  animation: joinlogo 1s ease 0s 1 normal forwards;
+}
+
 
 .login_container{
     display: flex;
@@ -10,7 +15,9 @@
     align-items: center;
     width:100vw;
     height:100vh;
-    position:relative
+    position:relative;
+    animation: fadeOpacityIn 2s ease 0s 1 normal forwards;
+    
 }
 
 .headline {
@@ -136,8 +143,6 @@ input#password_signup:focus-visible{
     color:rgb(173, 172, 172);
     border: 1px solid #D1D1D1;
   }
-
-
 
   input#name {
     display: flex;

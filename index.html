@@ -11,16 +11,22 @@
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="body.css">
+    <link rel="stylesheet" href="keyframes.css">
+    
 
     <script src="nav.js"></script>
     <script src="summary.js"></script>
     <script src="login.js"></script>
+    <script src="includeHTML.js"></script>
 </head>
-<body>
+
+
+
+<body onload="initLogin()">
     <div id="login_container">
         <div class="login_container">
             <div class="headline">
-                <img src="./img/logo_join_dark.png">
+                <img class="join_logo" src="./img/logo_join_dark.png">
                 <div class="display_flex">
                     <span class="text_black text_margin">Not a Join User?</span>
                     <button class="btn_darkblue"  onclick="loadSignUp()" >Sign up</button>
@@ -40,7 +46,7 @@
                 </div>
                 <div class="display_flex gap" >
                     <button class="btn_darkblue">Login</button>
-                    <button class="btn_light">Guest Login</button>
+                    <a href="./summary.html"><button class="btn_light">Guest Login</button></a>
 
                 </div>
             </div> 
@@ -63,7 +69,7 @@
                 <input type="email" id="email_signup" name="email_signup" placeholder="Email" required>
                 <input type="password" id="password_signup" name="password_signup" placeholder="Password" required>
                 <div>
-                    <button class="btn_darkblue">Sign up</button>   
+                    <button class="btn_darkblue" onclick="loadSignIn()">Sign up</button>   
                 </div> 
             </div> 
         </div>
