@@ -1,130 +1,149 @@
 "use strict"
 
-let sections = [
+let tasks = [
     {
+        "status": "To Do",
         "category": "Design",
         "title": "Website redesign",
         "description": "Modify the contents of the main website",
-        "status": "To Do"
+        "id": 0
     },
+
     {
+        "status": "In Progress",
         "category": "Sales",
         "title": "Call potencial clients",
         "description": "Make the product presentation to prospective buyers",
-        "status": "In Progress"
+        "id": 1
     },
+
     {
+        "status": "Awaiting Feedback",
         "category": "Backoffice",
         "title": "Accounting invoices",
         "description": "Write open invoices for customer",
-        "status": "Awaiting Feedback"
+        "id": 2
     },
+
     {
+        "status": "Done",
         "category": "Marketing",
         "title": "Social media strategy",
         "description": "Develop an ad campaign for brand positioning",
-        "status": "Done"
+        "id": 3
     }
 ];
 
-let sectionsClasses = {
-        "Design": "color1",
-        "Sales": "color2",
-        "Backoffice": "color3",
-        "Marketing": "color4"
-    };
+let catColors = {
+    "Design": "color1",
+    "Sales": "color2",
+    "Backoffice": "color3",
+    "Marketing": "color4"
+};
 
-let statusArray = ['To Do', 'In Progress', 'Awaiting Feedback', 'Done'];
+let currentDraggedElement;
 
 function render() {
-    document.getElementById('constContent').innerHTML = '';
-    document.getElementById('constContent').innerHTML += /*html*/`
-    <div>
-        <div class="board_container">
-            <div class="main_div">
-                <h1>Board</h1>
-                <div class="input_button">
-                    <input type="search" placeholder="Find Task">
-                    <button>Add task <img src="img/line.png"><img src="img/line.png" class="line2"></button>
-                </div>
-            </div>
-            <div class="main_board_section" id="mainBoard">
-                <div class="board_section" id="content">
-                </div>
-            </div>
-        </div>
-    </div>
-    `;
+    emptyBoard();
 
-    let toDo = sections.filter(section => section.status == "To Do");
-    let InProgress = sections.filter(section => section.status == "In Progress");
-    let AwaitingFeedback = sections.filter(section => section.status == "Awaiting Feedback");
-    let done = sections.filter(section => section.status == "Done");
+    // Filter Tasks Depending On Status
+    let toDo = tasks.filter(tasks => tasks.status == "To Do");
+    let inProgress = tasks.filter(tasks => tasks.status == "In Progress");
+    let awaitingFeedback = tasks.filter(tasks => tasks.status == "Awaiting Feedback");
+    let done = tasks.filter(tasks => tasks.status == "Done");
 
-    let newArray = [];
-    for (let i = 0; i < sections.length; i++) {
-        let section = sections[i].status;
-        if (section == "To Do") {
-            newArray.push(sections[i])
-        }
-    }
-
-    let content = document.getElementById("content");
-    content.innerHTML = '';
-
-    for (let i = 0; i < statusArray.length; i++) {
-        document.getElementById("mainBoard").innerHTML += /*html*/`
-        <h2>${statusArray[i]}</h2>
-    `;
-    }
-    
+    // For "To Do"-Section
     for (let i = 0; i < toDo.length; i++) {
-        content.innerHTML += /*html*/`
-            <div class="board_section" id="content">
-                <button class=${sectionsClasses[toDo[i].category]}>${toDo[i].category}</button>
-               <h3>${toDo[i].title}</h3>
-               <p>${toDo[i].description}</p>
-            </div>
-           `;
-    }
-
-    for (let i = 0; i < InProgress.length; i++) {
-        content.innerHTML += /*html*/`
-            <button class=${sectionsClasses[InProgress[i].category]}>${InProgress[i].category}</button>
-            <h3>${InProgress[i].title}</h3>
-            <p>${InProgress[i].description}</p>
-           `;
-    }
-
-    for (let i = 0; i < AwaitingFeedback.length; i++) {
-        content.innerHTML += /*html*/`
-            <button class=${sectionsClasses[AwaitingFeedback[i].category]}>${AwaitingFeedback[i].category}</button>
-            <h3>${AwaitingFeedback[i].title}</h3>
-            <p>${AwaitingFeedback[i].description}</p>
-           `;
-    }
-
-    for (let i = 0; i < done.length; i++) {
-        content.innerHTML += /*html*/`
-            <button class=${sectionsClasses[done[i].category]}>${done[i].category}</button>
-            <h3>${done[i].title}</h3>
-            <p>${done[i].description}</p>
-           `;
+        document.getElementById("toDo").innerHTML += /*html*/`
+        <div class="category_container" draggable="true" ondragstart="startDragging(${toDo[i].id})">
+            <li class="category ${catColors[toDo[i].category]}">${toDo[i].category}</li>
+            <li class="title">${toDo[i].title}</li>
+            <li class="description">${toDo[i].description}</li>
+        </div>
+    `;
     }
     
-    // for (let i = 0; i < statusArray.length; i++) {
-    //     document.getElementById("content").innerHTML += /*html*/`
-    //     <h2>${statusArray[i]}</h2>
-    //     `;
-    // }
+    // For "In Progress"-Section
+    for (let i = 0; i < inProgress.length; i++) {
+        document.getElementById("inProgress").innerHTML += /*html*/`
+        <div class="category_container" draggable="true" ondragstart="startDragging(${inProgress[i].id})">
+            <li class="category ${catColors[inProgress[i].category]}">${inProgress[i].category}</li>
+            <li class="title">${inProgress[i].title}</li>
+            <li class="description">${inProgress[i].description}</li>
+        </div>
+    `;
+    }
+    
+    // For "Awaiting Feedback"-Section
+    for (let i = 0; i < awaitingFeedback.length; i++) {
+        document.getElementById("awaitingFeedback").innerHTML += /*html*/`
+        <div class="category_container" draggable="true" ondragstart="startDragging(${awaitingFeedback[i].id})">
+            <li class="category ${catColors[awaitingFeedback[i].category]}">${awaitingFeedback[i].category}</li>
+            <li class="title">${awaitingFeedback[i].title}</li>
+            <li class="description">${awaitingFeedback[i].description}</li>
+        </div>
+    `;
+    }
+    
+    // For "Done"-Section
+    for (let i = 0; i < done.length; i++) {
+        document.getElementById("done").innerHTML += /*html*/`
+        <div class="category_container" draggable="true" ondragstart="startDragging(${done[i].id})">
+            <li class="category ${catColors[done[i].category]}">${done[i].category}</li>
+            <li class="title">${done[i].title}</li>
+            <li class="description">${done[i].description}</li>
+        </div>
+    `;
+    }
+}
 
-    // for (let i = 0; i < sections.length; i++) {
-    //     content.innerHTML += /*html*/`
-    //     <div class="board_section">
-    //         <button class=${sectionsClasses[sections[i].category]}>${sections[i].category}</button>
-    //         <h3>${sections[i].title}</h3>
-    //         <p>${sections[i].description}</p>
-    //     </div>
-    //     `;
-    //     }
+// Reset Board
+function emptyBoard() {
+    document.getElementById("toDo").innerHTML = '';
+    document.getElementById("toDo").innerHTML += /*html*/`
+    <li class="heading">To Do</li>
+    `;
+
+    document.getElementById("inProgress").innerHTML = '';
+    document.getElementById("inProgress").innerHTML += /*html*/`
+    <li class="heading">In Progress</li>
+    `;
+
+    document.getElementById("awaitingFeedback").innerHTML = '';
+    document.getElementById("awaitingFeedback").innerHTML += /*html*/`
+    <li class="heading">Awaiting Feedback</li>
+    `;
+
+    document.getElementById("done").innerHTML = '';
+    document.getElementById("done").innerHTML += /*html*/`
+    <li class="heading">Done</li>
+    `;
+}
+
+// Add New Task
+function addTask() {
+    console.log("'addTask' noch nicht gemacht!")
+}
+
+// Drag Tasks
+function startDragging(id) {
+    currentDraggedElement = id;    
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function moveTo(status) {
+    if (status === 'toDo') {
+        status = 'To Do';
+    } else if (status === 'inProgress') {
+        status = 'In Progress';
+    } else if (status === 'awaitingFeedback') {
+        status = 'Awaiting Feedback';
+    } else if (status === 'done') {
+        status = 'Done';
+    }
+    tasks[currentDraggedElement].status = status;
+    render();
 }
