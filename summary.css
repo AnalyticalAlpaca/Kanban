@@ -9,7 +9,8 @@
 
 .container{
     display:flex;
-    align-items:center
+    align-items:center;
+    animation: fadeOpacityIn 1s ease 0s 1 normal forwards;
 }
 
 .summary_headline{
