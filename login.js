@@ -1,9 +1,13 @@
+let userInformation = [];
+
 async function initLogin() {
   
     await loadDataFromServer(); 
     await downloadFromServer();
+    userInformation = JSON.parse(backend.getItem('userInformation')) || [];
 }
 async function loadDataFromServer() {
+    
     setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
 }
 
@@ -23,7 +27,9 @@ async function signup() {
     let name = document.getElementById('name');
     let email = document.getElementById('email_signup');
     let password = document.getElementById('password_signup');
-    userInformation.push({fullname: name.value, password: password.value, mail: email.value});
+    
+    userInformation.push({fullname: name.value, password: password.value, mail: email.value});  
+
     await backend.setItem('userInformation', JSON.stringify(userInformation));
    
    }
@@ -34,6 +40,6 @@ async function login(){
     let user = userInformation.find( u => u.mail == email.value && u.password == password.value);
     console.log(user);
     if(user) {
-        window.location.href ='summary.html?';
+        window.location.href ='summary.html';
     }
 }
