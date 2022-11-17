@@ -15,13 +15,11 @@
 
     <script src="nav.js"></script>
     <script src="summary.js"></script>
-    <script src="login.js"></script>
-    <script src="includeHTML.js"></script>
     <script src="./mini_backend.js"></script>
-    <script src="./script.js"></script>
+    <script src="login.js"></script> 
+    
+
 </head>
-
-
 
 <body onload="initLogin()">
     <div id="login_container">
@@ -30,7 +28,7 @@
                 <img class="join_logo" src="./img/logo_join_dark.png">
                 <div class="display_flex">
                     <span class="text_black text_margin">Not a Join User?</span>
-                    <button class="btn_darkblue"  onclick="loadSignUp()" >Sign up</button>
+                    <button class="btn_darkblue"  onclick="loadSignUp()">Sign up</button>
                 </div>
             </div>
             <form class="login_card" onsubmit="login(); return false;">
@@ -57,24 +55,24 @@
     </div>
 
         <!-- Sign up card -->
-        <div id="signup_container" class="d-none" onsubmit="signup(); return false;">   
+        <div id="signup_container" class="d-none">   
             <div class="login_container">
                 <div class="headline">
                     <img src="./img/logo_join_dark.png">                    
                 </div>
-            <div class="login_card" >
+            <form class="login_card" onsubmit="signup(); return false;">
                 <div>
-                    <img class="arrow" src="./img/arrow.png"  onclick="loadSignIn()">
+                    <img class="arrow" src="./img/arrow.png" onclick="loadLogIn()">
                     <h1>Sign up</h1>
                 </div>
-                <img src="./img/line_horizontal.png">
+                <img src="./img/line_horizontal.png" >
                 <input type="text" id="name" name="name" placeholder="Name"  required>
                 <input type="email" id="email_signup" name="email_signup" placeholder="Email" required>
                 <input type="password" id="password_signup" name="password_signup" placeholder="Password" required>
                 <div>
-                    <button class="btn_darkblue" onclick="loadSignIn()">Sign up</button>   
+                    <button class="btn_darkblue" >Sign up</button>   
                 </div> 
-            </div> 
+            </form> 
         </div>
     </div>
 </body>
