@@ -38,7 +38,43 @@ function changeBtn() {
     document.getElementById('addBtn3').classList.remove('d-none')
     document.getElementById('vl2').classList.remove('d-none')
 }
+let dropdown_clicked = false;
+function dropdown() {
+    if (dropdown_clicked == false) {
+        document.getElementById('dropdown').innerHTML = `
+        
+<br>
+            <div class="category dropdownPadding">
+                <span class="test">
+                
+                    Select task category
+                </span>
+            </div>
+                        
+            <div class="category2 dropdownPadding">
+                <span class="test">
+                    
+                    Select task category
+                </span>
+            </div>
+            `
+        dropdown_clicked = true;
+    }
+    else {
+        document.getElementById('mainDropdown').innerHTML = `
+        <div class="hoverDropdown">
+            <div class="arrowEnd dropdownPadding">
+            <span class="test">Select task category
+            </span>
+        </div>
+        </div>
+             
+            <div id="dropdown">
+            
+        </div>
+    </div>
 
-function dropdown(){
-    
+            `
+        dropdown_clicked = false;
+    }
 }
