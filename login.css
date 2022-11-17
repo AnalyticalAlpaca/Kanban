@@ -1,0 +1,238 @@
+.d-none{
+    display:none;
+}
+
+.join_logo{
+  z-index: 1000;
+  animation: joinlogo 1s ease 0s 1 normal forwards;
+}
+
+
+.login_container{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width:100vw;
+    height:100vh;
+    position:relative;
+    animation: fadeOpacityIn 2s ease 0s 1 normal forwards;
+    
+}
+
+.headline {
+    display:flex;   
+    justify-content: space-between;
+    align-items:center;
+    position:absolute;
+    top:0;
+    width:100vw;
+    padding:50px    
+}
+
+.headline img{
+    height: 121px;
+    width: 100px;
+    left: 77px;
+}
+
+.login_card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 54px 0px;   
+    gap: 35px;
+    width: 652px;
+    height: 513px;   
+    background: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+    position:relative;
+}
+
+input#email{
+    display: flex;
+    align-items: center;
+    background-image: url('./img/email.png');
+    background-position: 380px 15px;
+    background-repeat: no-repeat;
+    width:422px;
+    height: 51px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding-left: 18px;
+    padding-top:10px;
+    color:rgb(173, 172, 172)   
+}
+
+  input#email:focus-visible{
+    background-image: url('./img/email.png');  
+    outline: none;
+    width:422px;
+    height: 51px;
+    color:rgb(173, 172, 172);
+    border: 1px solid #D1D1D1;
+  }
+  
+
+::placeholder{
+    color: #D1D1D1;
+    font-size: 21px;
+}
+
+input#password {
+    display: flex;
+    align-items: center;
+    background-image: url('./img/password.png');
+    background-position: 380px 15px;
+    background-repeat: no-repeat;
+    width:422px;
+    height: 51px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding-left: 18px;
+    padding-top:10px;
+    color:rgb(173, 172, 172)   
+}
+
+  input#password:focus-visible{
+    outline: none;
+    color:rgb(173, 172, 172);
+    border: 1px solid #D1D1D1;
+  }
+
+  input#email_signup {
+    display: flex;
+    align-items: center;
+    background-image: url('./img/email.png');
+    background-position: 380px 15px;
+    background-repeat: no-repeat;
+    width:422px;
+    height: 51px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding-left: 18px;
+    padding-top:10px;
+    color:rgb(173, 172, 172)   
+}
+
+
+input#email_signup:focus-visible{
+    outline: none;
+    color:rgb(173, 172, 172);
+    border: 1px solid #D1D1D1;
+  }
+
+  input#password_signup {
+    display: flex;
+    align-items: center;
+    background-image: url('./img/password.png');
+    background-position: 380px 15px;
+    background-repeat: no-repeat;
+    width:422px;
+    height: 51px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding-left: 18px;
+    padding-top:10px;
+    color:rgb(173, 172, 172)   
+}
+
+input#password_signup:focus-visible{
+    outline: none;
+    color:rgb(173, 172, 172);
+    border: 1px solid #D1D1D1;
+  }
+
+  input#name {
+    display: flex;
+    align-items: center;
+    background-image: url('./img/name.png');
+    background-position: 380px 15px;
+    background-repeat: no-repeat;
+    width:422px;
+    height: 51px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding-left: 18px;
+    padding-top:10px;
+    color:rgb(173, 172, 172)   
+}
+
+input#name:focus-visible{
+    outline: none;
+    color:rgb(173, 172, 172);
+    border: 1px solid #D1D1D1;
+  }
+
+
+  .display_flex{
+    display:flex;
+    align-items:center;   
+  }
+
+  .text_margin{
+    margin-right: 30px;
+    margin-left: 30px
+  }
+
+ .text_black{
+    color:black;
+ }
+  
+ .text_password{
+    color: #29ABE2;
+    cursor: pointer;
+ }
+
+ #rememberme{
+    cursor:pointer
+ }
+
+ .btn_darkblue{
+    width: 145px;
+    height: 51px;
+    background: #2A3647;
+    border-radius: 8px;
+    color:white;
+    font-weight: 700;
+    font-size: 21px;
+    border:none;
+    cursor: pointer;
+ }
+ 
+ .btn_darkblue:hover{
+    background: rgba(41, 171, 226, 1);
+    color:white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ }
+
+
+ .btn_light{
+    width: 145px;
+    height: 51px;
+    background: white;
+    border-radius: 8px;
+    color:#2A3647;
+    font-weight: 700;
+    font-size: 21px;
+    border:1px solid rgba(42, 54, 71, 1);
+    cursor: pointer;
+ }
+
+ .btn_light:hover{
+    color:rgba(41, 171, 226, 1);
+    border:1px solid rgba(41, 171, 226, 1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ }
+
+ .gap{
+    gap: 20px
+ }
+
+.arrow{
+    position:absolute;
+    top:50px;
+    left:50px;
+    cursor:pointer
+}
