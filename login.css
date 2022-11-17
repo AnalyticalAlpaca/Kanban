@@ -50,7 +50,7 @@
     position:relative;
 }
 
-input#email{
+input#login-email{
     display: flex;
     align-items: center;
     background-image: url('./img/email.png');
@@ -65,7 +65,7 @@ input#email{
     color:rgb(173, 172, 172)   
 }
 
-  input#email:focus-visible{
+  input#login-email:focus-visible{
     background-image: url('./img/email.png');  
     outline: none;
     width:422px;
@@ -80,7 +80,7 @@ input#email{
     font-size: 21px;
 }
 
-input#password {
+input#login-password {
     display: flex;
     align-items: center;
     background-image: url('./img/password.png');
@@ -95,7 +95,7 @@ input#password {
     color:rgb(173, 172, 172)   
 }
 
-  input#password:focus-visible{
+  input#login-password:focus-visible{
     outline: none;
     color:rgb(173, 172, 172);
     border: 1px solid #D1D1D1;
