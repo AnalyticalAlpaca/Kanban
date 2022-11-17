@@ -1,5 +1,6 @@
 async function initLogin() {
-       await init();   
+    await loadDataFromServer();
+    await init();   
 }
 
 function loadSignUp(){
