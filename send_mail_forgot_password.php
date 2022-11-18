@@ -3,7 +3,7 @@
 ########### CONFIG ###############
 
 $recipient = 'bettina.nestler84@gmail.com';
-$redirect = 'new_password.html';
+$redirect = 'http://127.0.0.1:5500/Kanban/new_password.html';
 
 ########### CONFIG END ###########
 
