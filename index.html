@@ -42,11 +42,11 @@
                             <input id="rememberme" name="rememberme" type="checkbox" > 
                             <span class="text_black">Remember Me</span>
                         </div>
-                        <span class="text_password">Forgot my password</span>
+                        <span class="text_password" onclick="loadForgotPassword()">Forgot my password</span>
                     </div>
                     <div class="display_flex gap" >
                         <button class="btn_darkblue">Login</button>
-                        <a href="./summary.html"><button class="btn_light">Guest Login</button></a>
+                        <button class="btn_light" onclick="guestLogin()">Guest Login</button>
 
                     </div>
                 
@@ -74,6 +74,31 @@
                 </div> 
             </form> 
         </div>
+
+         
+
     </div>
+
+    <!-- Forgot password-->
+    <div id="forgot_password_container" class="d-none">   
+        <div class="login_container">
+            <div class="headline">
+                <img src="./img/logo_join_dark.png">                    
+            </div>
+        <form class="forgot_password_card" action="https://bettina-nestler.developerakademie.net/Kanban/send_mail_forgot_password.php"  method="POST"  onsubmit="loadFormForgotPassword()">
+            <div>
+                <img class="arrow" src="./img/arrow.png" onclick="loadLogIn()">
+                <h1>I forgot my password</h1>                
+            </div>
+            <img src="./img/line_horizontal.png" >
+            <p class="text_black" >We will send you an email for reset your password!</p>               
+            <input type="email" id="forgot_email" name="forgot_email" placeholder="Email" required>                
+            <div>
+                <button type="submit" class="btn_darkblue_passwordreset">Reset password</button>   
+            </div> 
+        </form> 
+    </div>
+
+    
 </body>
 </html>

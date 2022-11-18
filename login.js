@@ -22,6 +22,12 @@ function loadLogIn(){
     document.getElementById('signup_container').classList.add('d-none');
 }
 
+function loadForgotPassword(){
+    document.getElementById('login_container').classList.add('d-none');
+    document.getElementById('forgot_password_container').classList.remove('d-none');
+}
+
+
 
 async function signup() {
     let name = document.getElementById('name');
@@ -29,9 +35,8 @@ async function signup() {
     let password = document.getElementById('password_signup');
     
     userInformation.push({fullname: name.value, password: password.value, mail: email.value});  
-
     await backend.setItem('userInformation', JSON.stringify(userInformation));
-   
+    window.location.href ='index.html';
    }
   
 async function login(){
@@ -42,4 +47,16 @@ async function login(){
     if(user) {
         window.location.href ='summary.html';
     }
+}
+
+function guestLogin(){
+    window.location.href ='summary.html';
+}
+
+function loadFormForgotPassword(){
+    window.location.href ='new_password.html';
+}
+
+function loadLogInFromPasswordForm(){
+    window.location.href ='index.html';
 }

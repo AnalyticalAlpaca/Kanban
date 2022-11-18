@@ -28,4 +28,17 @@ h2 {
     font-size: 27px;
     font-weight: 400;
     }
+
+.text_margin{
+    margin-right: 30px;
+    margin-left: 30px
+}
     
+.text_black{
+    color:black;
+}
+
+.display_flex{
+    display:flex;
+    align-items:center;   
+  }
