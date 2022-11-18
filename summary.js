@@ -1,7 +1,7 @@
 
 
-function renderSummary() {
-
+async function renderSummary() {
+    await includeHTML();
     document.getElementById('sideTask').classList.remove('clicked');
     document.getElementById('summary').classList.add('clicked');
     document.getElementById('content').innerHTML = '';

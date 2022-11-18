@@ -14,63 +14,14 @@
     <script src="nav.js"></script>
     <script src="summary.js"></script>
     <script src="./mini_backend.js"></script>
-   
+    <script src="./includeHTML.js"></script>
     <script src="./script.js"></script>
 
 </head>
 <body onload="renderSummary()" >
+<div class="join_base" w3-include-html="nav.html">   
 
-<div class="join_base">
-    <div class="sidebar">
-        <img src="./img/logo_join.png">
-        <div class="menu">
-
-            <div id="summary" class="menu_links">
-                <img src="./img/img_summary.png">
-                <span>Summary</span>
-            </div>
-            <div class="menu_links">
-                <a href="board.html" class="none-link">
-                <div class="flex">
-                <img src="./img/img_board.png" class="margin-right">
-                <span>Board</span>
-                </div>
-            </a>
-            </div>
-             
-            <div id="sideTask" class="menu_links">
-                <a href="newTask.html" class="none-link">
-               <div class="flex">
-                <img src="./img/img_add_task.png" class="margin-right">
-                <span>Add Task</span>
-                </div>
-            </a>   
-            </div>
-            
-            <div class="menu_links">
-                <img src="./img/img_contacts.png">
-                <span>Contacts</span>
-            </div>
-        </div>
-        
-        <div  class="menu_links">
-        <img src="./img/img_legal.png">
-        <span>Legal notice</span>
-        </div>
-    </div>
-    <div>
-        <div class="top_header">
-            <h3>Kanban Project Management Tool</h3>
-            <div class="img_header">
-                <img src="./img/img_header_help.png">
-                <img src="./img/img_profil.png">
-            </div>   
-        </div>
-    </div>
-
-    <div id="content" >
-       
-</div>
+    <div id="content" ></div>
 
 </body>
 </html>
