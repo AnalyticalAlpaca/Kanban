@@ -353,5 +353,15 @@
 .greeting_container{
     display:none
     }
+
+    .summary_headline{
+        display:flex;
+        flex-direction:column;
+        justify-content: left;
+        align-items: flex-start;       
+        padding-bottom:10px;
+        padding-top:150px;
+        width:100%    
+    }
 }
     
