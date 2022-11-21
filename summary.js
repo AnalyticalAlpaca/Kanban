@@ -8,7 +8,8 @@ function renderSummary() {
     document.getElementById('content').innerHTML += /*html*/ `
     <div class="summary_headline">
     <h1>Summary</h1>
-    <div><img src="./img/line_blue.png"></div>
+    <div><img class="line_vertical" src="./img/line_blue.png"></div>
+    <div><img class="line_horizontal" src="./img/line_horizontal.png"></div>
     <h2>Everything in a nutshell!</h2>
 </div>
 <div class="container">
@@ -20,11 +21,11 @@ function renderSummary() {
                     <div>Tasks in Board</div>
                 </div>
                 <div class="tasks" id="task_box_2" onmouseover=onmouseoverProgress() onmouseout=onmouseoutProgress() >
-                    <div><b id="tasks_in_progress" class="tasks_progress">2</b></div>
+                    <div><b id="tasks_in_progress" class="tasks_in_board">2</b></div>
                     <div class="text_align">Tasks in Progress</div>
                 </div>
                 <div class="tasks" id="task_box_3" onmouseover=onmouseoverFeedback() onmouseout=onmouseoutFeedback()>
-                    <div><b id="tasks_feedback" class="tasks_feedback">2</b></div>
+                    <div><b id="tasks_feedback" class="tasks_in_board">2</b></div>
                     <div class="text_align">Awaiting Feedback</div>
                 </div>
             </div>
