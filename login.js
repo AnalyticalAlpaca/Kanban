@@ -34,7 +34,7 @@ async function signup() {
     
     userInformation.push({fullname: name.value, password: password.value, mail: email.value});  
     await backend.setItem('userInformation', JSON.stringify(userInformation));
-    window.location.href ='index.html?msg=Du hast dich erfolgreich registriert!';
+    window.location.href ='index.html';
    }
 
 function UserResponse(){

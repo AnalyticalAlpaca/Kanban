@@ -1,12 +1,4 @@
 
-#content{
-    display:flex;
-    justify-content:center;
-    align-items: center;
-    flex-direction: column;
-    margin-left:100px;
-}
-
 .container{
     display:flex;
     align-items:center;
@@ -355,6 +347,11 @@
     color: #29ABE2;
     }
 
-    
 
+    @media(max-width:800px){
+    
+.greeting_container{
+    display:none
+    }
+}
     

@@ -19,8 +19,6 @@
     animation: fadeOpacityIn 2s ease 0s 1 normal forwards;    
 }
 
-
-
 .headline {
     display:flex;   
     justify-content: space-between;
@@ -58,7 +56,7 @@
   padding: 54px 0px;   
   gap: 35px;
   width: 800px;
-  height: 400px;   
+  height: 500px;   
   background: #FFFFFF;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   border-radius: 30px;
@@ -83,8 +81,6 @@ input#login-email{
   input#login-email:focus-visible{
     background-image: url('./img/email.png');  
     outline: none;
-    width:422px;
-    height: 51px;
     color:rgb(173, 172, 172);
     border: 1px solid #D1D1D1;
   }
@@ -190,8 +186,7 @@ input#name:focus-visible{
     height: 51px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    padding-left: 18px;
-    padding-top:10px;
+    padding: 18px;
     color:rgb(173, 172, 172)  
   }
 
@@ -208,8 +203,7 @@ input#name:focus-visible{
     height: 51px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    padding-left: 18px;
-    padding-top:10px;
+    padding: 18px;
     color:rgb(173, 172, 172)  
   }
 
@@ -232,8 +226,7 @@ input#name:focus-visible{
     height: 51px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    padding-left: 18px;
-    padding-top:10px;
+    padding: 18px;
     color:rgb(173, 172, 172)  
   }
 
@@ -346,6 +339,7 @@ input#login-email{
   padding:10px
 }
 
+
 input#login-password{
   width:280px;
   height: 51px;
@@ -357,12 +351,62 @@ input#login-password{
   flex-direction:column;  
 }
 
-::Placeholder{
- 
+input#name{
+  width:280px;
+  height: 51px;
+  background-position: 245px;
+  padding:10px
 }
+
+input#email_signup{
+  width:280px;
+  height: 51px;
+  background-position: 245px;
+  padding:10px
 }
 
-@media(max-width:800px){
+input#password_signup{
+  width:280px;
+  height: 51px;
+  background-position: 245px;
+  padding:10px
+}
 
+.forgot_password_card{
+  padding: 54px 0px;
+  gap: 35px;
+  width: 330px;
+  height: 550px;
+  margin-top:90px;
+  text-align: center;
+  
+}
 
+input#forgot_email{
+  width:280px;
+  height: 51px;
+  background-position: 245px;
+  padding:10px;
+}
+
+input#input_new_password{
+  width:280px;
+  height: 51px;
+  background-position: 245px;
+  padding:10px;
+}
+
+input#input_new_password_confirm{
+  width:280px;
+  height: 51px;
+  background-position: 245px;
+  padding:10px;
+}
+
+.arrow{
+  top:20px;
+  left:30px;
+  width: 20px;
+  height:20px
+}
 }
