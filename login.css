@@ -306,3 +306,63 @@ input#name:focus-visible{
     left:50px;
     cursor:pointer
 }
+
+.sign_in_section_mobile{
+display:none;
+}
+
+@media(max-width:800px){
+  
+  .sign_in_section{
+    display: none;
+  }
+
+  .sign_in_section_mobile{
+    display:unset;
+    margin-top:40px;
+    }
+    
+.login_card{
+  padding: 54px 0px;
+  gap: 35px;
+  width: 330px;
+  height: 550px;
+  margin-top:90px
+}
+
+.headline img{
+  height: 80px;
+  width: 59px;
+}
+
+h1 {
+  font-size:40px !important
+}
+
+input#login-email{
+  width:280px;
+  height: 51px;
+  background-position: 245px;
+  padding:10px
+}
+
+input#login-password{
+  width:280px;
+  height: 51px;
+  background-position: 245px;
+  padding:10px
+}
+
+.display_flex{
+  flex-direction:column;  
+}
+
+::Placeholder{
+ 
+}
+}
+
+@media(max-width:800px){
+
+
+}

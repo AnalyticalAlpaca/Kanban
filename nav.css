@@ -68,6 +68,12 @@ height: 229px;
     background-color: #091931;
 }
 
+
+.legal_links{
+    width:100%
+}
+
+
 .top_header {
     position: absolute;
     top: 0;
