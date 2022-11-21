@@ -1,69 +1,69 @@
 
 
-async function renderSummary() {
-    await includeHTML();
+function renderSummary() {
+
     document.getElementById('sideTask').classList.remove('clicked');
     document.getElementById('summary').classList.add('clicked');
     document.getElementById('content').innerHTML = '';
     document.getElementById('content').innerHTML += /*html*/ `
     <div class="summary_headline">
-        <h1>Summary</h1>
-        <div><img src="./img/line_blue.png"></div>
-        <h2>Everything in a nutshell!</h2>
-    </div>
-    <div class="container">
-        <div class="summary_content">
-            <div class="summary_tasks">
-                <div class="task_cases">
-                    <div class="tasks" id="task_box_1" onmouseover=onmouseoverBoard() onmouseout=onmouseoutBoard()>
-                        <div><b id="tasks_in_board" class="tasks_in_board">5</b></div>
-                        <div>Tasks in Board</div>
-                    </div>
-                    <div class="tasks" id="task_box_2" onmouseover=onmouseoverProgress() onmouseout=onmouseoutProgress() >
-                        <div><b id="tasks_in_progress" class="tasks_progress">2</b></div>
-                        <div class="text_align">Tasks in Progress</div>
-                    </div>
-                    <div class="tasks" id="task_box_3" onmouseover=onmouseoverFeedback() onmouseout=onmouseoutFeedback()>
-                        <div><b id="tasks_feedback" class="tasks_feedback">2</b></div>
-                        <div class="text_align">Awaiting Feedback</div>
-                    </div>
+    <h1>Summary</h1>
+    <div><img src="./img/line_blue.png"></div>
+    <h2>Everything in a nutshell!</h2>
+</div>
+<div class="container">
+    <div class="summary_content">
+        <div class="summary_tasks">
+            <div class="task_cases">
+                <div class="tasks" id="task_box_1" onmouseover=onmouseoverBoard() onmouseout=onmouseoutBoard()>
+                    <div><b id="tasks_in_board" class="tasks_in_board">5</b></div>
+                    <div>Tasks in Board</div>
                 </div>
-                <div class="summary_urgent" id="task_box_4" onmouseover=onmouseoverUrgent() onmouseout=onmouseoutUrgent()>                
-                        <div class="urgent_container">
-                            <img class="arrows" src="./img/arrow_urgent.png">  
-                            <div class="urgent_amount">
-                                <div><b id="urgent_task" class="urgent_task">1</b></div>              
-                                <div>Urgent</div>
-                            </div>                    
-                    </div>
-                    <div><img src="./img/line_urgent.png"></div>
-                    <div class="date_container">
-                        <div><b id="current_date" class="current_date">October 16, 2022</b></div>
-                        <div>Upcoming Deadline</div>
-                    </div>
+                <div class="tasks" id="task_box_2" onmouseover=onmouseoverProgress() onmouseout=onmouseoutProgress() >
+                    <div><b id="tasks_in_progress" class="tasks_progress">2</b></div>
+                    <div class="text_align">Tasks in Progress</div>
                 </div>
-                <div class="last_row">
-                    <div class="summary_todo_container" id="task_box_5" onmouseover=onmouseoverTodo() onmouseout=onmouseoutTodo()>
-                            <div id="img_todo" class="img_todo"><img id="img_pencil" class="img_pencil" src="./img/pencil.png"></div>
-                            <div class="summary_todo">
-                            <div><b id="amount_todos" class="amount_todos">1</b></div>           
-                            <div>To-do</div>
-                        </div>
-                    </div>
-                    <div class="summary_todo_container" id="task_box_6" onmouseover=onmouseoverDone() onmouseout=onmouseoutDone()>
-                        <div id="img_done" class="img_done"><img id="img_check" src="./img/done.png"></div>
-                        <div class="summary_todo">
-                            <div><b id="amount_done" class="amount_done">1</b></div>           
-                            <div>Done</div>
-                        </div>
-                    </div>
+                <div class="tasks" id="task_box_3" onmouseover=onmouseoverFeedback() onmouseout=onmouseoutFeedback()>
+                    <div><b id="tasks_feedback" class="tasks_feedback">2</b></div>
+                    <div class="text_align">Awaiting Feedback</div>
                 </div>
             </div>
-            <div class="greeting_container">
-                <div id="greeting"></div>
-                <div id="name_contact">Sofia Müller</div>                
+            <div class="summary_urgent" id="task_box_4" onmouseover=onmouseoverUrgent() onmouseout=onmouseoutUrgent()>                
+                    <div class="urgent_container">
+                        <img class="arrows" src="./img/arrow_urgent.png">  
+                        <div class="urgent_amount">
+                            <div><b id="urgent_task" class="urgent_task">1</b></div>              
+                            <div>Urgent</div>
+                        </div>                    
+                </div>
+                <div><img src="./img/line_urgent.png"></div>
+                <div class="date_container">
+                    <div><b id="current_date" class="current_date">October 16, 2022</b></div>
+                    <div>Upcoming Deadline</div>
+                </div>
+            </div>
+            <div class="last_row">
+                <div class="summary_todo_container" id="task_box_5" onmouseover=onmouseoverTodo() onmouseout=onmouseoutTodo()>
+                        <div id="img_todo" class="img_todo"><img id="img_pencil" class="img_pencil" src="./img/pencil.png"></div>
+                        <div class="summary_todo">
+                        <div><b id="amount_todos" class="amount_todos">1</b></div>           
+                        <div>To-do</div>
+                    </div>
+                </div>
+                <div class="summary_todo_container" id="task_box_6" onmouseover=onmouseoverDone() onmouseout=onmouseoutDone()>
+                    <div id="img_done" class="img_done"><img id="img_check" src="./img/done.png"></div>
+                    <div class="summary_todo">
+                        <div><b id="amount_done" class="amount_done">1</b></div>           
+                        <div>Done</div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="greeting_container">
+            <div id="greeting"></div>
+            <div id="name_contact">Sofia Müller</div>                
+        </div>
+    </div>
     
 </div>        
 </div>`;
