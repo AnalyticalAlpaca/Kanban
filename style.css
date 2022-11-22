@@ -22,6 +22,7 @@
 h1 {
     font-weight: 700;
     font-size: 61px;
+    cursor: default;
 }
 
 .input_button > input {
@@ -117,16 +118,21 @@ button img {
     font-weight: 700;
     font-size: 21px;
     margin-bottom: 2rem;
+    cursor: default;
 }
 
 .title {
     font-weight: 700;
     padding: 1.2rem 0 0.5rem 0;
+    outline: none;
+    cursor: text;
 }
 
 .description {
     font-weight: 400;
     color: #A8A8A8;
+    outline: none;
+    cursor: text;
 }
 
 .category_container {
@@ -134,4 +140,10 @@ button img {
     border-radius: 30px;
     padding: 1rem;
     margin: 10px;
+    cursor: grab;
+}
+
+.category_container:hover {
+    background-color: #303030;
+    color: #fff;
 }
