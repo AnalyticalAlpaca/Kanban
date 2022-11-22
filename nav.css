@@ -155,6 +155,8 @@ a{
 .footer_mobil{
     background-color: #2A3647;
     display:flex;
+    
+
     }
 
     .join_base{
@@ -167,7 +169,7 @@ a{
     .menu{
         flex-direction:row;
         width:100vw;
-        height: 80px
+        height: 60px
     }
 
     .menu_links{
@@ -201,7 +203,7 @@ a{
 }
 
 .img_logo_header_mobile{
-    width:50px
+    width:35px
 }
 
 .main_headline_mobile{
@@ -210,12 +212,10 @@ a{
     color:black;
     font-weight:200;
     position:absolute;
-    top:130px;
-    left:60px;
+    top:110px;
+    left:29px;
     font-size:20px;
 }
-
-
 
 
 }
