@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="newTask.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="body.css">
+    <script src="newTask.js"></script>
+
+</head>
+<body>
+
+    <div class="join_base">
+        <div class="sidebar">
+            <img src="./img/logo_join.png">
+            <div class="menu">
+    
+                <div id="summary" class="menu_links">
+                    
+                        <img src="./img/img_summary.png">
+                        
+                            <a href="./summary.html">Summary</a>
+                        
+                    
+                </div>
+                <div class="menu_links">     
+                    <img src="./img/img_board.png" class="margin-right">
+                    
+                        <a href="./board.html">Board</a> 
+                          
+                </div>
+                 
+                <div id="sideTask" class="menu_links">             
+                    <img src="./img/img_add_task.png" class="margin-right">
+                    <a href="./newTask.html">Add Task</a>               
+                </div>
+                
+               
+            </div>
+            
+            <div  class="menu_links">
+            <img src="./img/img_legal.png">
+            <a href="">Legal notice</a>
+            </div>
+        </div>
+        <div class="top_header">
+            <div class="headline" >
+                <h3>Kanban Project Management Tool</h3>
+                <div class="img_header">
+                    <img src="./img/img_header_help.png">
+                    <img src="./img/img_profil.png">
+                </div>   
+            </div>
+        </div>
+
+<form class="add-task-section">
+
+    <div class="flex"><h1 class="title">Add Task</h1>
+    <div id="addTask">
+        <div class="flex2">
+        <div>
+        <span>Title<br><br></span>
+        <input class="input" placeholder="Enter a title">
+    </div>
+        <div class="margin">
+        <span>Due date<br><br></span>
+        <input class="date-input" type="date" placeholder="dd/mm/yyyy" onfocus="(this.type='date')" onblur="(this.type='text')"><br>
+    </div>
+    </div>
+        <div class="flex2">
+        <div>
+        <span>Description</span><br><br>
+        <textarea class="text-area" placeholder="Enter a Description"></textarea>
+        </div>
+        <div class="margin">
+            <span>Prio</span><br><br>
+    <div class="container">
+        <div class="prio" id="urgent" onclick="afterUrgent()">Urgent <img src="img/urgent.png" id="urgent-img" width="20px" height="20px"></div>
+        <div class="prio" id="medium" onclick="afterMedium()">Medium <img src="img/medium.png" id="medium-img"width="20px" height="20px"></div>
+        <div class="prio" id="low" onclick="afterLow()">Low <img src="img/low.png" id="low-img" width="20px" height="20px"></div>
+    </div>
+    <br><br>
+    <span>Subtask</span><br><br>
+    <div class="flex3 input">
+    <input class="input-trans" placeholder="Add new subtask" onclick="changeBtn()" id="subtask">
+    <div class="sub-task-btn">
+    <button id="addBtn1"><img src="img/add.png" width="15px"></button>
+    <button id="addBtn2" class="d-none"><img src="img/close.png" width="12px"></button>
+    <div class="vl2 d-none" id="vl2"></div>
+    <button id="addBtn3" class="d-none"><img src="img/accept.png" width="15px"></button>
+</div>
+</div>
+        </div>
+    </div>
+        Category <br><br>
+        <div id="ctgDropdown">
+        <div class="dropdown">
+            <div class="hoverDropdown" id="delFunct" onclick="dropdownCategory()">
+            <div class="arrowEnd dropdownPadding" >
+            <span class="test" id="selCategory">Select task category </span>
+            
+        </div>
+        </div>
+             
+            <div id="dropdown">
+            
+        </div>
+        
+    </div>
+</div>
+    <div class="selectColor d-none" id="selectColor">
+    <span class="selectRed"></span>
+    <span class="selectGreen"></span>
+    <span class="selectOrange"></span>
+    <span class="selectPurple"></span>
+    <span class="selectLightBlue"></span>
+    <span class="selectBlue"></span>
+    </div>  
+            <br><br>
+        Assigned to
+         <br><br>
+         <div class="dropdown" id="assignDropdown">
+            <div class="hoverDropdown">
+            <div class="arrowEnd dropdownPadding">
+            <span class="test">Select task category 
+            </span>
+            
+        </div>
+        </div>
+             
+            <div id="dropdown">
+            
+        </div>
+    </div>
+
+
+        <div class="vr1"></div>
+        
+    </div>
+    
+</form>
+</div>
+
+            
+</body>
+</html>

@@ -1,26 +1,8 @@
-h1 {
-    color: rgba(0, 0, 0, 1);
-    font-size: 61px;
-    font-weight: 700;
-}
-
-h2 {
-    color: rgba(0, 0, 0, 1);
-    font-size: 27px;
-    font-weight: 400;
-}
-
-#content{
-    display:flex;
-    justify-content:center;
-    align-items: center;
-    flex-direction: column;
-    margin-left:100px;
-}
 
 .container{
     display:flex;
-    align-items:center
+    align-items:center;
+    animation: fadeOpacityIn 1s ease 0s 1 normal forwards;
 }
 
 .summary_headline{
@@ -30,16 +12,14 @@ h2 {
     gap: 50px;
     padding-bottom:64px;
     padding-top:100px;
-    width:100%
-    
+    width:100%    
 }
 
 .summary_content{
     display:flex;
     justify-content:flex-start;
     align-items:center;
-    width:100%
-    
+    width:100%    
 }
 
 .summary_tasks{
@@ -74,19 +54,9 @@ h2 {
     cursor: pointer;
    }
 
-   .tasks_mouseover{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 21px;
+   .tasks:hover{   
     color: white;
-    background-color: #2A3647;
-    gap:13px;
-    padding:25px, 0px, 25px, 0px;
-    width:170px;
-    height:170px;
-    border-radius:30px;
+    background-color: #2A3647;      
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);   
     cursor: pointer;
     transform: scale(108%);
@@ -97,16 +67,14 @@ h2 {
 
    .tasks_in_board{
     font-size:64px;
-    color: rgba(0, 0, 0, 1);
+    
    }
 
    
    .tasks_in_board_mouseover{
     font-size:64px;
-    color: white;
-    
+    color: white;    
    }
-
   
    .tasks_progress{
     font-size:64px;
@@ -147,24 +115,17 @@ h2 {
     border-radius: 30px;
     width:580px;
     cursor: pointer;
+    color: rgba(0, 0, 0, 1);
 }
 
-.summary_urgent_mouseover{
-    display: flex;
-     flex-direction: row;
-     justify-content: center;
-     align-items: center;
-     padding: 28px 48px;
-     gap: 61px;
-     width: 580px;
-     height: 150px;
+.summary_urgent:hover{
      background: #2A3647;
-     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-     border-radius: 30px;
-     width:580px;
      cursor: pointer;
-     color: white
-    
+     color: white;
+     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);   
+     transform: scale(108%);
+     animation-timing-function: ease-in-out;
+     animation-duration: 120ms;    
  }
 
 
@@ -185,18 +146,15 @@ h2 {
 
 .urgent_task{
     font-size:47px;
-    color: rgba(0, 0, 0, 1);
+    
 }
-
 
 .urgent_amount{
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    color: rgba(0, 0, 0, 1);
 }
-
 
 
 .date_container{
@@ -206,17 +164,19 @@ h2 {
     gap:10px
 }
 
-#current_date{
+.current_date{
     font-size: 21px;
     font-weight: 700;    
-    color: rgba(42, 54, 71, 1);
+    
 }
+
 
 .text{
     color: rgba(42, 54, 71, 1);
     font-size:16px;
     Line-height: 19.2px;
 }
+
 
 .last_row{
     display:flex; 
@@ -230,25 +190,69 @@ h2 {
     justify-content: center;
     align-items: center;
     padding: 38px 19px;
-    gap: 18px;
+    gap: 5px;
     width: 272.5px;
-    height: 150px;
+    height: 150px;    
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+    cursor:pointer;
+    color: rgba(42, 54, 71, 1);
+    background-image:url('./img/pencil.png');
+    background-repeat: no-repeat;
+    background-position: 50px 35px;
+}
+
+.summary_done_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 38px 19px;
+    gap: 5px;
+    width: 272.5px;
+    height: 150px;    
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    cursor:pointer;
+    color: rgba(42, 54, 71, 1);
+    background-image:url('./img/done.png');
+    background-repeat: no-repeat;
+    background-position: 50px 35px;
+}
+
+.summary_done_container:hover{
+    background: #2A3647;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transform: scale(108%);
+    animation-timing-function: ease-in-out;
+    animation-duration: 120ms;   
+    color:white;
+    background-image:url('./img/done_blue.png');
+    background-repeat: no-repeat;
+    background-position: 50px 35px;
+}
+
+.summary_todo_container:hover{
+    background: #2A3647;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transform: scale(108%);
+    animation-timing-function: ease-in-out;
+    animation-duration: 120ms;   
+    color:white;
+    background-image:url('./img/pencil_blue.png');
+    background-repeat: no-repeat;
+    background-position: 50px 35px;
 }
 
 .summary_todo{
     display:flex;
     flex-direction:column;
     justify-content: center;
-    align-items:center; 
-    gap:25px;
-    font-size:16px;
-    color: rgba(42, 54, 71, 1);
+    align-items:center;    
+    margin-left:50px;
 }
-
 
 .img_todo{     
     background-color:#2A3647;
@@ -258,25 +262,33 @@ h2 {
     height:69px;
 }
 
+
 .img_pencil{
     margin-left:10px;
     margin-top:8px
 }
 
 .img_done{
+    background-color:#2A3647;
+    padding:10px;
+    border-radius:100px;
+    width:69px;
+    height:69px
+
+}
+
+#img_check{
     margin-left:5px;
     margin-top:8px
 }
 
 
-#amount_todos{
-    font-size:64px;
-    color: rgba(0, 0, 0, 1);
+.amount_todos{
+    font-size:64px;    
    }
 
-#amount_done{
-    font-size:64px;
-    color: rgba(0, 0, 0, 1);
+.amount_done{
+    font-size:64px;    
    }
 
    .greeting_container{
@@ -286,7 +298,7 @@ h2 {
    }
 
    #greeting{
-    width: 338px;
+   
     height: 56px;
     font-family: 'Inter';
     font-style: normal;
@@ -302,3 +314,179 @@ h2 {
     line-height: 120%;
     color: #29ABE2;
     }
+
+    .line_horizontal{
+        display:none
+    }
+
+
+    @media(max-width:800px){
+    
+.greeting_container{
+    display:none
+    }
+
+    .container{
+        margin-left: unset;
+        margin-right: unset;
+        margin-top: 20px
+    }
+
+    .summary_headline{
+        display:flex;
+        flex-direction:column;
+        justify-content: left;
+        align-items: flex-start;       
+        padding-bottom:10px;
+        padding-top:138px;
+        width:calc(100vw - 54px);           
+        gap:2px;
+    }
+
+    .line_vertical {
+        display:none
+    }
+
+    .line_horizontal{
+    display:unset;
+    }
+
+    .task_cases{
+    justify-content: center;
+    gap:10px
+    }
+
+    .summary_tasks{
+        align-items:center
+    }
+
+    .tasks{
+        width:100px;
+        height:100px;
+        border-radius:20px;
+        gap:2px;
+        font-size:12px;
+        color:#2A3647;
+        padding:2px
+    }
+
+    .tasks:hover{     
+        color:#2A3647;
+        background-color: white;
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1); 
+        transform: unset;
+        animation-timing-function: unset;
+        animation-duration: unset;
+       }
+
+.tasks_in_board{
+    font-size: 30px;
+}
+
+.summary_urgent{
+ width:323px;
+ padding:unset;
+ height: 110px;
+ border-radius:20px;
+ gap:15px;
+ color:#2A3647;
+ font-size:12px
+}
+
+.summary_urgent:hover{
+    background: white;
+    color: #2A3647;
+    box-shadow:0px 0px 4px 0px rgba(0, 0, 0, 0.1);  
+    transform: unset;
+    animation-timing-function: unset;
+    animation-duration: unset;   
+}
+
+.date_container{
+    width:100%;    
+}
+
+.current_date{
+    font-size:14px
+}
+
+.arrows{
+    width:40px;
+    height:40px;   
+}
+
+.urgent_container{
+    padding-left:30px;
+    color:#2A3647;
+}
+
+.urgent_task{
+    font-size:30px
+}
+
+.summary_todo_container{
+    width: 145px;
+    height: 100px;
+    background-size: 45px 45px;
+    border-radius: 20px;
+    background-position: 20px;
+}
+
+.summary_done_container{
+    width: 145px;
+    height: 100px;
+    background-size: 60px 60px;
+    background-position: 20px;
+}
+
+.img_todo{
+    width:50px;
+    height:50px;
+    padding:2px
+}
+
+.img_done{
+    width:50px;
+    height:50px;
+    padding:2px
+}
+
+.summary_todo{
+gap:unset
+}
+
+.join_base{
+    height:100vh
+}
+
+.summary_done_container:hover{  
+    background-color: white;
+    color:#2A3647;
+    transform: unset;
+    animation-timing-function: unset;
+    animation-duration: unset;       
+    box-shadow:0px 0px 4px 0px rgba(0, 0, 0, 0.1); 
+    background-image:url('./img/done.png');   
+    background-size: 60px 60px;
+}
+
+.summary_todo_container:hover{  
+    background-color: white;
+    color:#2A3647;
+    transform: unset;
+    animation-timing-function: unset;
+    animation-duration: unset;       
+    box-shadow:0px 0px 4px 0px rgba(0, 0, 0, 0.1); 
+    background-image:url('./img/pencil.png');   
+    background-size: 60px 60px;
+}
+
+.text_align{
+    line-height:15px;
+}
+
+
+}
+
+@media(max-width:1000px){
+}
