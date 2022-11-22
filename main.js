@@ -46,7 +46,7 @@ load();
 let currentDraggedElement;
 let dragging = false;
 
-function render() {
+function renderBoard() {
     emptyBoard();
 
     // Filter Tasks Depending On Status
