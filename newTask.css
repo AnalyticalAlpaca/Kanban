@@ -1,5 +1,3 @@
-
-
 .title{
     color: black;
     font-size: 45px;
@@ -41,7 +39,7 @@ align-items: center;
 padding: 13px 21px;
 gap: 10px;
 font-family: 'Inter';
-width: 377px;
+width: 385px;
 height: 49px;
 background: #FFFFFF;
 border: transparent;
@@ -58,7 +56,7 @@ flex-grow: 0;
     padding: 13px 21px;
     gap: 10px;
     font-family: 'Inter';
-    width: 335px;
+    width: 352px;
     height: 49px;
     background: #FFFFFF;
     border: transparent;
@@ -270,6 +268,7 @@ margin-right: 10px;
     font-size: 21px;
     line-height: 120%;
     
+    
 }
 .category:hover{
     background-color: rgb(224, 222, 222);
@@ -323,4 +322,78 @@ margin-right: 10px;
 .category2:hover{
     background-color: rgb(224, 222, 222);
    
+}
+
+.selectRed{
+    border: 1px solid rgb(0, 0, 0);
+    background-color: red;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+.selectGreen{
+    border: 1px solid rgb(0, 0, 0);
+    background-color: green;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+.selectOrange{
+    border: 1px solid rgb(0, 0, 0);
+    background-color: orange;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+.selectPurple{
+    border: 1px solid rgb(0, 0, 0);
+    background-color: purple;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+.selectLightBlue{
+    border: 1px solid rgb(0, 0, 0);
+    background-color: lightblue;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 7px;
+    margin-right: 7px;
+    
+}
+.selectBlue{
+    border: 1px solid rgb(0, 0, 0);
+    background-color: blue;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 7px;
+    margin-right: 7px;    
+}
+
+.selectColor{
+    margin-top: 10px;
+    margin-left: 7px;
+    
 }
