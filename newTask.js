@@ -39,15 +39,15 @@ function changeBtn() {
     document.getElementById('vl2').classList.remove('d-none')
 }
 let dropdown_clicked = false;
-function dropdown() {
+function dropdownCategory() {
     if (dropdown_clicked == false) {
         document.getElementById('dropdown').innerHTML = `
         
 <br>
-            <div class="category dropdownPadding">
+            <div class="category dropdownPadding" id="newCategory" onclick="categoryAdd()">
                 <span class="test">
                 
-                    Select task category
+                    New Category
                 </span>
             </div>
                         
@@ -61,20 +61,28 @@ function dropdown() {
         dropdown_clicked = true;
     }
     else {
-        document.getElementById('mainDropdown').innerHTML = `
-        <div class="hoverDropdown">
+        document.getElementById('ctgDropdown').innerHTML = `
+        <div class="dropdown" id="ctgDropdown" onclick="dropdownCategory()">
+            <div class="hoverDropdown">
             <div class="arrowEnd dropdownPadding">
-            <span class="test">Select task category
-            </span>
+            <span class="test">Select task category</span>
+            
         </div>
         </div>
              
             <div id="dropdown">
             
         </div>
+        
     </div>
-
             `
         dropdown_clicked = false;
     }
+}
+
+function categoryAdd() {
+    document.getElementById("selCategory").innerText = "New Category";
+    document.getElementById("dropdown").innerHTML = "";
+    document.getElementById('delFunct').removeAttribute("onclick");
+    document.getElementById('selectColor').classList.remove('d-none')
 }
