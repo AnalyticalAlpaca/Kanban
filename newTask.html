@@ -101,7 +101,7 @@
         <div id="ctgDropdown">
         <div class="dropdown">
             <div class="hoverDropdown" id="delFunct" onclick="dropdownCategory()">
-            <div class="arrowEnd dropdownPadding" >
+            <div class="arrowEnd dropdownPadding" id="arrowEnd" >
             <span class="test" id="selCategory">Select task category </span>
             
         </div>
@@ -114,12 +114,12 @@
     </div>
 </div>
     <div class="selectColor d-none" id="selectColor">
-    <span class="selectRed"></span>
-    <span class="selectGreen"></span>
-    <span class="selectOrange"></span>
-    <span class="selectPurple"></span>
-    <span class="selectLightBlue"></span>
-    <span class="selectBlue"></span>
+    <span class="selectRed" id="selectRed" onclick="selectedRed()"></span>
+    <span class="selectGreen" id="selectGreen" onclick="selectedGreen()"></span>
+    <span class="selectOrange" id="selectOrange" onclick="selectedOrange()"></span>
+    <span class="selectPurple" id="selectPurple" onclick="selectedPurple()"></span>
+    <span class="selectLightBlue" id="selectLightBlue" onclick="selectedLightBlue()"></span>
+    <span class="selectBlue" id="selectBlue" onclick="selectedBlue()"></span>
     </div>  
             <br><br>
         Assigned to

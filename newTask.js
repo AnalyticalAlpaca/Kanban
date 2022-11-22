@@ -81,8 +81,100 @@ function dropdownCategory() {
 }
 
 function categoryAdd() {
-    document.getElementById("selCategory").innerText = "New Category";
+    document.getElementById("selCategory").innerHTML = `
+    <div class="flex3"><input class="input-trans widthCategory"><div class="sub-task-btn">
+    <button id="addBtn2"><img src="img/close.png" width="12px"></button>
+    <div class="vl2" id="vl2"></div>
+    <button id="addBtn3"><img src="img/accept.png" width="15px"></button>
+    </div>
+    </div>
+    ` ;
     document.getElementById("dropdown").innerHTML = "";
     document.getElementById('delFunct').removeAttribute("onclick");
-    document.getElementById('selectColor').classList.remove('d-none')
+    document.getElementById('selectColor').classList.remove('d-none');
+    document.getElementById('arrowEnd').classList.remove('arrowEnd');
+}
+
+function selectedRed() {
+    document.getElementById('selectRed').classList.add('selectedRed');
+    document.getElementById('selectGreen').classList.add('selectGreen');
+    document.getElementById('selectBlue').classList.add('selectBlue');
+    document.getElementById('selectPurple').classList.add('selectPurple');
+    document.getElementById('selectOrange').classList.add('selectOrange');
+    document.getElementById('selectLightBlue').classList.add('selectLightBlue');
+    document.getElementById('selectRed').classList.remove('selectRed');
+    document.getElementById('selectGreen').classList.remove('selectedGreen');
+    document.getElementById('selectOrange').classList.remove('selectedOrange');
+    document.getElementById('selectPurple').classList.remove('selectedPurple');
+    document.getElementById('selectBlue').classList.remove('selectedBlue');
+    document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
+}
+function selectedGreen() {
+    document.getElementById('selectGreen').classList.add('selectedGreen');
+    document.getElementById('selectRed').classList.add('selectRed');
+    document.getElementById('selectBlue').classList.add('selectBlue');
+    document.getElementById('selectPurple').classList.add('selectPurple');
+    document.getElementById('selectOrange').classList.add('selectOrange');
+    document.getElementById('selectBlue').classList.add('selectLightBlue');
+    document.getElementById('selectGreen').classList.remove('selectGreen');
+    document.getElementById('selectRed').classList.remove('selectedRed');
+    document.getElementById('selectOrange').classList.remove('selectedOrange');
+    document.getElementById('selectPurple').classList.remove('selectedPurple');
+    document.getElementById('selectBlue').classList.remove('selectedBlue');
+    document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
+}
+function selectedOrange() {
+    document.getElementById('selectOrange').classList.add('selectedOrange');
+    document.getElementById('selectRed').classList.add('selectRed');
+    document.getElementById('selectBlue').classList.add('selectBlue');
+    document.getElementById('selectPurple').classList.add('selectPurple');
+    document.getElementById('selectLightBlue').classList.add('selectLightBlue');
+    document.getElementById('selectGreen').classList.add('selectGreen');
+    document.getElementById('selectOrange').classList.remove('selectOrange');
+    document.getElementById('selectRed').classList.remove('selectedRed');
+    document.getElementById('selectGreen').classList.remove('selectedGreen');
+    document.getElementById('selectPurple').classList.remove('selectedPurple');
+    document.getElementById('selectBlue').classList.remove('selectedBlue');
+    document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
+}
+function selectedPurple() {
+    document.getElementById('selectPurple').classList.add('selectedPurple');
+    document.getElementById('selectRed').classList.add('selectRed');
+    document.getElementById('selectOrange').classList.add('selectOrange');
+    document.getElementById('selectGreen').classList.add('selectGreen');
+    document.getElementById('selectBlue').classList.add('selectBlue');
+    document.getElementById('selectLightBlue').classList.add('selectLightBlue');
+    document.getElementById('selectRed').classList.remove('selectedRed');
+    document.getElementById('selectGreen').classList.remove('selectedGreen');
+    document.getElementById('selectOrange').classList.remove('selectedOrange');
+    document.getElementById('selectPurple').classList.remove('selectPurple');
+    document.getElementById('selectBlue').classList.remove('selectedBlue');
+    document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
+}
+function selectedLightBlue() {
+    document.getElementById('selectLightBlue').classList.add('selectedLightBlue');
+    document.getElementById('selectRed').classList.add('selectRed');
+    document.getElementById('selectPurple').classList.add('selectPurple');
+    document.getElementById('selectOrange').classList.add('selectOrange');
+    document.getElementById('selectGreen').classList.add('selectGreen');
+    document.getElementById('selectBlue').classList.add('selectBlue');
+    document.getElementById('selectRed').classList.remove('selectedRed');
+    document.getElementById('selectGreen').classList.remove('selectedGreen');
+    document.getElementById('selectOrange').classList.remove('selectedOrange');
+    document.getElementById('selectPurple').classList.remove('selectedPurple');
+    document.getElementById('selectBlue').classList.remove('selectedBlue');
+
+}
+function selectedBlue() {
+    document.getElementById('selectBlue').classList.add('selectedBlue');
+    document.getElementById('selectLightBlue').classList.add('selectLightBlue');
+    document.getElementById('selectPurple').classList.add('selectPurple');
+    document.getElementById('selectOrange').classList.add('selectOrange');
+    document.getElementById('selectGreen').classList.add('selectGreen');
+    document.getElementById('selectRed').classList.add('selectRed');
+    document.getElementById('selectRed').classList.remove('selectedRed');
+    document.getElementById('selectGreen').classList.remove('selectedGreen');
+    document.getElementById('selectOrange').classList.remove('selectedOrange');
+    document.getElementById('selectPurple').classList.remove('selectedPurple');
+    document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
 }
