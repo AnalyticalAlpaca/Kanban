@@ -320,7 +320,7 @@
     }
 
 
-    @media(max-width:800px){
+    @media(max-width:540px){
     
 .greeting_container{
     display:none
@@ -339,7 +339,7 @@
         align-items: flex-start;       
         padding-bottom:10px;
         padding-top:138px;
-        width:calc(100vw - 54px);           
+        width:calc(100vw - 66px);           
         gap:2px;
     }
 
@@ -367,7 +367,8 @@
         gap:2px;
         font-size:12px;
         color:#2A3647;
-        padding:2px
+        padding:2px;
+        text-align:center
     }
 
     .tasks:hover{     
@@ -435,8 +436,9 @@
 .summary_done_container{
     width: 145px;
     height: 100px;
-    background-size: 60px 60px;
+    background-size: 45px 45px;
     background-position: 20px;
+    border-radius: 20px;
 }
 
 .img_todo{
@@ -467,7 +469,8 @@ gap:unset
     animation-duration: unset;       
     box-shadow:0px 0px 4px 0px rgba(0, 0, 0, 0.1); 
     background-image:url('./img/done.png');   
-    background-size: 60px 60px;
+    background-size: 45px 45px;
+    background-position: 20px;
 }
 
 .summary_todo_container:hover{  
@@ -478,15 +481,205 @@ gap:unset
     animation-duration: unset;       
     box-shadow:0px 0px 4px 0px rgba(0, 0, 0, 0.1); 
     background-image:url('./img/pencil.png');   
-    background-size: 60px 60px;
+    background-size: 45px 45px;
+    background-position: 20px;
 }
 
 .text_align{
     line-height:15px;
 }
+.amount_done{
+    font-size:36px;    
+   }
 
+.amount_todos{
+    font-size:36px; 
+}
+
+.last_row{
+    gap:10px
+}
 
 }
 
-@media(max-width:1000px){
+@media (min-width:541px) and (max-width:800px){
+    .greeting_container{
+        display:none
+        }
+    
+        .container{
+            margin-left: unset;
+            margin-right: unset;
+            margin-top: 20px
+        }
+    
+        .summary_headline{
+            display:flex;
+            flex-direction:column;
+            justify-content: left;
+            align-items: flex-start;       
+            padding-bottom:10px;
+            padding-top:138px;
+            width:calc(100vw - 66px);           
+            gap:10px;
+        }
+    
+        .line_vertical {
+            display:none
+        }
+    
+        .line_horizontal{
+        display:unset;
+        }
+    
+        .task_cases{
+        justify-content: center;
+        gap:20px
+        }
+    
+        .summary_tasks{
+            align-items:center
+        }
+    
+        .tasks{
+            width:150px;
+            height:150px;
+            border-radius:20px;
+            gap:10px;
+            font-size:18px;
+            color:#2A3647;
+            padding:2px;
+            text-align:center
+        }
+    
+        .tasks:hover{     
+            color:#2A3647;
+            background-color: white;
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1); 
+            transform: unset;
+            animation-timing-function: unset;
+            animation-duration: unset;
+           }
+    
+    .tasks_in_board{
+        font-size: 30px;
+    }
+    
+    .summary_urgent{
+     width: 488px;
+     padding:unset;
+     height: 110px;
+     border-radius:20px;
+     gap:15px;
+     color:#2A3647;
+     font-size:12px
+    }
+    
+    .summary_urgent:hover{
+        background: white;
+        color: #2A3647;
+        box-shadow:0px 0px 4px 0px rgba(0, 0, 0, 0.1);  
+        transform: unset;
+        animation-timing-function: unset;
+        animation-duration: unset;   
+    }
+    
+    .date_container{
+        width:100%;    
+    }
+    
+    .current_date{
+        font-size:14px
+    }
+    
+    .arrows{
+        width:40px;
+        height:40px;   
+    }
+    
+    .urgent_container{
+        padding-left:30px;
+        color:#2A3647;
+    }
+    
+    .urgent_task{
+        font-size:30px
+    }
+    
+    .summary_todo_container{
+        width: 230px;
+        height: 130px;
+        background-size: 45px 45px;
+        border-radius: 20px;
+        background-position: 20px;
+    }
+    
+    .summary_done_container{
+        width: 230px;
+        height: 130px;
+        background-size: 45px 45px;
+        background-position: 20px;
+        border-radius: 20px;
+    }
+    
+    .img_todo{
+        width:50px;
+        height:50px;
+        padding:2px
+    }
+    
+    .img_done{
+        width:50px;
+        height:50px;
+        padding:2px
+    }
+    
+    .summary_todo{
+    gap:unset
+    }
+    
+    .join_base{
+        height:100vh
+    }
+    
+    .summary_done_container:hover{  
+        background-color: white;
+        color:#2A3647;
+        transform: unset;
+        animation-timing-function: unset;
+        animation-duration: unset;       
+        box-shadow:0px 0px 4px 0px rgba(0, 0, 0, 0.1); 
+        background-image:url('./img/done.png');   
+        background-size: 45px 45px;
+        background-position: 20px;
+    }
+    
+    .summary_todo_container:hover{  
+        background-color: white;
+        color:#2A3647;
+        transform: unset;
+        animation-timing-function: unset;
+        animation-duration: unset;       
+        box-shadow:0px 0px 4px 0px rgba(0, 0, 0, 0.1); 
+        background-image:url('./img/pencil.png');   
+        background-size: 45px 45px;
+        background-position: 20px;
+    }
+    
+    .text_align{
+        line-height:20px;
+        
+    }
+
+    .amount_done{
+        font-size:36px;    
+       }
+    
+    .amount_todos{
+        font-size:36px; 
+    }
+    
+    .last_row{
+        gap:20px
+    }   
 }
