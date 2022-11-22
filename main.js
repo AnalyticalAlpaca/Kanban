@@ -41,7 +41,10 @@ let catColors = {
     "Marketing": "color4"
 };
 
+load();
+
 let currentDraggedElement;
+let dragging = false;
 
 function render() {
     emptyBoard();
@@ -52,48 +55,53 @@ function render() {
     let awaitingFeedback = tasks.filter(tasks => tasks.status == "Awaiting Feedback");
     let done = tasks.filter(tasks => tasks.status == "Done");
 
+    let j = 0;
     // For "To Do"-Section
     for (let i = 0; i < toDo.length; i++) {
         document.getElementById("toDo").innerHTML += /*html*/`
-        <div class="category_container" draggable="true" ondragstart="startDragging(${toDo[i].id})">
+        <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${toDo[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[toDo[i].category]}">${toDo[i].category}</li>
-            <li class="title">${toDo[i].title}</li>
-            <li class="description">${toDo[i].description}</li>
+            <li class="title" contenteditable="true" onfocusout="updateItem(${toDo[i].id})">${toDo[i].title}</li>
+            <li class="description" contenteditable="true" onfocusout="updateItem(${toDo[i].id})">${toDo[i].description}</li>
         </div>
     `;
+        j += 1;
     }
-    
+
     // For "In Progress"-Section
     for (let i = 0; i < inProgress.length; i++) {
         document.getElementById("inProgress").innerHTML += /*html*/`
-        <div class="category_container" draggable="true" ondragstart="startDragging(${inProgress[i].id})">
+        <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${inProgress[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[inProgress[i].category]}">${inProgress[i].category}</li>
-            <li class="title">${inProgress[i].title}</li>
-            <li class="description">${inProgress[i].description}</li>
+            <li class="title" contenteditable="true" onfocusout="updateItem(${inProgress[i].id})">${inProgress[i].title}</li>
+            <li class="description" contenteditable="true" onfocusout="updateItem(${inProgress[i].id})">${inProgress[i].description}</li>
         </div>
     `;
+        j += 1;
     }
-    
+
     // For "Awaiting Feedback"-Section
     for (let i = 0; i < awaitingFeedback.length; i++) {
         document.getElementById("awaitingFeedback").innerHTML += /*html*/`
-        <div class="category_container" draggable="true" ondragstart="startDragging(${awaitingFeedback[i].id})">
+        <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${awaitingFeedback[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[awaitingFeedback[i].category]}">${awaitingFeedback[i].category}</li>
-            <li class="title">${awaitingFeedback[i].title}</li>
-            <li class="description">${awaitingFeedback[i].description}</li>
+            <li class="title" contenteditable="true" onfocusout="updateItem(${awaitingFeedback[i].id})">${awaitingFeedback[i].title}</li>
+            <li class="description" contenteditable="true" onfocusout="updateItem(${awaitingFeedback[i].id})">${awaitingFeedback[i].description}</li>
         </div>
     `;
+        j += 1;
     }
-    
+
     // For "Done"-Section
     for (let i = 0; i < done.length; i++) {
         document.getElementById("done").innerHTML += /*html*/`
-        <div class="category_container" draggable="true" ondragstart="startDragging(${done[i].id})">
+        <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${done[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[done[i].category]}">${done[i].category}</li>
-            <li class="title">${done[i].title}</li>
-            <li class="description">${done[i].description}</li>
+            <li class="title" contenteditable="true" onfocusout="updateItem(${done[i].id})">${done[i].title}</li>
+            <li class="description" contenteditable="true" onfocusout="updateItem(${done[i].id})">${done[i].description}</li>
         </div>
     `;
+        j += 1;
     }
 }
 
@@ -127,11 +135,12 @@ function addTask() {
 
 // Drag Tasks
 function startDragging(id) {
-    currentDraggedElement = id;    
+    currentDraggedElement = id;
 }
 
 function allowDrop(ev) {
     ev.preventDefault();
+    dragging = true;
 }
 
 function moveTo(status) {
@@ -145,5 +154,61 @@ function moveTo(status) {
         status = 'Done';
     }
     tasks[currentDraggedElement].status = status;
+    save();
     render();
+    dragging = false;
 }
+
+// Update Changed Tasks In JSON Array
+function updateItem(id) {
+    if (dragging) {
+        return
+    }
+    // Get edited titles and descriptions
+    const titlesColumns = document.querySelectorAll('.title');
+    const descriptionColumns = document.querySelectorAll('.description');
+    const newTitle = titlesColumns[id].textContent;
+    const newDescription = descriptionColumns[id].textContent;
+
+    // Assign new texts to JSON entry
+    tasks[id]["title"] = newTitle;
+    tasks[id]["description"] = newDescription;
+    save();
+}
+
+function save() {
+    let tasksAsString = JSON.stringify(tasks);
+    localStorage.setItem("tasks", tasksAsString);
+}
+
+function load() {
+    let tasksAsString = localStorage.getItem("tasks");
+    if (tasksAsString) {
+        tasks = JSON.parse(tasksAsString);
+    }
+}
+
+function rotate(id) {
+    document.getElementById(`container${id}`).style.transform = 'rotate(3deg)';
+}
+
+function rotateBack(id) {
+    document.getElementById(`container${id}`).style.transform = 'rotate(0deg)';
+}
+
+// let testList = document.getElementsByClassName("toDo").value;
+// console.log(testList);
+
+// let uls = testList.getElementsByTagName("li");
+// console.log(uls);
+
+// let tasksTitles = []
+// let tasksDescriptions = [];
+// for (let i = 0; i < tasks.length; i++) {
+//     const title = tasks[i].title;
+//     const description = tasks[i].description;
+//     tasksTitles.push(title);
+//     tasksDescriptions.push(description);
+// }
+// function filterFunction() {
+// }
