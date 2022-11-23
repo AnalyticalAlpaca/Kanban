@@ -136,7 +136,8 @@ button img {
     padding: 1rem;
     margin: 10px;
     cursor: grab;
-    border: 3px solid #fff;
+    border: 1px solid #fff;
+    box-shadow: 2px 2px 2px 2px #808080;
 }
 
 .sectionBox {
@@ -250,5 +251,13 @@ button img {
 
     .sectionBox {
         max-height: none;
+    }
+
+    .footer_mobil {
+        width: 100vw;
+    }
+
+    #content_board {
+        margin-left: 0;
     }
 }
