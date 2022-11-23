@@ -688,7 +688,7 @@ gap:unset
             justify-content: left;
             align-items: flex-start;       
             padding-bottom:10px;
-            padding-top:138px;          
+            padding-top:unset;          
             gap:10px;
         }
     
