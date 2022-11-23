@@ -340,6 +340,7 @@
         padding-bottom:10px;
         padding-top:138px;        
         gap:2px;
+        padding-left: 20px
     }
 
     .line_vertical {
@@ -805,6 +806,21 @@ gap:unset
 }
 
 @media (min-width:1001px) and (max-width:1360px){
+    
+    .container{
+        margin-left: unset;
+        margin-right: unset;
+        margin-top: 20px
+    }
+
+    .summary_headline{     
+        margin-top:120px;   
+        padding-bottom: 10px;             
+        gap:15px;
+        padding-top:unset;
+    }
+
+
     .task_cases{
         justify-content: center;
         gap:20px
@@ -903,6 +919,18 @@ gap:unset
         .last_row{
             gap:20px
         }   
+
+    .greeting_container{
+        margin-left: 20px;        
+    }
+
+    #greeting{
+        font-size:30px
+    }
+
+    #name_contact{
+        font-size:40px
+    }
     
 
 }

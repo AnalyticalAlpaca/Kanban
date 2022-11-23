@@ -42,7 +42,7 @@
     padding: 54px 0px;   
     gap: 35px;
     width: 652px;
-    height: 513px;   
+    
     background: #FFFFFF;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     border-radius: 30px;
@@ -69,12 +69,12 @@ input#login-email{
     background-image: url('./img/email.png');
     background-position: 380px 15px;
     background-repeat: no-repeat;
-    width:422px;
-    height: 51px;
+    width:422px; 
+    height: 51px;   
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     padding-left: 18px;
-    padding-top:10px;
+    padding:10px;
     color:rgb(173, 172, 172)   
 }
 
@@ -89,6 +89,7 @@ input#login-email{
 ::placeholder{
     color: #D1D1D1;
     font-size: 21px;
+    
 }
 
 input#login-password {
@@ -102,7 +103,7 @@ input#login-password {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     padding-left: 18px;
-    padding-top:10px;
+    padding:10px;
     color:rgb(173, 172, 172)   
 }
 
@@ -302,6 +303,11 @@ input#name:focus-visible{
 
 .sign_in_section_mobile{
 display:none;
+}
+
+#msgBox{
+  color:black;
+  margin-top:20px
 }
 
 @media(max-width:800px){
