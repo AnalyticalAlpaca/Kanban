@@ -244,3 +244,31 @@ a{
 
 
 }
+
+@media(min-width:801px) and (max-width:1000px){
+    #content{    
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+    flex-direction: column;
+    margin-left:40px;
+    }
+
+    h3{
+        font-size: 20px
+    }
+}
+
+@media(min-width:1001px) and (max-width:1360px){
+    #content{    
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+    flex-direction: column;
+    margin-left:40px;
+    }
+
+    h3{
+        font-size: 20px
+    }
+}
