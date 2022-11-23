@@ -839,15 +839,7 @@ gap:unset
          font-size:18px
         }
         
-        .summary_urgent:hover{
-            background: white;
-            color: #2A3647;
-            box-shadow:0px 0px 4px 0px rgba(0, 0, 0, 0.1);  
-            transform: unset;
-            animation-timing-function: unset;
-            animation-duration: unset;   
-        }
-        
+   
         .date_container{
             width:100%;    
         }
@@ -863,7 +855,7 @@ gap:unset
         
         .urgent_container{
             padding-left:30px;
-            color:#2A3647;
+            
         }
         
         .urgent_task{
@@ -893,30 +885,6 @@ gap:unset
         
         .join_base{
             height:100vh
-        }
-        
-        .summary_done_container:hover{  
-            background-color: white;
-            color:#2A3647;
-            transform: unset;
-            animation-timing-function: unset;
-            animation-duration: unset;       
-            box-shadow:0px 0px 4px 0px rgba(0, 0, 0, 0.1); 
-            background-image:url('./img/done.png');   
-            background-size: 60px 60px;
-            background-position: 20px;
-        }
-        
-        .summary_todo_container:hover{  
-            background-color: white;
-            color:#2A3647;
-            transform: unset;
-            animation-timing-function: unset;
-            animation-duration: unset;       
-            box-shadow:0px 0px 4px 0px rgba(0, 0, 0, 0.1); 
-            background-image:url('./img/pencil.png');   
-            background-size: 60px 60x;
-            background-position: 20px;
         }
         
         .text_align{
