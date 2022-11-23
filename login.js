@@ -1,10 +1,15 @@
 let userInformation = [];
 
+
 const urlParams = new URLSearchParams(window.location.search);
-const msg = urlParams.get('msgBox');
-if(msg){
-    msgBox.innerHTML = msg;
-};
+    if(urlParams) {
+    setTimeout(() => {
+      msgBox.innerHTML = `You signed in successfully! You can now login.`;  
+    }, 10)} else {
+        msgBox.innerHTML = '';
+    }
+;
+
 
 
 async function initLogin() {
@@ -41,9 +46,9 @@ async function signup() {
     
     userInformation.push({fullname: name.value, password: password.value, mail: email.value});  
     await backend.setItem('userInformation', JSON.stringify(userInformation));
-    
-    window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';
-   
+      
+    window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';   
+
    }   
   
 async function login(){
@@ -74,6 +79,10 @@ function loadLogInFromPasswordForm(){
 function changePassword() {
     window.location.href ='index.html';
 } 
+
+function logout(){
+    
+}
 
 
 
