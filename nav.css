@@ -244,3 +244,13 @@ a{
 
 
 }
+
+@media(max-width:1000px){
+    #content{    
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+    flex-direction: column;
+    margin-left:31px;
+    }
+}
