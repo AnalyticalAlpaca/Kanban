@@ -155,7 +155,7 @@ function moveTo(status) {
     }
     tasks[currentDraggedElement].status = status;
     save();
-    render();
+    renderBoard();
     dragging = false;
 }
 

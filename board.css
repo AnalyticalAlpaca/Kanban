@@ -1,12 +1,14 @@
-#content_board{
-  
+#content_board {
     animation: fadeOpacityIn 1s ease 0s 1 normal forwards;
     margin-left:30px
 }
 
 .board_div {
     background: #F6F7F8;
-    width: 100%;       
+    width: 77vw;
+    margin-top: -12rem;
+    position: fixed;
+    margin-left: 2rem;
 }
 
 .board_subDiv1 {
@@ -110,6 +112,7 @@ button img {
     font-size: 21px;
     margin-bottom: 2rem;
     cursor: default;
+    color: #000;
 }
 
 .title {
@@ -117,6 +120,7 @@ button img {
     padding: 1.2rem 0 0.5rem 0;
     outline: none;
     cursor: text;
+    color: #000;
 }
 
 .description {
@@ -132,9 +136,92 @@ button img {
     padding: 1rem;
     margin: 10px;
     cursor: grab;
+    border: 3px solid #fff;
 }
 
+.sectionBox {
+    overflow-y: auto;
+    max-height: 52vh;
+  }
+  
+.sectionBox::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-right: 5px;
+  }
+  
+.sectionBox::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+.sectionBox::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
 .category_container:hover {
-    background-color: #303030;
-    color: #fff;
+    border: 3px solid #000;
+}
+
+@media (max-width: 1180px) {
+     .board_subDiv1 {
+        width: 70vw;
+     }
+}
+
+@media (max-width: 1020px) {
+    .board_subDiv1 {
+        display: inline-block;
+    }
+
+    .input_button {
+        margin-top: 2rem;
+    }
+
+    .list {
+        display: inline-block;
+        margin-top: -3rem;
+    }
+
+    .list {
+        overflow-y: auto;
+        max-height: 47vh;
+      }
+
+    .list::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.3);
+        margin-right: 5px;
+      }
+      
+    .list::-webkit-scrollbar {
+        width: 10px;
+      }
+      
+    .list::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+}
+
+@media (max-width: 800px) {
+    .board_div {
+        position: inherit;
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        margin-top: 8rem;
+    }
+
+    .board_subDiv1 {
+        width: auto;
+    }
+
+    .category_container {
+        margin: 0;
+    }
 }
