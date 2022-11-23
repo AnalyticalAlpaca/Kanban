@@ -214,7 +214,10 @@ button img {
         display: flex;
         flex-direction: column;
         width: 100vw;
-        margin-top: 8rem;
+        margin-top: 9rem;
+        padding-right: 4rem;
+        padding-left: 1rem;
+        overflow-y: scroll;
     }
 
     .board_subDiv1 {
@@ -223,5 +226,29 @@ button img {
 
     .category_container {
         margin: 0;
+        margin-bottom: 1rem;
+    }
+
+    .list > ul {
+        width: auto;
+        margin-bottom: 2rem;
+    }
+
+    .list {
+        max-height: none;
+    }
+
+    .input_button > button {
+        font-size: 0;
+        width: 3rem;
+    }
+
+    button img {
+        top: 1.4rem;
+        right: 0.75rem;
+    }
+
+    .sectionBox {
+        max-height: none;
     }
 }
