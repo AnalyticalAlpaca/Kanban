@@ -1,16 +1,32 @@
 let userInformation = [];
 
+const urlParams = new URLSearchParams(window.location.search);
+if(urlParams) {
+setTimeout(() => {
+  msgBox.innerHTML = `You signed in successfully! You can now login.`;  
+}, 1000)} 
+
 
 async function initLogin() {
   
     await loadDataFromServer(); 
     await downloadFromServer();
     userInformation = JSON.parse(backend.getItem('userInformation')) || [];
+    setTimeout(addClassList, 1000, 'login-overlay', 'd-none');
 }
+
+function addClassList(id, classList) {
+    document.getElementById(id).classList.add(classList);
+}
+
+
 async function loadDataFromServer() {
     
     setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
 }
+
+
+
 
 function loadSignUp(){
     document.getElementById('login_container').classList.add('d-none');
@@ -56,8 +72,9 @@ async function login(){
 function logout(){
     
            window.location.href ='index.html';
-    }
+    }   
 
+    
 function guestLogin(){
     window.location.href ='summary.html';
 }

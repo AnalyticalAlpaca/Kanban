@@ -673,16 +673,33 @@ gap:unset
 }
 
 @media (min-width:801px) and (max-width:1000px){
-    .greeting_container{
-        display:none
-        }
-    
-        .container{
+   
+        .container{            
             margin-left: unset;
             margin-right: unset;
             margin-top: 20px
         }
+
+        .summary_content{
+            flex-direction:column
+        }
     
+        .greeting_container{
+            flex-direction: row;
+            align-items: center;
+           margin-left:unset;
+            margin-top:10px
+        }
+
+        #greeting{
+            font-size:35px;
+            height:unset
+        }
+
+        #name_contact{
+            font-size: 35px
+        }
+
         .summary_headline{
             display:flex;
             flex-direction:column;
@@ -720,8 +737,7 @@ gap:unset
             padding:2px;
             text-align:center
         }
-    
-     
+         
     
     .tasks_in_board{
         font-size: 45px;
@@ -775,6 +791,15 @@ gap:unset
         background-size: 60px 60px;
         background-position: 20px;
         border-radius: 20px;
+    }
+    .summary_done_container:hover{    
+        background-size: 60px 60px;
+        background-position: 20px;
+    }
+    
+    .summary_todo_container:hover{         
+        background-size: 60px 60x;
+        background-position: 20px;
     }
     
    
