@@ -1,3 +1,6 @@
+let categoryNames = [""];
+let categoryColors = [""];
+
 
 function select() {
     document.getElementById('menu_links').classList.add('menu_links_selected')
@@ -39,11 +42,17 @@ function changeBtn() {
     document.getElementById('vl2').classList.remove('d-none')
 }
 let dropdown_clicked = false;
+
 function dropdownCategory() {
     if (dropdown_clicked == false) {
-        document.getElementById('dropdown').innerHTML = `
+        for (let i = 0; i < categoryNames.length; i++) {
+            const categoryName = categoryNames[i];
+            const categoryColor = categoryColors;
+
+
+            document.getElementById('dropdown').innerHTML = `
         
-<br>
+        <br>
             <div class="category dropdownPadding" id="newCategory" onclick="categoryAdd()">
                 <span class="test">
                 
@@ -57,15 +66,81 @@ function dropdownCategory() {
                     Select task category
                 </span>
             </div>
+
+            <div class="category2 dropdownPadding">
+                <span class="test">
+                    ${categoryName} ${categoryColor}
+                </span>
+            </div>
             `
-        dropdown_clicked = true;
+
+            dropdown_clicked = true;
+        }
     }
     else {
-        document.getElementById('ctgDropdown').innerHTML = `
-        <div class="dropdown" id="ctgDropdown" onclick="dropdownCategory()">
-            <div class="hoverDropdown">
-            <div class="arrowEnd dropdownPadding">
-            <span class="test">Select task category</span>
+
+        closeCategory();
+        dropdown_clicked = false;
+
+
+    }
+
+}
+
+function categoryAdd() {
+    document.getElementById('delFunc').removeAttribute("onclick");
+    document.getElementById("selCategory").innerHTML = `
+    <div class="flex3"><input class="input-trans2 widthCategory" placeholder="Category name ..." id="inputCategory"><div class="sub-task-btn">
+    <button id="addBtn2"><img src="img/close.png" width="12px" onclick="closeCategory()"></button>
+    <div class="vl2" id="vl2"></div>
+    <button id="addBtn3"><img src="img/accept.png" width="15px" onclick="categoryPush()"></button>
+    </div>
+    </div>
+    ` ;
+
+    document.getElementById("dropdown").innerHTML = "";
+    document.getElementById('selectColor').classList.remove('d-none');
+    document.getElementById('arrowEnd').classList.remove('arrowEnd');
+    document.getElementById('arrowEnd').classList.remove('dropdownPadding');
+}
+
+
+function categoryPush() {
+    let categoryName = document.getElementById('inputCategory').value
+    categoryNames.push(categoryName);
+    console.log(categoryNames);
+    if (categoryColors == "lila") {
+        console.log("die farbe ist lila")
+    }
+    else if (categoryColors == "rot") {
+        console.log("rote farbe")
+    }
+    else if (categoryColors == "orange") {
+        console.log("orange")
+    }
+    else if (categoryColors == "grün") {
+        console.log("grün")
+    }
+    else if (categoryColors == "blau") {
+        console.log("blau")
+    }
+    else if (categoryColors == "hellblau") {
+        console.log("hellblau")
+    }
+};
+
+function closeCategory() {
+    document.getElementById("ctgDropdown").innerHTML = "";
+
+    for (let i = 0; i < categoryNames.length; i++) {
+        const categoryName = categoryNames[i];
+        const categoryColor = categoryColors;
+
+    document.getElementById("DropdownMain").innerHTML = `
+    <div class="dropdown" id="ctgDropdown">
+            <div class="hoverDropdown" id="delFunc" onclick="dropdownCategory()">
+            <div class="arrowEnd dropdownPadding" id="arrowEnd">
+            <span class="test" id="selCategory">Select task category </span>
             
         </div>
         </div>
@@ -75,27 +150,23 @@ function dropdownCategory() {
         </div>
         
     </div>
-            `
-        dropdown_clicked = false;
-    }
-}
 
-function categoryAdd() {
-    document.getElementById("selCategory").innerHTML = `
-    <div class="flex3"><input class="input-trans widthCategory"><div class="sub-task-btn">
-    <button id="addBtn2"><img src="img/close.png" width="12px"></button>
-    <div class="vl2" id="vl2"></div>
-    <button id="addBtn3"><img src="img/accept.png" width="15px"></button>
+    <div class="selectColor d-none" id="selectColor">
+    <span class="selectRed" id="selectRed" onclick="selectedRed()"></span>
+    <span class="selectGreen" id="selectGreen" onclick="selectedGreen()"></span>
+    <span class="selectOrange" id="selectOrange" onclick="selectedOrange()"></span>
+    <span class="selectPurple" id="selectPurple" onclick="selectedPurple()"></span>
+    <span class="selectLightBlue" id="selectLightBlue" onclick="selectedLightBlue()"></span>
+    <span class="selectBlue" id="selectBlue" onclick="selectedBlue()"></span>
     </div>
-    </div>
-    ` ;
-    document.getElementById("dropdown").innerHTML = "";
-    document.getElementById('delFunct').removeAttribute("onclick");
-    document.getElementById('selectColor').classList.remove('d-none');
-    document.getElementById('arrowEnd').classList.remove('arrowEnd');
+
+`
+    }
+    document.getElementById('selectColor').classList.add('d-none');
 }
 
 function selectedRed() {
+    let red = "rot";
     document.getElementById('selectRed').classList.add('selectedRed');
     document.getElementById('selectGreen').classList.add('selectGreen');
     document.getElementById('selectBlue').classList.add('selectBlue');
@@ -108,8 +179,11 @@ function selectedRed() {
     document.getElementById('selectPurple').classList.remove('selectedPurple');
     document.getElementById('selectBlue').classList.remove('selectedBlue');
     document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
+    categoryColors.splice(0, 1);
+    categoryColors.push(red);
 }
 function selectedGreen() {
+    let green = "grün";
     document.getElementById('selectGreen').classList.add('selectedGreen');
     document.getElementById('selectRed').classList.add('selectRed');
     document.getElementById('selectBlue').classList.add('selectBlue');
@@ -122,8 +196,11 @@ function selectedGreen() {
     document.getElementById('selectPurple').classList.remove('selectedPurple');
     document.getElementById('selectBlue').classList.remove('selectedBlue');
     document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
+    categoryColors.splice(0, 1);
+    categoryColors.push(green);
 }
 function selectedOrange() {
+    let orange = "orange";
     document.getElementById('selectOrange').classList.add('selectedOrange');
     document.getElementById('selectRed').classList.add('selectRed');
     document.getElementById('selectBlue').classList.add('selectBlue');
@@ -136,8 +213,11 @@ function selectedOrange() {
     document.getElementById('selectPurple').classList.remove('selectedPurple');
     document.getElementById('selectBlue').classList.remove('selectedBlue');
     document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
+    categoryColors.splice(0, 1);
+    categoryColors.push(orange);
 }
 function selectedPurple() {
+    let purple = "lila";
     document.getElementById('selectPurple').classList.add('selectedPurple');
     document.getElementById('selectRed').classList.add('selectRed');
     document.getElementById('selectOrange').classList.add('selectOrange');
@@ -150,8 +230,11 @@ function selectedPurple() {
     document.getElementById('selectPurple').classList.remove('selectPurple');
     document.getElementById('selectBlue').classList.remove('selectedBlue');
     document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
+    categoryColors.splice(0, 1);
+    categoryColors.push(purple);
 }
 function selectedLightBlue() {
+    let lightblue = "hellblau";
     document.getElementById('selectLightBlue').classList.add('selectedLightBlue');
     document.getElementById('selectRed').classList.add('selectRed');
     document.getElementById('selectPurple').classList.add('selectPurple');
@@ -163,9 +246,12 @@ function selectedLightBlue() {
     document.getElementById('selectOrange').classList.remove('selectedOrange');
     document.getElementById('selectPurple').classList.remove('selectedPurple');
     document.getElementById('selectBlue').classList.remove('selectedBlue');
+    categoryColors.splice(0, 1);
+    categoryColors.push(lightblue);
 
 }
 function selectedBlue() {
+    let blue = "blau";
     document.getElementById('selectBlue').classList.add('selectedBlue');
     document.getElementById('selectLightBlue').classList.add('selectLightBlue');
     document.getElementById('selectPurple').classList.add('selectPurple');
@@ -177,4 +263,6 @@ function selectedBlue() {
     document.getElementById('selectOrange').classList.remove('selectedOrange');
     document.getElementById('selectPurple').classList.remove('selectedPurple');
     document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
+    categoryColors.splice(0, 1);
+    categoryColors.push(blue);
 }
