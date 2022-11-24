@@ -1,7 +1,7 @@
 let userInformation = [];
 
 const urlParams = new URLSearchParams(window.location.search);
-if(urlParams) {
+if(window.location.search.length > 0) {
 setTimeout(() => {
   msgBox.innerHTML = `You signed in successfully! You can now login.`;  
 }, 1000)} 
@@ -13,6 +13,7 @@ async function initLogin() {
     await downloadFromServer();
     userInformation = JSON.parse(backend.getItem('userInformation')) || [];
     setTimeout(addClassList, 1000, 'login-overlay', 'd-none');
+   
 }
 
 function addClassList(id, classList) {
@@ -24,8 +25,6 @@ async function loadDataFromServer() {
     
     setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
 }
-
-
 
 
 function loadSignUp(){
@@ -52,7 +51,7 @@ async function signup() {
     userInformation.push({fullname: name.value, password: password.value, mail: email.value});  
     await backend.setItem('userInformation', JSON.stringify(userInformation));
       
-    window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';   
+    window.location.href = 'index.html?msg=Du hast dich erfolgreich registrie,rt';   
     
    }   
   

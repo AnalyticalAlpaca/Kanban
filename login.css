@@ -343,8 +343,11 @@ display:none;
   }
 
   .sign_in_section_mobile{
-    display:unset;
-    margin-top:40px;
+    display:flex;
+    align-items: center;
+    margin-top:80px;
+    flex-direction:column;
+    gap:10px
     }
     
 .login_card{
