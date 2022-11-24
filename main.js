@@ -6,7 +6,8 @@ let tasks = [
         "category": "Design",
         "title": "Website redesign",
         "description": "Modify the contents of the main website",
-        "id": 0
+        "id": 0,
+        "visibility": true
     },
 
     {
@@ -14,7 +15,8 @@ let tasks = [
         "category": "Sales",
         "title": "Call potencial clients",
         "description": "Make the product presentation to prospective buyers",
-        "id": 1
+        "id": 1,
+        "visibility": true
     },
 
     {
@@ -22,7 +24,8 @@ let tasks = [
         "category": "Backoffice",
         "title": "Accounting invoices",
         "description": "Write open invoices for customer",
-        "id": 2
+        "id": 2,
+        "visibility": true
     },
 
     {
@@ -30,7 +33,8 @@ let tasks = [
         "category": "Marketing",
         "title": "Social media strategy",
         "description": "Develop an ad campaign for brand positioning",
-        "id": 3
+        "id": 3,
+        "visibility": true
     }
 ];
 
@@ -42,9 +46,14 @@ let catColors = {
 };
 
 load();
+// Make all tasks visible when restarting website
+for (let i = 0; i < tasks.length; i++) {
+    tasks[i].visibility = true;    
+}
 
 let currentDraggedElement;
 let dragging = false;
+let hideArr = [];           // Array for filtering tasks (filterFunction())
 
 function renderBoard() {
     emptyBoard();
@@ -58,6 +67,9 @@ function renderBoard() {
     let j = 0;
     // For "To Do"-Section
     for (let i = 0; i < toDo.length; i++) {
+        if (toDo[i].visibility == false) {
+            continue
+        }
         document.getElementById("toDo").innerHTML += /*html*/`
         <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${toDo[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[toDo[i].category]}">${toDo[i].category}</li>
@@ -70,6 +82,9 @@ function renderBoard() {
 
     // For "In Progress"-Section
     for (let i = 0; i < inProgress.length; i++) {
+        if (inProgress[i].visibility == false) {
+            continue
+        }
         document.getElementById("inProgress").innerHTML += /*html*/`
         <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${inProgress[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[inProgress[i].category]}">${inProgress[i].category}</li>
@@ -82,6 +97,9 @@ function renderBoard() {
 
     // For "Awaiting Feedback"-Section
     for (let i = 0; i < awaitingFeedback.length; i++) {
+        if (awaitingFeedback[i].visibility == false) {
+            continue
+        }
         document.getElementById("awaitingFeedback").innerHTML += /*html*/`
         <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${awaitingFeedback[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[awaitingFeedback[i].category]}">${awaitingFeedback[i].category}</li>
@@ -94,6 +112,9 @@ function renderBoard() {
 
     // For "Done"-Section
     for (let i = 0; i < done.length; i++) {
+        if (done[i].visibility == false) {
+            continue
+        }
         document.getElementById("done").innerHTML += /*html*/`
         <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${done[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[done[i].category]}">${done[i].category}</li>
@@ -103,6 +124,7 @@ function renderBoard() {
     `;
         j += 1;
     }
+    save();
 }
 
 // Reset Board
@@ -196,19 +218,34 @@ function rotateBack(id) {
     document.getElementById(`container${id}`).style.transform = 'rotate(0deg)';
 }
 
-// let testList = document.getElementsByClassName("toDo").value;
-// console.log(testList);
+function filterFunction() {
+    // Get Input Value 
+    let search = document.getElementById("myInput").value;
+    search = search.toUpperCase();
+    console.log(search);
 
-// let uls = testList.getElementsByTagName("li");
-// console.log(uls);
+    // Create Array with all Titles and Descriptions
+    const tasksTitles = tasks.map(task => task.title);
+    const tasksDescriptions = tasks.map(task => task.description);
 
-// let tasksTitles = []
-// let tasksDescriptions = [];
-// for (let i = 0; i < tasks.length; i++) {
-//     const title = tasks[i].title;
-//     const description = tasks[i].description;
-//     tasksTitles.push(title);
-//     tasksDescriptions.push(description);
-// }
-// function filterFunction() {
-// }
+    // Create Array for filtering tasks in renderBoard function
+    hideArr = [];
+    for (let i = 0; i < tasksTitles.length; i++) {
+        const title = tasksTitles[i];
+        const description = tasksDescriptions[i];
+        if (title.toUpperCase().includes(search) || description.toUpperCase().includes(search)) {
+            hideArr.push(true);
+        } else {
+            hideArr.push(false);
+        }
+    }
+    for (let i = 0; i < hideArr.length; i++) {
+        if (!hideArr[i]) {
+            tasks[i].visibility = false;
+        } else {
+            tasks[i].visibility = true;
+        }
+    }
+    console.log(hideArr);
+    renderBoard();
+}

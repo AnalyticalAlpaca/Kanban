@@ -1,5 +1,6 @@
 let userInformation = [];
 
+
 async function initLogin() {
   
     await loadDataFromServer(); 
@@ -11,7 +12,6 @@ async function loadDataFromServer() {
     setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
 }
 
-
 function loadSignUp(){
     document.getElementById('login_container').classList.add('d-none');
     document.getElementById('signup_container').classList.remove('d-none');
@@ -20,6 +20,7 @@ function loadSignUp(){
 function loadLogIn(){
     document.getElementById('login_container').classList.remove('d-none');
     document.getElementById('signup_container').classList.add('d-none');
+    document.getElementById('forgot_password_container').classList.add('d-none');
 }
 
 function loadForgotPassword(){
@@ -34,16 +35,10 @@ async function signup() {
     
     userInformation.push({fullname: name.value, password: password.value, mail: email.value});  
     await backend.setItem('userInformation', JSON.stringify(userInformation));
-    window.location.href ='index.html';
-   }
-
-function UserResponse(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const msg = urlParams.get('msgBox');
-    if(msg){
-        msgBox.innerHTML = msg;
-    }
-   }
+      
+    window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';   
+    
+   }   
   
 async function login(){
    
@@ -57,6 +52,11 @@ async function login(){
     }
 }
 
+
+function logout(){
+    
+           window.location.href ='index.html';
+    }
 
 function guestLogin(){
     window.location.href ='summary.html';
@@ -73,6 +73,8 @@ function loadLogInFromPasswordForm(){
 function changePassword() {
     window.location.href ='index.html';
 } 
+
+
 
 
 

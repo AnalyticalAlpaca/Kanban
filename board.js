@@ -9,7 +9,7 @@ function initBoard(){
         <div class="board_subDiv1">
             <h1>Board</h1>
             <div class="input_button">
-                <input type="search" placeholder="Find Task" id="myInput" onkeyup="filterFunction()">
+                <input type="text" placeholder="Find Task" id="myInput" onkeyup="filterFunction()">
                 <button onclick="addTask()">Add Task <img src="img/line.png"><img src="img/line.png" class="rotate_line"></button>
             </div>
         </div>

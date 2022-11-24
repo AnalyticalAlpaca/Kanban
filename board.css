@@ -56,6 +56,15 @@
     position: relative;
     padding: 0 2rem 0 0.5rem;
     margin-left: 2rem;
+    cursor: pointer;
+}
+
+.input_button button:hover {
+    background-color: #495c77;
+}
+
+.input_button button:active {
+    transform: scale(0.975);
 }
 
 button img {
@@ -117,7 +126,7 @@ button img {
 
 .title {
     font-weight: 700;
-    padding: 1.2rem 0 0.5rem 0;
+    margin: 1.2rem 0 0.5rem 0;
     outline: none;
     cursor: text;
     color: #000;
@@ -136,7 +145,8 @@ button img {
     padding: 1rem;
     margin: 10px;
     cursor: grab;
-    border: 3px solid #fff;
+    border: 1px solid #fff;
+    box-shadow: 2px 2px 2px 2px #808080;
 }
 
 .sectionBox {
@@ -215,7 +225,7 @@ button img {
         flex-direction: column;
         width: 100vw;
         margin-top: 9rem;
-        padding-right: 4rem;
+        padding-right: 1rem;
         padding-left: 1rem;
         overflow-y: scroll;
     }
@@ -250,5 +260,13 @@ button img {
 
     .sectionBox {
         max-height: none;
+    }
+
+    .footer_mobil {
+        width: 100vw;
+    }
+
+    #content_board {
+        margin-left: 0;
     }
 }
