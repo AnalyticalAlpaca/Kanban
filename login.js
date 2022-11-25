@@ -14,7 +14,7 @@ const urlParams = new URLSearchParams(window.location.search);
             
           }, 1000)}
 
- if(loggedIn = true) {
+ if(loggedIn == true) {
         setTimeout(() => {  
             name_contact.innerHTML = currentUser();  
           }, 1000)}  
