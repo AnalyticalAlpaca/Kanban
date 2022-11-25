@@ -1,10 +1,24 @@
 let userInformation = [];
+let loggedIn = false;
 
-const urlParams = new URLSearchParams(window.location.search);
-if(window.location.search.length > 0) {
-setTimeout(() => {
-  msgBox.innerHTML = `You signed in successfully! You can now login.`;  
-}, 1000)} 
+const urlParams = new URLSearchParams(window.location.search); 
+
+  if(window.location.search.length > 0) {
+    setTimeout(() => {
+        msgBox.innerHTML = `You signed in successfully! You can now login.`;  
+      }, 1000)} 
+
+      if(window.location.search.length > 0) {
+        setTimeout(() => {   
+            name_contact.innerHTML = `Guest`;
+            
+          }, 1000)}
+
+ if(loggedIn = true) {
+        setTimeout(() => {  
+            name_contact.innerHTML = currentUser();  
+          }, 1000)}  
+
 
 
 async function initLogin() {
@@ -51,22 +65,29 @@ async function signup() {
     userInformation.push({fullname: name.value, password: password.value, mail: email.value});  
     await backend.setItem('userInformation', JSON.stringify(userInformation));
       
-    window.location.href = 'index.html?msg=Du hast dich erfolgreich registrie,rt';   
+    window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';   
     
    }   
   
 async function login(){
-   
+
     let email = document.getElementById('login-email');
     let password = document.getElementById('login-password');
     let user = userInformation.find( u => u.mail == email.value && u.password == password.value);
 
     console.log(user);
     if(user) {
-        window.location.href ='summary.html';
+        loggedIn = true;
+        window.location.href ='summary.html?You succsessfully logged in';
     }
 }
 
+ function currentUser(){ 
+    let user = userInformation.find( u => u.fullname);
+    console.log(user);
+    return user;
+
+ }
 
 function logout(){
     
@@ -75,7 +96,8 @@ function logout(){
 
     
 function guestLogin(){
-    window.location.href ='summary.html';
+    window.location.href ='summary.html?Guest';
+
 }
 
 function loadFormForgotPassword(){

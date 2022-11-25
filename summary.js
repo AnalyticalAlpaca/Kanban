@@ -7,7 +7,8 @@ async function renderSummary() {
     document.getElementById('sideTask').classList.remove('clicked');
     document.getElementById('summary').classList.add('clicked');     
     userInformation = JSON.parse(backend.getItem('userInformation')) || [];
-    renderGreeting();   
+    renderGreeting(); 
+   
 
 }
 
@@ -22,11 +23,3 @@ function checkGreetingForm() {
     return 'Good evening,';
 }
 
-function currentUser(){
-    
-}
-
-function renderGreetingName(){
-  
-
-}
