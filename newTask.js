@@ -1,6 +1,6 @@
 let categoryNames = [];
 let categoryColors = [];
-
+let prio = [];
 
 function select() {
     document.getElementById('menu_links').classList.add('menu_links_selected')
@@ -33,20 +33,44 @@ function afterLow() {
     document.getElementById('low-img').src = "img/low-after.png";
 }
 
-function changeBtn() {
+function changeBtn(event) {
     document.getElementById('subtask').classList.remove('input-trans')
     document.getElementById('subtask').classList.add('input-trans-after')
     document.getElementById('addBtn1').classList.add('d-none')
     document.getElementById('addBtn2').classList.remove('d-none')
     document.getElementById('addBtn3').classList.remove('d-none')
     document.getElementById('vl2').classList.remove('d-none')
+    event.preventDefault();
+}
+function prioInput(event) {
+    let prioInput = document.getElementById('subtask').value;
+    if (prioInput == 0) {
+        
+    } else {
+
+
+        document.getElementById("subtaskCheck").innerHTML += `
+    <input type="checkbox" checked="checked">${prioInput}<br>`
+        closePrioInput(event);
+        event.preventDefault();
+    }
+}
+function closePrioInput(event) {
+    document.getElementById('subtask').classList.add('input-trans');
+    document.getElementById('subtask').classList.remove('input-trans-after');
+    document.getElementById('addBtn1').classList.remove('d-none');
+    document.getElementById('addBtn2').classList.add('d-none');
+    document.getElementById('addBtn3').classList.add('d-none');
+    document.getElementById('vl2').classList.add('d-none');
+    document.getElementById('subtask').value = "";
+    event.preventDefault();
 }
 let dropdown_clicked = false;
 
 function dropdownCategory() {
     if (dropdown_clicked == false) {
 
-
+        document.getElementById('assignedMain').style.top = "650px";
         document.getElementById('dropdown').innerHTML = `
         
         <br>
@@ -73,7 +97,7 @@ function dropdownCategory() {
 
     }
     else {
-
+        document.getElementById('assignedMain').style.top = "500px";
         closeCategory();
         dropdown_clicked = false;
     }
@@ -91,7 +115,7 @@ function addnewCategory() {
 
             document.getElementById('addnewCategory').innerHTML += `
 
-        <div class="category2 dropdownPadding">
+        <div class="category2 dropdownPadding" id="test" onclick="categoryShow()">
         <span class="test">
             ${categoryName}${categoryColor}
             
@@ -102,6 +126,27 @@ function addnewCategory() {
     }
 
 }
+
+function categoryShow() {
+    for (let i = 0; i < categoryNames.length; i++) {
+        const categoryName = categoryNames[i];
+        const categoryColor = categoryColors[i];
+
+        document.getElementById("ctgDropdown").innerHTML = `
+
+        <div class="category2 dropdownPadding" id="test${i} onclick="categoryShow(${i})">
+        <span class="test">
+            ${categoryName}${categoryColor}
+            
+        </span>
+        </div>`
+    }
+
+}
+
+
+
+
 function categoryAdd() {
     document.getElementById('delFunc').removeAttribute("onclick");
     document.getElementById("selCategory").innerHTML = `
@@ -117,6 +162,7 @@ function categoryAdd() {
     document.getElementById('selectColor').classList.remove('d-none');
     document.getElementById('arrowEnd').classList.remove('arrowEnd');
     document.getElementById('arrowEnd').classList.remove('dropdownPadding');
+    document.getElementById('assignedMain').style.top = "560px";
 }
 
 

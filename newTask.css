@@ -97,6 +97,7 @@ flex-grow: 0;
     order: 1;
     flex-grow: 0;
     font-family: 'Inter';
+    
 }
 
 .text-area::placeholder{
@@ -188,6 +189,11 @@ flex: none;
 order: 0;
 flex-grow: 0;
 cursor: pointer;
+-webkit-transition: all 175ms ease;
+-moz-transition: all 175ms ease;
+-o-transition: all 175ms ease;
+-ms-transition: all 175ms ease;
+transition: all 175ms ease;
 }
 
 .prio:hover{
@@ -270,18 +276,33 @@ margin-right: 10px;
     
     
 }
+.categoryMain{
+    position: absolute;
+    left: 0px;
+    top: 400px;
+    overflow: hidden;
+    
+}
+.assignedMain{
+    position: absolute;
+    left: 0px;
+    top: 500px;
+    
+}
 .category:hover{
     background-color: rgb(224, 222, 222);
    
 }
 .dropdown{
     box-sizing: border-box;
-    gap: 10px;
     width: 435px;
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
 }
 
 .dropdownPadding{
@@ -309,6 +330,7 @@ margin-right: 10px;
 }
 
 .category2{
+    overflow:auto;
     box-sizing: border-box;
     width: 420px;
     background: #FFFFFF;
@@ -520,4 +542,93 @@ margin-right: 10px;
     order: 1;
     flex-grow: 0;
     margin-right: 4px;
+}
+
+.subtask{
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;  
+}
+
+.createTaskBtn{
+position: absolute;
+bottom: 100px;
+left: 1350px;
+padding: 18px 10px;
+gap: 10px;
+width: 177px;
+height: 61px;
+background: #2A3647;
+border-radius: 10px;
+flex: none;
+order: 1;
+flex-grow: 0;
+cursor: pointer;
+-webkit-transition: all 175ms ease;
+-moz-transition: all 175ms ease;
+-o-transition: all 175ms ease;
+-ms-transition: all 175ms ease;
+transition: all 175ms ease;
+}
+.createTaskBtn:hover{
+    background:#29ABE2;
+    
+}
+.createTaskFont{
+width: 123px;
+height: 25px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 21px;
+line-height: 120%;
+color: #FFFFFF;
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+.createTasKImg{
+    filter: invert(1);
+}
+
+.clearBtn{
+position: absolute;
+bottom: 100px;
+left: 1180px;
+gap: 10px;
+width: 150px;
+height: 61px;
+background: transparent;
+border-radius: 10px;
+flex: none;
+border: 1px solid #2A3647;
+order: 1;
+flex-grow: 0;
+cursor: pointer;
+color: #2A3647;
+background-image: url(img/close.png);
+background-repeat: no-repeat;
+background-position: 95px;
+
+}
+.clearBtn:hover{
+    border-color: #29ABE2;
+    color: #29ABE2;
+    background-image: url(img/close-blue.png);
+    background-repeat: no-repeat;
+    background-position: 95px;
+}
+
+.clearFont{
+width: 53px;
+height: 25px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 21px;
+line-height: 120%;
+flex: none;
+order: 0;
+flex-grow: 0;
 }
