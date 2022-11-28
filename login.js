@@ -1,4 +1,5 @@
 let userInformation = [];
+
 let loggedIn = false;
 
 const urlParams = new URLSearchParams(window.location.search); 
@@ -8,16 +9,7 @@ const urlParams = new URLSearchParams(window.location.search);
         msgBox.innerHTML = `You signed in successfully! You can now login.`;  
       }, 1000)} 
 
-      if(window.location.search.length > 0) {
-        setTimeout(() => {   
-            name_contact.innerHTML = `Guest`;
-            
-          }, 1000)}
 
- if(loggedIn == true) {
-        setTimeout(() => {  
-            name_contact.innerHTML = currentUser();  
-          }, 1000)}  
 
 
 
@@ -78,23 +70,13 @@ async function login(){
     console.log(user);
     if(user) {
         loggedIn = true;
-        window.location.href ='summary.html?You succsessfully logged in';
-    }
+        window.location.href ='summary.html?msg=You succsessfully logged in';
+    }   
 }
 
- function currentUser(){ 
-    let user = userInformation.find( u => u.fullname);
-    console.log(user);
-    return user;
 
- }
 
-function logout(){
-    
-           window.location.href ='index.html';
-    }   
-
-    
+   
 function guestLogin(){
     window.location.href ='summary.html?Guest';
 

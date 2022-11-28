@@ -4,3 +4,7 @@ function renderLogoutBox(){
     document.getElementById('display_column').classList.add('display_column_clicked');
 }
 
+function logout(){
+    
+    window.location.href ='index.html?=You have logged out.';
+}   
