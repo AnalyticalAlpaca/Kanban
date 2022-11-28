@@ -138,30 +138,30 @@ function addnewCategory() {
             
         </span>
         </div>`
-            // if (categoryColor == "lila") {
-            //     document.getElementById(`colorCirle${i}`).classList.add('selectPurple');
-            // }
-            // else if (categoryColor == "rot") {
-            //     document.getElementById(`colorCirle${i}`).classList.add('selectRed');
-            // }
-            // else if (categoryColor == "blau") {
-            //     document.getElementById(`colorCirle${i}`).classList.add('selectBlue');
-            // }
-            // else if (categoryColor == "grün") {
-            //     document.getElementById(`colorCirle${i}`).classList.add('selectGreen');
-            // }
-            // else if (categoryColor == "hellblau") {
-            //     document.getElementById(`colorCirle${i}`).classList.add('selectLightBlue');
-            // }
-            // else(categoryColor == "orange") 
-            //     document.getElementById(`colorCirle${i}`).classList.add('selectOrange');
-            // }
-
+            if (categoryColor == "lila") {
+                document.getElementById(`colorCircle${i}`).classList.add('selectPurple');
+            }
+            else if (categoryColor == "rot") {
+                document.getElementById(`colorCircle${i}`).classList.add('selectRed');
+            }
+            else if (categoryColor == "blau") {
+                document.getElementById(`colorCircle${i}`).classList.add('selectBlue');
+            }
+            else if (categoryColor == "grün") {
+                document.getElementById(`colorCircle${i}`).classList.add('selectGreen');
+            }
+            else if (categoryColor == "hellblau") {
+                document.getElementById(`colorCircle${i}`).classList.add('selectLightBlue');
+            }
+            else if (categoryColor == "orange")
+                document.getElementById(`colorCircle${i}`).classList.add('selectOrange');
         }
 
     }
 
 }
+
+
 
 function categoryShow() {
     for (let i = 0; i < categoryNames.length; i++) {
