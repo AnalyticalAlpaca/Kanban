@@ -216,7 +216,7 @@ a{
     .menu{
         flex-direction:row;
         height:unset;
-        margin-left:30px
+        margin-left:unset;
        
     }
 
