@@ -1,5 +1,5 @@
 let userInformation = [];
-
+let activeUserName = [];
 let loggedIn = false;
 
 const urlParams = new URLSearchParams(window.location.search); 
@@ -66,10 +66,12 @@ async function login(){
     let email = document.getElementById('login-email');
     let password = document.getElementById('login-password');
     let user = userInformation.find( u => u.mail == email.value && u.password == password.value);
+    let currentUser = user.fullname;
 
     console.log(user);
     if(user) {
         loggedIn = true;
+        activeUserName.push({currentUser});
         window.location.href ='summary.html?msg=You succsessfully logged in';
     }   
 }
