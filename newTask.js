@@ -1,11 +1,23 @@
 let categoryNames = [];
 let categoryColors = [];
-let prio = [];
+let prios = [];
+let titles = [];
+let descriptions = [];
+let dates = [];
 
 function select() {
     document.getElementById('menu_links').classList.add('menu_links_selected')
 }
+let selectedPrio;
+function prioDefault() {
+    document.getElementById('medium-img').src = "img/medium.png";
+    document.getElementById('low-img').src = "img/low.png";
+    document.getElementById('urgent-img').src = "img/urgent.png";
+    document.getElementById('urgent').classList.remove('prio-after-urgent');
+    document.getElementById('medium').classList.remove('prio-after-medium');
+    document.getElementById('low').classList.remove('prio-after-low');
 
+}
 function afterUrgent() {
     document.getElementById('urgent').classList.add('prio-after-urgent');
     document.getElementById('medium').classList.remove('prio-after-medium');
@@ -13,6 +25,7 @@ function afterUrgent() {
     document.getElementById('medium-img').src = "img/medium.png";
     document.getElementById('low-img').src = "img/low.png";
     document.getElementById('urgent-img').src = "img/urgent-after.png";
+    selectedPrio = "Urgent";
 }
 
 function afterMedium() {
@@ -22,6 +35,7 @@ function afterMedium() {
     document.getElementById('low-img').src = "img/low.png";
     document.getElementById('urgent-img').src = "img/urgent.png";
     document.getElementById('medium-img').src = "img/medium-after.png";
+    selectedPrio = "Medium";
 }
 
 function afterLow() {
@@ -31,6 +45,7 @@ function afterLow() {
     document.getElementById('urgent-img').src = "img/urgent.png";
     document.getElementById('medium-img').src = "img/medium.png";
     document.getElementById('low-img').src = "img/low-after.png";
+    selectedPrio = "Low";
 }
 
 function changeBtn(event) {
@@ -42,20 +57,21 @@ function changeBtn(event) {
     document.getElementById('vl2').classList.remove('d-none')
     event.preventDefault();
 }
-function prioInput(event) {
+
+function submitSubtask(event) {
     let prioInput = document.getElementById('subtask').value;
     if (prioInput == 0) {
-        
+
     } else {
 
 
         document.getElementById("subtaskCheck").innerHTML += `
     <input type="checkbox" checked="checked">${prioInput}<br>`
-        closePrioInput(event);
+        closeSubtask(event);
         event.preventDefault();
     }
 }
-function closePrioInput(event) {
+function closeSubtask(event) {
     document.getElementById('subtask').classList.add('input-trans');
     document.getElementById('subtask').classList.remove('input-trans-after');
     document.getElementById('addBtn1').classList.remove('d-none');
@@ -113,14 +129,34 @@ function addnewCategory() {
         } else {
 
 
+
             document.getElementById('addnewCategory').innerHTML += `
 
         <div class="category2 dropdownPadding" id="test" onclick="categoryShow()">
         <span class="test">
-            ${categoryName}${categoryColor}
+            ${categoryName} <span id="colorCircle${i}"></span>
             
         </span>
         </div>`
+            // if (categoryColor == "lila") {
+            //     document.getElementById(`colorCirle${i}`).classList.add('selectPurple');
+            // }
+            // else if (categoryColor == "rot") {
+            //     document.getElementById(`colorCirle${i}`).classList.add('selectRed');
+            // }
+            // else if (categoryColor == "blau") {
+            //     document.getElementById(`colorCirle${i}`).classList.add('selectBlue');
+            // }
+            // else if (categoryColor == "grün") {
+            //     document.getElementById(`colorCirle${i}`).classList.add('selectGreen');
+            // }
+            // else if (categoryColor == "hellblau") {
+            //     document.getElementById(`colorCirle${i}`).classList.add('selectLightBlue');
+            // }
+            // else(categoryColor == "orange") 
+            //     document.getElementById(`colorCirle${i}`).classList.add('selectOrange');
+            // }
+
         }
 
     }
@@ -318,3 +354,25 @@ function selectedBlue() {
     // categoryColors.push(color);
 }
 
+function createTask() {
+    let titleInput = document.getElementById('title-Input').value;
+    let description = document.getElementById("descriptionInput").value;
+    let date = document.getElementById("dateInput").value;
+    dates.push(date);
+    console.log(dates);
+    descriptions.push(description);
+    console.log(descriptions);
+    titles.push(titleInput);
+    console.log(titles);
+    prios.push(selectedPrio);
+    console.log(prios);
+
+}
+
+function clearInput() {
+    document.getElementById('title-Input').value = "";
+    document.getElementById("descriptionInput").value = "";
+    document.getElementById("dateInput").value = "";
+    document.getElementById('subtask').value = "";
+    prioDefault();
+}

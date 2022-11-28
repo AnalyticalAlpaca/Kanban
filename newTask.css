@@ -553,7 +553,7 @@ margin-right: 10px;
 .createTaskBtn{
 position: absolute;
 bottom: 100px;
-left: 1350px;
+left: 1320px;
 padding: 18px 10px;
 gap: 10px;
 width: 177px;
@@ -595,7 +595,7 @@ flex-grow: 0;
 .clearBtn{
 position: absolute;
 bottom: 100px;
-left: 1180px;
+left: 1140px;
 gap: 10px;
 width: 150px;
 height: 61px;
