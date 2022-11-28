@@ -55,14 +55,20 @@ let currentDraggedElement;
 let dragging = false;
 let hideArr = [];           // Array for filtering tasks (filterFunction())
 
+// Filter Tasks Depending On Status
+let toDo = tasks.filter(tasks => tasks.status == "To Do");
+let inProgress = tasks.filter(tasks => tasks.status == "In Progress");
+let awaitingFeedback = tasks.filter(tasks => tasks.status == "Awaiting Feedback");
+let done = tasks.filter(tasks => tasks.status == "Done");
+
 function renderBoard() {
     emptyBoard();
 
     // Filter Tasks Depending On Status
-    let toDo = tasks.filter(tasks => tasks.status == "To Do");
-    let inProgress = tasks.filter(tasks => tasks.status == "In Progress");
-    let awaitingFeedback = tasks.filter(tasks => tasks.status == "Awaiting Feedback");
-    let done = tasks.filter(tasks => tasks.status == "Done");
+    toDo = tasks.filter(tasks => tasks.status == "To Do");
+    inProgress = tasks.filter(tasks => tasks.status == "In Progress");
+    awaitingFeedback = tasks.filter(tasks => tasks.status == "Awaiting Feedback");
+    done = tasks.filter(tasks => tasks.status == "Done");
 
     let j = 0;
     // For "To Do"-Section
@@ -71,7 +77,7 @@ function renderBoard() {
             continue
         }
         document.getElementById("toDo").innerHTML += /*html*/`
-        <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${toDo[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
+        <div id="container${j}" class="category_container" draggable="true" onclick="renderCategoryInfo(toDo[${i}])" ondragstart="startDragging(${toDo[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[toDo[i].category]}">${toDo[i].category}</li>
             <li class="title" contenteditable="true" onfocusout="updateItem(${toDo[i].id})">${toDo[i].title}</li>
             <li class="description" contenteditable="true" onfocusout="updateItem(${toDo[i].id})">${toDo[i].description}</li>
@@ -86,7 +92,7 @@ function renderBoard() {
             continue
         }
         document.getElementById("inProgress").innerHTML += /*html*/`
-        <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${inProgress[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
+        <div id="container${j}" class="category_container" draggable="true" onclick="renderCategoryInfo(inProgress[${i}])" ondragstart="startDragging(${inProgress[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[inProgress[i].category]}">${inProgress[i].category}</li>
             <li class="title" contenteditable="true" onfocusout="updateItem(${inProgress[i].id})">${inProgress[i].title}</li>
             <li class="description" contenteditable="true" onfocusout="updateItem(${inProgress[i].id})">${inProgress[i].description}</li>
@@ -101,7 +107,7 @@ function renderBoard() {
             continue
         }
         document.getElementById("awaitingFeedback").innerHTML += /*html*/`
-        <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${awaitingFeedback[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
+        <div id="container${j}" class="category_container" draggable="true" onclick="renderCategoryInfo(awaitingFeedback[${i}])" ondragstart="startDragging(${awaitingFeedback[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[awaitingFeedback[i].category]}">${awaitingFeedback[i].category}</li>
             <li class="title" contenteditable="true" onfocusout="updateItem(${awaitingFeedback[i].id})">${awaitingFeedback[i].title}</li>
             <li class="description" contenteditable="true" onfocusout="updateItem(${awaitingFeedback[i].id})">${awaitingFeedback[i].description}</li>
@@ -116,7 +122,7 @@ function renderBoard() {
             continue
         }
         document.getElementById("done").innerHTML += /*html*/`
-        <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${done[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
+        <div id="container${j}" class="category_container" draggable="true" onclick="renderCategoryInfo(done[${i}])" ondragstart="startDragging(${done[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[done[i].category]}">${done[i].category}</li>
             <li class="title" contenteditable="true" onfocusout="updateItem(${done[i].id})">${done[i].title}</li>
             <li class="description" contenteditable="true" onfocusout="updateItem(${done[i].id})">${done[i].description}</li>
@@ -248,4 +254,20 @@ function filterFunction() {
     }
     console.log(hideArr);
     renderBoard();
+}
+
+function renderCategoryInfo(task) {
+    console.log(task);
+    document.getElementById('fullscreen').style.visibility = 'visible';
+    document.getElementById('fullscreen').innerHTML = /*html*/ `
+    <ul class="infoWindow" onblur="closeRenderCategoryInfo()">
+        <li class="category ${catColors[task.category]}">${task.category}</li>
+        <li class="title" contenteditable="true" onfocusout="updateItem(${task.id})">${task.title}</li>
+        <li class="description" contenteditable="true" onfocusout="updateItem(${task.id})">${task.description}</li>
+    </ul>
+    `;
+}
+
+function closeRenderCategoryInfo() {
+    document.getElementById('fullscreen').style.visibility = 'hidden';
 }

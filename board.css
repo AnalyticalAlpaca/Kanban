@@ -150,7 +150,6 @@ button img {
 }
 
 .sectionBox {
-    overflow-y: auto;
     max-height: 52vh;
   }
   
@@ -193,12 +192,9 @@ button img {
     .list {
         display: inline-block;
         margin-top: -3rem;
-    }
-
-    .list {
         overflow-y: auto;
-        max-height: 47vh;
-      }
+        max-height: 52vh;
+    }
 
     .list::-webkit-scrollbar-track {
         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
@@ -225,9 +221,9 @@ button img {
         flex-direction: column;
         width: 100vw;
         margin-top: 9rem;
-        padding-right: 1rem;
-        padding-left: 1rem;
-        overflow-y: scroll;
+        padding-right: 2rem;
+        padding-left: 3rem;
+        margin-left: 0;
     }
 
     .board_subDiv1 {
@@ -246,6 +242,7 @@ button img {
 
     .list {
         max-height: none;
+        overflow-y: inherit;
     }
 
     .input_button > button {
@@ -269,4 +266,40 @@ button img {
     #content_board {
         margin-left: 0;
     }
+}
+
+.fullscreen {
+    visibility: hidden;
+    background: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.infoWindow {
+    background-color: #fff;
+    padding: 3rem;
+    list-style: none;
+    border-radius: 30px;
+    width: 623px;
+}
+
+.infoWindow .category {
+    font-size: 27px;
+    padding: 4px 37px;
+}
+
+.infoWindow .title {
+    font-size: 61px;
+    line-height: 120%;
+}
+
+.infoWindow .description {
+    font-size: 21px;
 }
