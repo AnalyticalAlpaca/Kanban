@@ -261,6 +261,7 @@ function renderCategoryInfo(task) {
     document.getElementById('fullscreen').style.visibility = 'visible';
     document.getElementById('fullscreen').innerHTML = /*html*/ `
     <ul class="infoWindow" onblur="closeRenderCategoryInfo()">
+        <img src="img/closeImage.png" alt="close-cross" onclick="closeRenderCategoryInfo()">
         <li class="category ${catColors[task.category]}">${task.category}</li>
         <li class="title" contenteditable="true" onfocusout="updateItem(${task.id})">${task.title}</li>
         <li class="description" contenteditable="true" onfocusout="updateItem(${task.id})">${task.description}</li>

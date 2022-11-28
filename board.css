@@ -150,7 +150,8 @@ button img {
 }
 
 .sectionBox {
-    max-height: 52vh;
+    overflow-y: auto;
+    max-height: 54vh;
   }
   
 .sectionBox::-webkit-scrollbar-track {
@@ -193,7 +194,7 @@ button img {
         display: inline-block;
         margin-top: -3rem;
         overflow-y: auto;
-        max-height: 52vh;
+        max-height: 49vh;
     }
 
     .list::-webkit-scrollbar-track {
@@ -256,6 +257,7 @@ button img {
     }
 
     .sectionBox {
+        overflow-y: initial;
         max-height: none;
     }
 
@@ -287,19 +289,29 @@ button img {
     padding: 3rem;
     list-style: none;
     border-radius: 30px;
-    width: 623px;
+    width: 35rem;
+    position: relative;
 }
 
 .infoWindow .category {
-    font-size: 27px;
+    font-size: 1.5rem;
     padding: 4px 37px;
 }
 
 .infoWindow .title {
-    font-size: 61px;
+    font-size: 3.2rem;
     line-height: 120%;
 }
 
 .infoWindow .description {
-    font-size: 21px;
+    font-size: 1.3rem;
+}
+
+.infoWindow img {
+    width: 25px;
+    height: auto;
+    position: absolute;
+    right: 3rem;
+    top: 2.5rem;
+    cursor: pointer;
 }
