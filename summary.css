@@ -329,7 +329,8 @@
     .container{
         margin-left: unset;
         margin-right: unset;
-        margin-top: 20px
+        margin-top: 20px;
+        margin-bottom: 100px
     }
 
     .summary_headline{
@@ -338,7 +339,7 @@
         justify-content: left;
         align-items: flex-start;       
         padding-bottom:10px;
-        padding-top:138px;        
+              
         gap:2px;
         padding-left: 20px
     }

@@ -1,3 +1,8 @@
+
+ const urlParams = new URLSearchParams(window.location.search); 
+ 
+ 
+
 async function loadDataFromServer() {    
     setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
 }
@@ -9,7 +14,7 @@ async function renderSummary() {
     userInformation = JSON.parse(backend.getItem('userInformation')) || [];
     activeUserName = JSON.parse(backend.getItem('activeUserName')) || [];
 
-    const urlParams = new URLSearchParams(window.location.search); 
+    
 
     if(window.location.search == `?Guest`) {
         setTimeout(() => {   
@@ -48,10 +53,6 @@ function checkGreetingForm() {
     return 'Good evening,';
 }
 
-async function logout(){    
-   
-     window.location.href ='index.html?=You have logged out.';
-}   
 
 
 
