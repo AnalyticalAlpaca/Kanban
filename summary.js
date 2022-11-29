@@ -7,7 +7,7 @@ async function renderSummary() {
     await loadDataFromServer(); 
     await downloadFromServer();
     userInformation = JSON.parse(backend.getItem('userInformation')) || [];
-    activeUserName = JSON.parse(backend.getItem('activeUser')) || [];
+    activeUserName = JSON.parse(backend.getItem('activeUserName')) || [];
 
     const urlParams = new URLSearchParams(window.location.search); 
 
@@ -26,23 +26,15 @@ async function renderSummary() {
     document.getElementById('sideTask').classList.remove('clicked');
     document.getElementById('summary').classList.add('clicked');     
     
-    renderGreeting(); 
-      
+    renderGreeting();     
    
 }
 
- function currentUser(){ 
-    let currentuser = userInformation.find(u => u.fullname);
-    console.log(currentuser.fullname);
-    return currentuser.fullname;
- }
- 
-
-/* function currentUser(){ 
-    let currentuser = activeUserName.fullnameUser;
+function currentUser(){ 
+    let currentuser = activeUserName[0]['fullnameUser'];
     console.log(currentuser);
     return currentuser;
- }  */
+ } 
  
 
 function renderGreeting() {
@@ -55,6 +47,12 @@ function checkGreetingForm() {
     if (hour > 11 && hour < 18) return 'Good afternoon,';
     return 'Good evening,';
 }
+
+async function logout(){    
+   
+     window.location.href ='index.html?=You have logged out.';
+}   
+
 
 
 

@@ -71,7 +71,7 @@ async function login(){
         loggedIn = true;    
         activeUserName.push({fullnameUser: currentUser});
         await backend.setItem('activeUserName', JSON.stringify(activeUserName));
-        console.log(activeUserName.fullnameUser);
+        console.log(activeUserName);
         window.location.href ='summary.html?msg=You succsessfully logged in';
        
     }   

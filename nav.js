@@ -5,6 +5,7 @@ function renderLogoutBox(){
 }
 
 async function logout(){
+    activeUserName.remove('fullnameUser');
     await backend.removeItem('activeUserName', JSON.stringify(activeUserName));
     window.location.href ='index.html?=You have logged out.';
 }   
