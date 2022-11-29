@@ -1,35 +1,49 @@
-const urlParams = new URLSearchParams(window.location.search); 
-
-if(window.location.search == `?Guest`) {
-    setTimeout(() => {   
-        name_contact.innerHTML = `Guest`;
-        
-      }, 1000)} 
-
-if(window.location.search == `?msg=You%20succsessfully%20logged%20in`) {
-    setTimeout(() => {  
-        name_contact.innerHTML = currentUser();  
-      }, 1000)}  
-
- 
+async function loadDataFromServer() {    
+    setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
+}
 
 async function renderSummary() {
 
     await loadDataFromServer(); 
     await downloadFromServer();
+    userInformation = JSON.parse(backend.getItem('userInformation')) || [];
+    activeUserName = JSON.parse(backend.getItem('activeUser')) || [];
+
+    const urlParams = new URLSearchParams(window.location.search); 
+
+    if(window.location.search == `?Guest`) {
+        setTimeout(() => {   
+            name_contact.innerHTML = `Guest`;
+            
+          }, 1000)} 
+    
+    if(window.location.search == `?msg=You%20succsessfully%20logged%20in`) {
+        setTimeout(() => {  
+            name_contact.innerHTML = currentUser();  
+          }, 1000)}  
+    
     
     document.getElementById('sideTask').classList.remove('clicked');
     document.getElementById('summary').classList.add('clicked');     
-    userInformation = JSON.parse(backend.getItem('userInformation')) || [];
+    
     renderGreeting(); 
+      
    
 }
 
-async function loadDataFromServer() {
-    
-    setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
-}
+ function currentUser(){ 
+    let currentuser = userInformation.find(u => u.fullname);
+    console.log(currentuser.fullname);
+    return currentuser.fullname;
+ }
+ 
 
+/* function currentUser(){ 
+    let currentuser = activeUserName.fullnameUser;
+    console.log(currentuser);
+    return currentuser;
+ }  */
+ 
 
 function renderGreeting() {
     let greetingOutput = document.getElementById('greeting');
@@ -42,9 +56,5 @@ function checkGreetingForm() {
     return 'Good evening,';
 }
 
-function currentUser(){ 
-    let currentuser = userInformation.find( u => u.fullname);
-    console.log(currentuser.fullname);
-    return currentuser.fullname;
- }
+
 

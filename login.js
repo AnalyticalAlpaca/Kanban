@@ -11,8 +11,6 @@ const urlParams = new URLSearchParams(window.location.search);
 
 
 
-
-
 async function initLogin() {
   
     await loadDataFromServer(); 
@@ -66,17 +64,19 @@ async function login(){
     let email = document.getElementById('login-email');
     let password = document.getElementById('login-password');
     let user = userInformation.find( u => u.mail == email.value && u.password == password.value);
-    let currentUser = user.fullname;
+    let currentUser = user.fullname;   
 
     console.log(user);
     if(user) {
-        loggedIn = true;
-        activeUserName.push({currentUser});
+        loggedIn = true;    
+        activeUserName.push({fullnameUser: currentUser});
+        await backend.setItem('activeUserName', JSON.stringify(activeUserName));
+        console.log(activeUserName.fullnameUser);
         window.location.href ='summary.html?msg=You succsessfully logged in';
+       
     }   
+
 }
-
-
 
    
 function guestLogin(){

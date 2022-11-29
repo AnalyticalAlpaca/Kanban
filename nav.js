@@ -4,7 +4,7 @@ function renderLogoutBox(){
     document.getElementById('display_column').classList.add('display_column_clicked');
 }
 
-function logout(){
-    
+async function logout(){
+    await backend.removeItem('activeUserName', JSON.stringify(activeUserName));
     window.location.href ='index.html?=You have logged out.';
 }   
