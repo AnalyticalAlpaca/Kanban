@@ -71,3 +71,8 @@ h2 {
         font-size: 16px;
     }
   }
+  @media (min-width:1001px) and (max-width:1360px){
+    h1{
+        font-size: 40px;
+    }
+  }

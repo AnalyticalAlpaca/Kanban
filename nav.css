@@ -193,6 +193,7 @@ a{
     justify-content: space-between;
     align-items: space-between;
     flex-direction: column;
+    padding-top:35px;
     margin-left:31px;
     }
 
@@ -319,5 +320,9 @@ a{
 
     h3{
         font-size: 20px
+    }
+
+    .sidebar{
+        gap:5px
     }
 }
