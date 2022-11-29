@@ -269,7 +269,6 @@ a{
 
 .main_headline_mobile{
     display:unset;
-    z-index:999;
     color:black;
     font-weight:200;
     position:absolute;
