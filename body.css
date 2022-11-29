@@ -47,6 +47,12 @@ h2 {
     align-items:center;   
   }
 
+  @media(max-width:540px){
+    h1{
+        font-size: 25px !important
+    }
+  }
+
   @media(max-width:800px){
 
     * {
@@ -63,5 +69,10 @@ h2 {
 
     h4{
         font-size: 16px;
+    }
+  }
+  @media (min-width:1001px) and (max-width:1360px){
+    h1{
+        font-size: 40px;
     }
   }

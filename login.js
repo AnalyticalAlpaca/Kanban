@@ -1,23 +1,18 @@
 let userInformation = [];
+let activeUserName = [];
 let loggedIn = false;
 
 const urlParams = new URLSearchParams(window.location.search); 
 
-  if(window.location.search.length > 0) {
+  if(window.location.search == `?msg=Du%20hast%20dich%20erfolgreich%20registriert` ) {
     setTimeout(() => {
         msgBox.innerHTML = `You signed in successfully! You can now login.`;  
       }, 1000)} 
 
-      if(window.location.search.length > 0) {
-        setTimeout(() => {   
-            name_contact.innerHTML = `Guest`;
-            
+      if(window.location.search == `?msg=You%20have%20logged%20out.`) {
+        setTimeout(() => {
+            msgBox.innerHTML = `You successfully logged out`;  
           }, 1000)}
-
- if(loggedIn == true) {
-        setTimeout(() => {  
-            name_contact.innerHTML = currentUser();  
-          }, 1000)}  
 
 
 
@@ -58,7 +53,7 @@ function loadForgotPassword(){
 }
 
 async function signup() {
-    let name = document.getElementById('name');
+    let name = checkIfNameIsComplete('name');
     let email = document.getElementById('email_signup');
     let password = document.getElementById('password_signup');
     
@@ -67,38 +62,47 @@ async function signup() {
       
     window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';   
     
-   }   
+   }  
+   
+   function checkIfNameIsComplete(id) {
+    let regName = /^[a-zA-Z]+( [a-zA-Z]+)+$/;
+    let nametocheck = document.getElementById(id).value;
+    if(!regName.test(nametocheck)){
+        alert('Please enter your full name (first & last name).');
+        document.getElementById(id).focus();
+    }else{
+        return document.getElementById(id);
+    }
+}
+
+
   
 async function login(){
 
     let email = document.getElementById('login-email');
     let password = document.getElementById('login-password');
     let user = userInformation.find( u => u.mail == email.value && u.password == password.value);
+    let currentUser = user.fullname;   
 
     console.log(user);
     if(user) {
-        loggedIn = true;
-        window.location.href ='summary.html?You succsessfully logged in';
+        loggedIn = true;    
+        activeUserName.push({fullnameUser: currentUser});
+        await backend.setItem('activeUserName', JSON.stringify(activeUserName));
+        console.log(activeUserName);
+        window.location.href ='summary.html?msg=You succsessfully logged in';
+       } else {
+        alert('You are not registrated yet. Please sign up.');
+       }
     }
-}
 
- function currentUser(){ 
-    let user = userInformation.find( u => u.fullname);
-    console.log(user);
-    return user;
-
- }
-
-function logout(){
-    
-           window.location.href ='index.html';
-    }   
-
-    
+   
 function guestLogin(){
     window.location.href ='summary.html?Guest';
 
 }
+
+
 
 function loadFormForgotPassword(){
     window.location.href ='new_password.html';

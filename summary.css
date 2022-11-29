@@ -329,7 +329,8 @@
     .container{
         margin-left: unset;
         margin-right: unset;
-        margin-top: 20px
+        margin-top: 20px;
+        margin-bottom: 100px
     }
 
     .summary_headline{
@@ -338,7 +339,7 @@
         justify-content: left;
         align-items: flex-start;       
         padding-bottom:10px;
-        padding-top:138px;        
+              
         gap:2px;
         padding-left: 20px
     }
@@ -835,7 +836,7 @@ gap:unset
     .container{
         margin-left: unset;
         margin-right: unset;
-        margin-top: 20px
+        margin-top: 10px
     }
 
     .summary_headline{     
@@ -852,26 +853,27 @@ gap:unset
         }
     
         .summary_tasks{
-            align-items:center
+            align-items:center;
+            gap:10px;
         }
     
         .tasks{
-            width:150px;
-            height:150px;
-            border-radius:20px;
-            gap:10px;
-            font-size:18px;
-            color:#2A3647;
-            padding:2px;
-            text-align:center
+            width: 130px;
+            height: 130px;
+            border-radius: 20px;
+            gap: 10px;
+            font-size: 17px;
+            color: #2A3647;
+            padding: 2px;
+            text-align: center;
         }
 
         .tasks_in_board{
-            font-size: 45px;
+            font-size: 40px;
         }
         
         .summary_urgent{
-         width: 488px;
+         width: 435px;
          padding:unset;
          height: 110px;
          border-radius:20px;
@@ -900,21 +902,22 @@ gap:unset
         }
         
         .urgent_task{
-            font-size:45px
+            font-size:45px;
+            gap:10px
         }
         
         .summary_todo_container{
-            width: 230px;
-            height: 130px;
-            background-size: 60px 60px;
+            width: 210px;
+            height: 110px;
+            background-size: 50px 50px;
             border-radius: 20px;
             background-position: 20px;
         }
         
         .summary_done_container{
-            width: 230px;
-            height: 130px;
-            background-size: 60px 60px;
+            width: 210px;
+            height: 110px;
+            background-size: 50px 50px;
             background-position: 20px;
             border-radius: 20px;
         }
@@ -924,10 +927,7 @@ gap:unset
         gap:unset
         }
         
-        .join_base{
-            height:100vh
-        }
-        
+               
         .text_align{
             line-height:25px;
             
