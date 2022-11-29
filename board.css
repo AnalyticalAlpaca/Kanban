@@ -301,10 +301,13 @@ button img {
 .infoWindow .title {
     font-size: 3.2rem;
     line-height: 120%;
+    margin-bottom: 1.5rem;
 }
 
 .infoWindow .description {
     font-size: 1.3rem;
+    color: #000;
+    margin-bottom: 1.5rem;
 }
 
 .infoWindow .close_icon {
@@ -322,4 +325,20 @@ button img {
     position: absolute;
     right: 2.5rem;
     bottom: 2.5rem;
+}
+
+.change_icon:hover {
+    cursor: pointer;
+}
+
+.change_icon:active {
+    transform: scale(0.96);
+}
+
+.info_font {
+    font-size: 1.3rem;
+    color: #000;
+    font-weight: bold;
+    line-height: 120%;
+    margin-bottom: 1.5rem;
 }
