@@ -5,6 +5,7 @@ let titles = [];
 let descriptions = [];
 let dates = [];
 
+
 function select() {
     document.getElementById('menu_links').classList.add('menu_links_selected')
 }
@@ -84,7 +85,7 @@ function closeSubtask(event) {
 let dropdown_clicked = false;
 
 function dropdownCategory() {
-    if (dropdown_clicked == false) {
+    if (dropdown_clicked == false || (dropdown_clicked == true && document.getElementById("selCategory").innerText != "Select task category")) {
 
         document.getElementById('assignedMain').style.top = "650px";
         document.getElementById('dropdown').innerHTML = `
@@ -114,7 +115,35 @@ function dropdownCategory() {
     }
     else {
         document.getElementById('assignedMain').style.top = "500px";
-        closeCategory();
+        document.getElementById("ctgDropdown").innerHTML = "";
+
+        document.getElementById("DropdownMain").innerHTML = `
+            <div class="dropdown" id="ctgDropdown">
+            <div class="hoverDropdown" id="delFunc" onclick="dropdownCategory()">
+            <div class="arrowEnd dropdownPadding" id="arrowEnd">
+            <span class="test" id="selCategory">Select task category</span>
+            
+        </div>
+        </div>
+             
+            <div id="dropdown">
+            
+        </div>
+        
+    </div>
+
+    <div class="selectColor d-none" id="selectColor">
+    <span class="selectRed" id="selectRed" onclick="selectedRed()"></span>
+    <span class="selectGreen" id="selectGreen" onclick="selectedGreen()"></span>
+    <span class="selectOrange" id="selectOrange" onclick="selectedOrange()"></span>
+    <span class="selectPurple" id="selectPurple" onclick="selectedPurple()"></span>
+    <span class="selectLightBlue" id="selectLightBlue" onclick="selectedLightBlue()"></span>
+    <span class="selectBlue" id="selectBlue" onclick="selectedBlue()"></span>
+    </div>
+
+`
+
+        document.getElementById('selectColor').classList.add('d-none');
         dropdown_clicked = false;
     }
 
@@ -132,7 +161,7 @@ function addnewCategory() {
 
             document.getElementById('addnewCategory').innerHTML += `
 
-        <div class="category2 dropdownPadding" id="test" onclick="categoryShow()">
+        <div class="category2 dropdownPadding" id="test" onclick="categoryShow(${i})">
         <span class="test">
             ${categoryName} <span id="colorCircle${i}"></span>
             
@@ -162,22 +191,16 @@ function addnewCategory() {
 }
 
 
-
 function categoryShow() {
     for (let i = 0; i < categoryNames.length; i++) {
         const categoryName = categoryNames[i];
         const categoryColor = categoryColors[i];
-
-        document.getElementById("ctgDropdown").innerHTML = `
-
-        <div class="category2 dropdownPadding" id="test${i} onclick="categoryShow(${i})">
-        <span class="test">
-            ${categoryName}${categoryColor}
-            
-        </span>
-        </div>`
+        document.getElementById("selCategory").innerHTML = `
+        ${categoryName} ${categoryColor}
+    `;
+        document.getElementById("dropdown").innerHTML = "";
+        dropdown_clicked = false;
     }
-
 }
 
 
