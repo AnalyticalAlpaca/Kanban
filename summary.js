@@ -1,16 +1,46 @@
 
+ const urlParams = new URLSearchParams(window.location.search); 
+ 
+ 
+
+async function loadDataFromServer() {    
+    setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
+}
+
 async function renderSummary() {
 
     await loadDataFromServer(); 
     await downloadFromServer();
+    userInformation = JSON.parse(backend.getItem('userInformation')) || [];
+    activeUserName = JSON.parse(backend.getItem('activeUserName')) || [];
+
+    
+
+    if(window.location.search == `?Guest`) {
+        setTimeout(() => {   
+            name_contact.innerHTML = `Guest`;
+            
+          }, 1000)} 
+    
+    if(window.location.search == `?msg=You%20succsessfully%20logged%20in`) {
+        setTimeout(() => {  
+            name_contact.innerHTML = currentUser();  
+          }, 1000)}  
+    
     
     document.getElementById('sideTask').classList.remove('clicked');
     document.getElementById('summary').classList.add('clicked');     
-    userInformation = JSON.parse(backend.getItem('userInformation')) || [];
-    renderGreeting(); 
+    
+    renderGreeting();     
    
-
 }
+
+function currentUser(){ 
+    let currentuser = activeUserName[0]['fullnameUser'];
+    console.log(currentuser);
+    return currentuser;
+ } 
+ 
 
 function renderGreeting() {
     let greetingOutput = document.getElementById('greeting');
@@ -22,4 +52,8 @@ function checkGreetingForm() {
     if (hour > 11 && hour < 18) return 'Good afternoon,';
     return 'Good evening,';
 }
+
+
+
+
 
