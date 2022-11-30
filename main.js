@@ -6,6 +6,7 @@ let tasks = [
         "category": "Design",
         "title": "Website redesign",
         "description": "Modify the contents of the main website",
+        "dueDate": "2022-11-15",
         "id": 0,
         "visibility": true
     },
@@ -15,6 +16,7 @@ let tasks = [
         "category": "Sales",
         "title": "Call potencial clients",
         "description": "Make the product presentation to prospective buyers",
+        "dueDate": "2022-11-15",
         "id": 1,
         "visibility": true
     },
@@ -24,6 +26,7 @@ let tasks = [
         "category": "Backoffice",
         "title": "Accounting invoices",
         "description": "Write open invoices for customer",
+        "dueDate": "2022-11-15",
         "id": 2,
         "visibility": true
     },
@@ -33,6 +36,7 @@ let tasks = [
         "category": "Marketing",
         "title": "Social media strategy",
         "description": "Develop an ad campaign for brand positioning",
+        "dueDate": "2022-11-15",
         "id": 3,
         "visibility": true
     }
@@ -265,7 +269,7 @@ function renderCategoryInfo(task) {
         <li class="category ${catColors[task.category]}">${task.category}</li>
         <li class="title" contenteditable="true" onfocusout="updateItem(${task.id})">${task.title}</li>
         <li class="description" contenteditable="true" onfocusout="updateItem(${task.id})">${task.description}</li>
-        <p class="info_font">Due date:  </p><span></span>
+        <p class="info_font">Due date:  ${task.dueDate}</p><span></span>
         <p class="info_font">Priority:  </p><span></span>
         <p class="info_font">Assigned to:   </p><span></span>
         <img class="change_icon" src="img/changeImage.png" alt="change-image">
