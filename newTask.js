@@ -82,72 +82,54 @@ function closeSubtask(event) {
     document.getElementById('subtask').value = "";
     event.preventDefault();
 }
-let dropdown_clicked = false;
+// let dropdown_clicked = false;
+function toggleDropdown() {
 
-function dropdownCategory() {
-    if (dropdown_clicked == false || (dropdown_clicked == true && document.getElementById("selCategory").innerText != "Select task category")) {
+    let dropdown = document.getElementById("dropdown");
+    if (dropdown.classList.contains("d-none")) {
 
-        document.getElementById('assignedMain').style.top = "650px";
-        document.getElementById('dropdown').innerHTML = `
-        
-        <br>
-            <div class="category dropdownPadding" id="newCategory" onclick="categoryAdd()">
-                <span class="test">
-                
-                    New Category
-                </span>
-            </div>
-                      
-            <div class="category2 dropdownPadding">
-                <span class="test">
-                    
-                    Select task category
-                </span>
-            </div>
+        document.getElementById("assignedMain").style.top = "650px";
+        dropdown.classList.remove('d-none');
 
-            <div id="addnewCategory">
-
-            </div>
-            `
-        addnewCategory();
+        dropdownCategory();
         dropdown_clicked = true;
-
-    }
-    else {
-        document.getElementById('assignedMain').style.top = "500px";
-        document.getElementById("ctgDropdown").innerHTML = "";
-
-        document.getElementById("DropdownMain").innerHTML = `
-            <div class="dropdown" id="ctgDropdown">
-            <div class="hoverDropdown" id="delFunc" onclick="dropdownCategory()">
-            <div class="arrowEnd dropdownPadding" id="arrowEnd">
-            <span class="test" id="selCategory">Select task category</span>
-            
-        </div>
-        </div>
-             
-            <div id="dropdown">
-            
-        </div>
-        
-    </div>
-
-    <div class="selectColor d-none" id="selectColor">
-    <span class="selectRed" id="selectRed" onclick="selectedRed()"></span>
-    <span class="selectGreen" id="selectGreen" onclick="selectedGreen()"></span>
-    <span class="selectOrange" id="selectOrange" onclick="selectedOrange()"></span>
-    <span class="selectPurple" id="selectPurple" onclick="selectedPurple()"></span>
-    <span class="selectLightBlue" id="selectLightBlue" onclick="selectedLightBlue()"></span>
-    <span class="selectBlue" id="selectBlue" onclick="selectedBlue()"></span>
-    </div>
-
-`
-
-        document.getElementById('selectColor').classList.add('d-none');
+    } else {
+        dropdown.classList.add("d-none");
+        document.getElementById("assignedMain").style.top = "500px";
         dropdown_clicked = false;
     }
-
 }
+function dropdownCategory() {
+    document.getElementById("assignedMain").style.top = "650px";
+    if (categoryNames.length > 1) {
+        document.getElementById("dropdown").classList.add("scrollbar")
+    }
+    document.getElementById("dropdown").innerHTML = `
+          <div id="scrollCategory">
+          <br>
+              <div class="category dropdownPadding" id="newCategory" onclick="categoryAdd()">
+                  <span class="test">
+                  
+                      New Category
+                  </span>
+              </div>
+                        
+              <div class="category2 dropdownPadding">
+                  <span class="test" onclick="toggleDropdown()">
+                      
+                      Select task category
+                  </span>
+              </div>
+  
+              <div id="addnewCategory">
+  
+              </div>
+              </div>
+              `;
+    addnewCategory();
+}
+
+
 function addnewCategory() {
 
     for (let i = 0; i < categoryNames.length; i++) {
@@ -177,6 +159,7 @@ function addnewCategory() {
                 document.getElementById(`colorCircle${i}`).classList.add('selectBlue');
             }
             else if (categoryColor == "grün") {
+
                 document.getElementById(`colorCircle${i}`).classList.add('selectGreen');
             }
             else if (categoryColor == "hellblau") {
@@ -191,22 +174,55 @@ function addnewCategory() {
 }
 
 
-function categoryShow() {
-    for (let i = 0; i < categoryNames.length; i++) {
-        const categoryName = categoryNames[i];
-        const categoryColor = categoryColors[i];
+function categoryShow(x) {
+    document.getElementById("assignedMain").style.top = "500px";
+    let categoryColor = categoryColors[x];
+    document.getElementById("dropdown").classList.remove("scrollbar");
+    document.getElementById("selCategory").innerHTML = ``
+    if (categoryColor == "lila") {
+
         document.getElementById("selCategory").innerHTML = `
-        ${categoryName} ${categoryColor}
-    `;
-        document.getElementById("dropdown").innerHTML = "";
-        dropdown_clicked = false;
+        <span class="selectPurple" id="selCategory">${categoryNames[x]}</span>
+        `
     }
+    else if (categoryColor == "rot") {
+        document.getElementById("selCategory").innerHTML = `
+        <span class="selectRed" id="selCategory">${categoryNames[x]}</span>
+        `
+    }
+    else if (categoryColor == "blau") {
+        document.getElementById("selCategory").innerHTML = `
+        <span class="selectBlue" id="selCategory">${categoryNames[x]}</span>
+        `
+    }
+    else if (categoryColor == "grün") {
+
+        document.getElementById("selCategory").innerHTML = `
+        <span class="selectGreen" id="selCategory">${categoryNames[x]}</span>
+        `
+    }
+    else if (categoryColor == "hellblau") {
+        document.getElementById("selCategory").innerHTML = `
+        <span class="selectLightBlue" id="selCategory">${categoryNames[x]}</span>
+        `
+    }
+    else if (categoryColor == "orange") {
+        document.getElementById("selCategory").innerHTML = `
+        <span class="selectOrange" id="selCategory">${categoryNames[x]}</span>
+        `
+    }
+    document.getElementById("dropdown").innerHTML = "";
+    dropdown_clicked = false;
 }
 
 
 
 
+
+
+
 function categoryAdd() {
+    document.getElementById("dropdown").classList.remove("scrollbar");
     document.getElementById('delFunc').removeAttribute("onclick");
     document.getElementById("selCategory").innerHTML = `
     <div class="flex3"><input class="input-trans2 widthCategory" placeholder="Category name ..." id="inputCategory" required><div class="sub-task-btn">
@@ -226,12 +242,18 @@ function categoryAdd() {
 
 
 function categoryPush(event) {
-
+    document.getElementById("dropdown").classList.remove("scrollbar");
     categoryNames.push(categoryName);
     categoryColors.push(color);
     console.log(categoryNames)
     console.log(categoryColors)
-    dropdownCategory();
+    document.getElementById("dropdown").innerHTML = "";
+    document.getElementById('selectColor').classList.add('d-none');
+    document.getElementById('arrowEnd').classList.add('arrowEnd');
+    document.getElementById('arrowEnd').classList.add('dropdownPadding');
+    closeCategory();
+    toggleDropdown();
+
     event.preventDefault();
 
 };
@@ -240,7 +262,7 @@ function closeCategory() {
     document.getElementById("ctgDropdown").innerHTML = "";
     document.getElementById("DropdownMain").innerHTML = `
     <div class="dropdown" id="ctgDropdown">
-            <div class="hoverDropdown" id="delFunc" onclick="dropdownCategory()">
+            <div class="hoverDropdown" id="delFunc" onclick="toggleDropdown()">
             <div class="arrowEnd dropdownPadding" id="arrowEnd">
             <span class="test" id="selCategory">Select task category </span>
             
