@@ -283,6 +283,8 @@ function closeRenderCategoryInfo() {
 }
 
 function changeCategoryInfo(task) {
+    let titleUpdate = document.getElementById('titleValue').value;
+    let descriptionUpdate = document.getElementById('descriptionValue').value;
     document.getElementById('fullscreen').innerHTML = /*html*/ `
     <div class="infoWindow changeInfo" style="padding: 3rem 6rem 6rem 6rem">
         <img class="close_icon" src="img/closeImage.png" alt="close-image" onclick="closeRenderCategoryInfo()">
@@ -294,9 +296,13 @@ function changeCategoryInfo(task) {
         <input type="date" class="info_section">
         <p>Prio</p>
         <p>Assigned to</p>
-        <img class="change_icon" src="img/changeImage.png" alt="change-image" onclick="renderCategoryInfo(taskForCategoryInfo)">
+        <img class="change_icon" src="img/changeImage2.png" alt="change-image" onclick="renderCategoryInfo(taskForCategoryInfo)">
     </div>
     `;
+
+    if (titleUpdate != tasks.title) {
+        titleUpdate.push
+    }
 
     document.getElementById('titleValue').value = `${task.title}`;
     document.getElementById('descriptionValue').value = `${task.description}`;
