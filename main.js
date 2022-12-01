@@ -58,6 +58,7 @@ for (let i = 0; i < tasks.length; i++) {
 let currentDraggedElement;
 let dragging = false;
 let hideArr = [];           // Array for filtering tasks (filterFunction())
+let taskForCategoryInfo;
 
 // Filter Tasks Depending On Status
 let toDo = tasks.filter(tasks => tasks.status == "To Do");
@@ -261,7 +262,7 @@ function filterFunction() {
 }
 
 function renderCategoryInfo(task) {
-    console.log(task);
+    taskForCategoryInfo = task;
     document.getElementById('fullscreen').style.visibility = 'visible';
     document.getElementById('fullscreen').innerHTML = /*html*/ `
     <ul class="infoWindow" onblur="closeRenderCategoryInfo()">
@@ -269,14 +270,34 @@ function renderCategoryInfo(task) {
         <li class="category ${catColors[task.category]}">${task.category}</li>
         <li class="title" contenteditable="true" onfocusout="updateItem(${task.id})">${task.title}</li>
         <li class="description" contenteditable="true" onfocusout="updateItem(${task.id})">${task.description}</li>
-        <p class="info_font">Due date:  ${task.dueDate}</p><span></span>
-        <p class="info_font">Priority:  </p><span></span>
-        <p class="info_font">Assigned to:   </p><span></span>
-        <img class="change_icon" src="img/changeImage.png" alt="change-image">
+        <p class="info_font">Due date:<span class="dueDate"> ${task.dueDate}</span></p>
+        <p class="info_font">Priority:<span></span></p>
+        <p class="info_font">Assigned to:<span></span></p>
+        <img class="change_icon" src="img/changeImage.png" alt="change-image" onclick="changeCategoryInfo(taskForCategoryInfo)">
     </ul>
     `;
 }
 
 function closeRenderCategoryInfo() {
     document.getElementById('fullscreen').style.visibility = 'hidden';
+}
+
+function changeCategoryInfo(task) {
+    document.getElementById('fullscreen').innerHTML = /*html*/ `
+    <div class="infoWindow changeInfo" style="padding: 3rem 6rem 6rem 6rem">
+        <img class="close_icon" src="img/closeImage.png" alt="close-image" onclick="closeRenderCategoryInfo()">
+        <p>Title</p>
+        <input id="titleValue" type="text" class="info_section">
+        <p>Description</p>
+        <textarea id="descriptionValue" name="description_text" cols="30" rows="10" class="info_section"></textarea>
+        <p>Due date</p>
+        <input type="date" class="info_section">
+        <p>Prio</p>
+        <p>Assigned to</p>
+        <img class="change_icon" src="img/changeImage.png" alt="change-image" onclick="renderCategoryInfo(taskForCategoryInfo)">
+    </div>
+    `;
+
+    document.getElementById('titleValue').value = `${task.title}`;
+    document.getElementById('descriptionValue').value = `${task.description}`;
 }
