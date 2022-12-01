@@ -327,6 +327,12 @@ button img {
     bottom: 2.5rem;
 }
 
+.change_icon2 {
+    background-color: #000;
+    padding: 4px;
+    border-radius: 5px;
+}
+
 .change_icon:hover {
     cursor: pointer;
 }
