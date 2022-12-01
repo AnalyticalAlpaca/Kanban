@@ -4,8 +4,8 @@ let prios = [];
 let titles = [];
 let descriptions = [];
 let dates = [];
-
-
+let selectedCategory = [];
+let selectedColor = [];
 function select() {
     document.getElementById('menu_links').classList.add('menu_links_selected')
 }
@@ -172,11 +172,13 @@ function addnewCategory() {
     }
 
 }
-
-
+let currentCategory;
+let currentColor;
 function categoryShow(x) {
     document.getElementById("assignedMain").style.top = "500px";
     let categoryColor = categoryColors[x];
+    currentColor = categoryColors[x];
+    currentCategory = categoryNames[x];
     document.getElementById("dropdown").classList.remove("scrollbar");
     document.getElementById("selCategory").innerHTML = ``
     if (categoryColor == "lila") {
@@ -211,8 +213,11 @@ function categoryShow(x) {
         <span class="selectOrange" id="selCategory">${categoryNames[x]}</span>
         `
     }
+
+
     document.getElementById("dropdown").innerHTML = "";
     dropdown_clicked = false;
+
 }
 
 
@@ -411,9 +416,11 @@ function createTask() {
     console.log(titles);
     prios.push(selectedPrio);
     console.log(prios);
-
+    selectedCategory.push(currentCategory);
+    selectedColor.push(currentColor);
+    console.log(selectedCategory);
+    console.log(selectedColor);
 }
-
 function clearInput() {
     document.getElementById('title-Input').value = "";
     document.getElementById("descriptionInput").value = "";
