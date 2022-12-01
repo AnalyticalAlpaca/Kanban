@@ -527,12 +527,12 @@ gap:unset
             background-color: #F6F7F8; 
             width:100vw;
             height:100vh;
-            top: 0;
+            top: 100px;
             bottom: 0;
             left: 0;
             right: 0;
-            z-index: 1200;
-            animation: fadeOpacityOut 1s ease 3s 1 normal forwards;
+           z-index: 1200;
+            animation: fadeOpacityOut 1s ease 3s 1 normal forwards; 
             margin-left:unset;
             
             

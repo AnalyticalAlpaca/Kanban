@@ -156,6 +156,21 @@ a{
     cursor:pointer;
 }
 
+#logout_box_mobil{
+    z-index:1300;
+    width:100px;
+    height:120px;
+    background-color:#091931;
+    color:white;
+    text-align:center;
+    line-height:220%;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius:20px;
+    border-top-left-radius:20px;
+    font-size:14px;
+    gap:10px
+   
+}
 
 
 .display_column{
@@ -179,10 +194,18 @@ a{
     cursor:pointer;
 }
 
+
+.display_column img{
+    width: 60px;
+    height:60px;
+    cursor:pointer;
+}
+
 @media(max-width:540px){
 .footer_mobil{
     height:70px!important
 }
+
 
 
 }
@@ -196,6 +219,8 @@ a{
     padding-top:35px;
     margin-left:31px;
     }
+
+
 
 .sidebar{
     display:none
@@ -254,7 +279,6 @@ a{
 }
 
 .headline_mobil{
-    display: unset;
     display: flex;   
     justify-content: space-between;
     align-items: center;
@@ -266,6 +290,7 @@ a{
 .img_logo_header_mobile{
     width:35px
 }
+
 
 .main_headline_mobile{
     display:unset;
