@@ -149,6 +149,10 @@ button img {
     box-shadow: 2px 2px 2px 2px #808080;
 }
 
+.category_container:hover {
+    box-shadow: none;
+}
+
 .sectionBox {
     overflow-y: auto;
     max-height: 54vh;
