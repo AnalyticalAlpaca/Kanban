@@ -293,7 +293,7 @@ function changeCategoryInfo(task) {
         <p>Description</p>
         <textarea id="descriptionValue" name="description_text" cols="30" rows="10" class="info_section"></textarea>
         <p>Due date</p>
-        <input type="date" class="info_section">
+        <input id="dateValue" type="date" class="info_section">
         <p>Prio</p>
         <p>Assigned to</p>
         <img class="change_icon change_icon2" src="img/changeImage2.png" alt="change-image" onclick="renderCategoryInfo(taskForCategoryInfo)">
@@ -301,9 +301,10 @@ function changeCategoryInfo(task) {
     `;
 
     // if (titleUpdate != tasks.title) {
-    //     titleUpdate.push
+    //     titleUpdate.JSON.push
     // }
 
     document.getElementById('titleValue').value = `${task.title}`;
     document.getElementById('descriptionValue').value = `${task.description}`;
+    document.getElementById('dateValue').value = `${task.dueDate}`;
 }
