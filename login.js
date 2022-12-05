@@ -54,7 +54,7 @@ function loadForgotPassword(){
 
 async function signup() {
     let name = checkIfNameIsComplete('name');
-    let email = document.getElementById('email_signup');
+    let email = checkIfMailIsCorrect('email_signup');
     let password = document.getElementById('password_signup');
     
     userInformation.push({fullname: name.value, password: password.value, mail: email.value});  
@@ -75,6 +75,16 @@ async function signup() {
     }
 }
 
+function checkIfMailIsCorrect(id){
+    let regMail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let mailtocheck = document.getElementById(id).value;
+    if(!regMail.test(mailtocheck)){
+        alert('Please use a valid email adress (using @).');
+        document.getElementById(id).focus();
+    }else{
+        return document.getElementById(id);
+    } 
+}
 
   
 async function login(){

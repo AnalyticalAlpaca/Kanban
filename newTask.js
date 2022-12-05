@@ -4,8 +4,8 @@ let prios = [];
 let titles = [];
 let descriptions = [];
 let dates = [];
-
-
+let selectedCategory = [];
+let selectedColor = [];
 function select() {
     document.getElementById('menu_links').classList.add('menu_links_selected')
 }
@@ -67,7 +67,7 @@ function submitSubtask(event) {
 
 
         document.getElementById("subtaskCheck").innerHTML += `
-    <input type="checkbox" checked="checked">${prioInput}<br>`
+        <span><input type="checkbox" checked="checked">${prioInput}<br></span>`
         closeSubtask(event);
         event.preventDefault();
     }
@@ -172,11 +172,13 @@ function addnewCategory() {
     }
 
 }
-
-
+let currentCategory;
+let currentColor;
 function categoryShow(x) {
     document.getElementById("assignedMain").style.top = "500px";
     let categoryColor = categoryColors[x];
+    currentColor = categoryColors[x];
+    currentCategory = categoryNames[x];
     document.getElementById("dropdown").classList.remove("scrollbar");
     document.getElementById("selCategory").innerHTML = ``
     if (categoryColor == "lila") {
@@ -211,8 +213,11 @@ function categoryShow(x) {
         <span class="selectOrange" id="selCategory">${categoryNames[x]}</span>
         `
     }
+
+
     document.getElementById("dropdown").innerHTML = "";
     dropdown_clicked = false;
+
 }
 
 
@@ -242,20 +247,29 @@ function categoryAdd() {
 
 
 function categoryPush(event) {
-    document.getElementById("dropdown").classList.remove("scrollbar");
-    categoryNames.push(categoryName);
-    categoryColors.push(color);
-    console.log(categoryNames)
-    console.log(categoryColors)
-    document.getElementById("dropdown").innerHTML = "";
-    document.getElementById('selectColor').classList.add('d-none');
-    document.getElementById('arrowEnd').classList.add('arrowEnd');
-    document.getElementById('arrowEnd').classList.add('dropdownPadding');
-    closeCategory();
-    toggleDropdown();
+    categoryName = document.getElementById('inputCategory').value
+    if (categoryName == "" || color == null) {
+        alert("bitte etwas eingeben")
+    } else {
 
-    event.preventDefault();
 
+        document.getElementById("dropdown").classList.remove("scrollbar");
+        categoryNames.push(categoryName);
+        categoryColors.push(color);
+        console.log(categoryNames);
+        console.log(categoryColors);
+        categoryName = undefined;
+        color = undefined;
+        document.getElementById("dropdown").innerHTML = "";
+        document.getElementById('selectColor').classList.add('d-none');
+        document.getElementById('arrowEnd').classList.add('arrowEnd');
+        document.getElementById('arrowEnd').classList.add('dropdownPadding');
+
+        closeCategory();
+        toggleDropdown();
+
+        event.preventDefault();
+    }
 };
 
 function closeCategory() {
@@ -411,9 +425,11 @@ function createTask() {
     console.log(titles);
     prios.push(selectedPrio);
     console.log(prios);
-
+    selectedCategory.push(currentCategory);
+    selectedColor.push(currentColor);
+    console.log(selectedCategory);
+    console.log(selectedColor);
 }
-
 function clearInput() {
     document.getElementById('title-Input').value = "";
     document.getElementById("descriptionInput").value = "";
