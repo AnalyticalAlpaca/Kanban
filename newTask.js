@@ -67,7 +67,7 @@ function submitSubtask(event) {
 
 
         document.getElementById("subtaskCheck").innerHTML += `
-    <input type="checkbox" checked="checked">${prioInput}<br>`
+        <span><input type="checkbox" checked="checked">${prioInput}<br></span>`
         closeSubtask(event);
         event.preventDefault();
     }
@@ -247,20 +247,29 @@ function categoryAdd() {
 
 
 function categoryPush(event) {
-    document.getElementById("dropdown").classList.remove("scrollbar");
-    categoryNames.push(categoryName);
-    categoryColors.push(color);
-    console.log(categoryNames)
-    console.log(categoryColors)
-    document.getElementById("dropdown").innerHTML = "";
-    document.getElementById('selectColor').classList.add('d-none');
-    document.getElementById('arrowEnd').classList.add('arrowEnd');
-    document.getElementById('arrowEnd').classList.add('dropdownPadding');
-    closeCategory();
-    toggleDropdown();
+    categoryName = document.getElementById('inputCategory').value
+    if (categoryName == "" || color == null) {
+        alert("bitte etwas eingeben")
+    } else {
 
-    event.preventDefault();
 
+        document.getElementById("dropdown").classList.remove("scrollbar");
+        categoryNames.push(categoryName);
+        categoryColors.push(color);
+        console.log(categoryNames);
+        console.log(categoryColors);
+        categoryName = undefined;
+        color = undefined;
+        document.getElementById("dropdown").innerHTML = "";
+        document.getElementById('selectColor').classList.add('d-none');
+        document.getElementById('arrowEnd').classList.add('arrowEnd');
+        document.getElementById('arrowEnd').classList.add('dropdownPadding');
+
+        closeCategory();
+        toggleDropdown();
+
+        event.preventDefault();
+    }
 };
 
 function closeCategory() {
