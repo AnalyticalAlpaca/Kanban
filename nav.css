@@ -141,7 +141,7 @@ a{
     display:none;
 }
 
-#logout_box{
+.logout_box{
     z-index:999;
     width:100px;
     height:50px;
@@ -156,7 +156,7 @@ a{
     cursor:pointer;
 }
 
-#logout_box_mobil{
+.logout_box_mobil{
     z-index:1300;
     width:100px;
     height:120px;
