@@ -39,6 +39,7 @@ async function renderSummary() {
     renderUrgentTasks();
     renderTasksTodo();
     renderTasksDone();
+    showUpcomingDeadline();
    
 }
 
@@ -111,6 +112,35 @@ function renderTasksDone(){
 }
 
 function showUpcomingDeadline(){
-    
+    duedateOutput = document.getElementById('current_date');
+    let dueDate = tasks.filter(tasks => tasks.dueDate == "2022-11-15");
+    console.log(dueDate);
+    duedateOutput.innerHTML = dueDate; 
 }
 
+
+function upcomingDeadline(){
+    let findnextDate = 
+    }
+
+/* function parseDate(input) {
+    var parts = input.split('-');  
+      // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+      return new Date(parts[2], parts[0]-1, parts[1]); // Note: months are 0-based
+      
+    }
+     */
+
+
+/* function upcomingDeadline(){
+    var nextdate, today = new Date();
+
+    for(var i=0; i<tasks.length; i++){
+        if(parseDate(tasks[i].dueDate) > today){
+            nextdate = tasks[i].dueDate;
+            break;
+        }
+    }
+    
+}
+   */
