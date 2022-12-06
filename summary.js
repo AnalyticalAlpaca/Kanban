@@ -87,7 +87,7 @@ function renderTasksFeedback(){
 
 function renderUrgentTasks(){
     let tasksUrgentOutput = document.getElementById('urgent_task');
-    let urgent = tasks.filter(tasks => tasks.prio == "Urgent").length;
+    let urgent = allTask.filter(allTask => allTask.prios == "Urgent").length;
     console.log('Urgent tasks:' +` ${urgent}`);
     tasksUrgentOutput.innerHTML = urgent; 
 }
