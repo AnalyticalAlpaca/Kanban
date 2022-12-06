@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Add Task</title>
+    
     <link rel="stylesheet" href="newTask.css">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="nav.css">
@@ -149,7 +149,7 @@
         </div>
         </div>
              
-            <div id="dropdown">
+            <div id="dropdown" class="d-none">
             
         </div>
         
@@ -169,7 +169,7 @@
         Assigned to
          
          <div class="dropdown" id="assignDropdown">
-            <div class="hoverDropdown">
+            <div class="hoverDropdown" onclick="toggleDropdown2()">
             <div class="arrowEnd dropdownPadding">
             <span class="test">Select task category 
             </span>
@@ -177,7 +177,7 @@
         </div>
         </div>
              
-            <div id="dropdown2">
+            <div id="dropdown2" class="d-none">
             
         </div>
         
@@ -188,7 +188,7 @@
     <button class="clearBtn" onclick="clearInput()"> <span class="clearFont"><span style="margin-left: -30px;">Clear</span></span></button>
     <button class="createTaskBtn" onclick="createTask()"><span class="createTaskFont"><span>Create Task</span> <span><img src="img/accept.png" class="createTasKImg"></span></span></button>
 </div>
-        <!-- <div class="vr1"></div> -->
+        <div class="vr1"></div> 
         
     </div>
     </div>
