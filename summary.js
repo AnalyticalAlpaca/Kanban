@@ -14,6 +14,7 @@ async function renderSummary() {
     userInformation = JSON.parse(backend.getItem('userInformation')) || [];
     activeUserName = JSON.parse(backend.getItem('activeUserName')) || [];
     tasks = JSON.parse(backend.getItem('tasks')) || [];
+    allTask = JSON.parse(backend.getItem('allTask')) || [];
 
     
 
@@ -39,7 +40,7 @@ async function renderSummary() {
     renderUrgentTasks();
     renderTasksTodo();
     renderTasksDone();
-    showUpcomingDeadline();
+    upcomingDeadline();
    
 }
 
@@ -68,12 +69,6 @@ function renderTasksInBoard(){
     tasksInBoardOutput.innerHTML = tasksInBoard;
 }
 
-
-/* // Filter Tasks Depending On Status
-toDo = tasks.filter(tasks => tasks.status == "To Do");
-inProgress = tasks.filter(tasks => tasks.status == "In Progress");
-awaitingFeedback = tasks.filter(tasks => tasks.status == "Awaiting Feedback");
-done = tasks.filter(tasks => tasks.status == "Done"); */
 
 function renderTasksInProgress(){
     let tasksInProgressOutput = document.getElementById('tasks_in_progress');
@@ -111,36 +106,36 @@ function renderTasksDone(){
     tasksDoneOutput.innerHTML = doneTasks; 
 }
 
-function showUpcomingDeadline(){
+/* function showUpcomingDeadline(){
     duedateOutput = document.getElementById('current_date');
-    let dueDate = tasks.filter(tasks => tasks.dueDate == "2022-11-15");
+    let dueDate = upcomingDeadline();
     console.log(dueDate);
     duedateOutput.innerHTML = dueDate; 
 }
-
-
-/* function upcomingDeadline(){
-    let findnextDate = 
-    }
  */
-/* function parseDate(input) {
+
+function upcomingDeadline(){
+    var findnextDate;
+    var today = new Date();
+    duedateOutput = document.getElementById('current_date');
+
+    for ( var i = 0; i < tasks.length; i++){
+        if(parseDate(tasks[i].dueDate) > today){
+           findnextDate = tasks[i].dueDate
+           break; 
+            }                 
+    }   
+
+    console.log(findnextDate);
+    duedateOutput.innerHTML =  findnextDate ; 
+  
+}  
+
+
+function parseDate(input) {
     var parts = input.split('-');  
       // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
       return new Date(parts[2], parts[0]-1, parts[1]); // Note: months are 0-based
       
     }
-     */
-
-
-/* function upcomingDeadline(){
-    var nextdate, today = new Date();
-
-    for(var i=0; i<tasks.length; i++){
-        if(parseDate(tasks[i].dueDate) > today){
-            nextdate = tasks[i].dueDate;
-            break;
-        }
-    }
     
-}
-   */
