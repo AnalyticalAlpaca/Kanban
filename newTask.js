@@ -8,12 +8,11 @@ let selectedCategory = [];
 let selectedColor = [];
 let allTask = [];
 
-setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
 
 async function init() {
+    setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     allTask = JSON.parse(backend.getItem('allTask')) || [];
-    backend.setItem('allTask');
 }
 
 let selectedPrio;
@@ -498,6 +497,7 @@ function createTask() {
     }
 
     allTask.push(task);
+    save();
     console.log(allTask);
     clearInput();
 
@@ -512,4 +512,8 @@ function clearInput() {
     prioDefault();
     closeCategory();
     closeAssigned();
+}
+
+async function save(){
+    await backend.setItem('allTask');
 }
