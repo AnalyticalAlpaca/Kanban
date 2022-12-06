@@ -6,9 +6,37 @@ let descriptions = [];
 let dates = [];
 let selectedCategory = [];
 let selectedColor = [];
-function select() {
-    document.getElementById('menu_links').classList.add('menu_links_selected')
-}
+let allTask = [];
+// async function loadDataFromServer() {
+
+//     setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
+// };
+// async function initLogin() {
+
+//     await loadDataFromServer();
+//     await downloadFromServer();
+//     prios = JSON.parse(backend.getItem('prios')) || [];
+//     titles = JSON.parse(backend.getItem('titles')) || [];
+//     descriptions = JSON.parse(backend.getItem('descriptions')) || [];
+//     dates = JSON.parse(backend.getItem('dates')) || [];
+//     selectedCategory = JSON.parse(backend.getItem('selectedCategory')) || [];
+//     selectedColor = JSON.parse(backend.getItem('selectedColor')) || [];
+// };
+
+// function select() {
+//     document.getElementById('menu_links').classList.add('menu_links_selected')
+// };
+
+// async function signup() {
+//     let name = checkIfNameIsComplete('name');
+//     let email = checkIfMailIsCorrect('email_signup');
+//     let password = document.getElementById('password_signup');
+
+//     userInformation.push({ fullname: name.value, password: password.value, mail: email.value });
+//     await backend.setItem('userInformation', JSON.stringify(userInformation));
+
+// }
+
 let selectedPrio;
 function prioDefault() {
     document.getElementById('medium-img').src = "img/medium.png";
@@ -82,22 +110,60 @@ function closeSubtask(event) {
     document.getElementById('subtask').value = "";
     event.preventDefault();
 }
-// let dropdown_clicked = false;
+
 function toggleDropdown() {
 
     let dropdown = document.getElementById("dropdown");
+    document.getElementById("dropdown2").classList.add("d-none")
     if (dropdown.classList.contains("d-none")) {
-
         document.getElementById("assignedMain").style.top = "650px";
         dropdown.classList.remove('d-none');
 
         dropdownCategory();
-        dropdown_clicked = true;
+
     } else {
         dropdown.classList.add("d-none");
         document.getElementById("assignedMain").style.top = "500px";
-        dropdown_clicked = false;
     }
+}
+function toggleDropdown2() {
+    let dropdown = document.getElementById("dropdown2");
+    if (dropdown.classList.contains("d-none")) {
+        dropdown.classList.remove('d-none');
+        document.getElementById("dropdown").classList.add("d-none");
+        document.getElementById("assignedMain").style.top = "500px";
+        dropdownCategory2();
+
+    } else {
+        dropdown.classList.add("d-none");
+        document.getElementById("dropdown").classList.add("d-none");
+        document.getElementById("assignedMain").style.top = "500px";
+    }
+
+}
+function dropdownCategory2() {
+    document.getElementById("dropdown2").innerHTML = `
+          
+          <br>
+              <div class="category dropdownPadding" id="person1" onclick="categoryAdd()">
+                  <span class="test">
+                  Julius Peterson
+                  </span>
+              </div>
+                        
+              <div class="category2 dropdownPadding" id="person2">
+                  <span class="test" onclick="toggleDropdown()">
+                      Tyson Ngu
+                  </span>
+              </div>
+              
+              <div class="category2 dropdownPadding" id="person3">
+                  <span class="test" onclick="toggleDropdown()">
+                      Sebastian Mayer
+                  </span>
+              </div>
+              `;
+
 }
 function dropdownCategory() {
     document.getElementById("assignedMain").style.top = "650px";
@@ -128,6 +194,7 @@ function dropdownCategory() {
               `;
     addnewCategory();
 }
+
 
 
 function addnewCategory() {
@@ -216,15 +283,8 @@ function categoryShow(x) {
 
 
     document.getElementById("dropdown").innerHTML = "";
-    dropdown_clicked = false;
 
 }
-
-
-
-
-
-
 
 function categoryAdd() {
     document.getElementById("dropdown").classList.remove("scrollbar");
@@ -320,8 +380,7 @@ function selectedRed() {
     document.getElementById('selectPurple').classList.remove('selectedPurple');
     document.getElementById('selectBlue').classList.remove('selectedBlue');
     document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
-    // categoryNames.push(categoryName);
-    // categoryColors.push(color);
+
 }
 function selectedGreen() {
     color = "grün";
@@ -338,8 +397,7 @@ function selectedGreen() {
     document.getElementById('selectPurple').classList.remove('selectedPurple');
     document.getElementById('selectBlue').classList.remove('selectedBlue');
     document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
-    // categoryNames.push(categoryName);
-    // categoryColors.push(color);
+
 }
 function selectedOrange() {
     color = "orange";
@@ -356,8 +414,7 @@ function selectedOrange() {
     document.getElementById('selectPurple').classList.remove('selectedPurple');
     document.getElementById('selectBlue').classList.remove('selectedBlue');
     document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
-    // categoryNames.push(categoryName);
-    // categoryColors.push(color);
+
 }
 function selectedPurple() {
     color = "lila";
@@ -374,8 +431,7 @@ function selectedPurple() {
     document.getElementById('selectPurple').classList.remove('selectPurple');
     document.getElementById('selectBlue').classList.remove('selectedBlue');
     document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
-    // categoryNames.push(categoryName);
-    // categoryColors.push(color);
+
 }
 function selectedLightBlue() {
     color = "hellblau";
@@ -391,8 +447,7 @@ function selectedLightBlue() {
     document.getElementById('selectOrange').classList.remove('selectedOrange');
     document.getElementById('selectPurple').classList.remove('selectedPurple');
     document.getElementById('selectBlue').classList.remove('selectedBlue');
-    // categoryNames.push(categoryName);
-    // categoryColors.push(color);
+
 
 }
 function selectedBlue() {
@@ -409,26 +464,29 @@ function selectedBlue() {
     document.getElementById('selectOrange').classList.remove('selectedOrange');
     document.getElementById('selectPurple').classList.remove('selectedPurple');
     document.getElementById('selectLightBlue').classList.remove('selectedLightBlue');
-    // categoryNames.push(categoryName);
-    // categoryColors.push(color);
+
 }
 
 function createTask() {
     let titleInput = document.getElementById('title-Input').value;
     let description = document.getElementById("descriptionInput").value;
     let date = document.getElementById("dateInput").value;
-    dates.push(date);
-    console.log(dates);
-    descriptions.push(description);
-    console.log(descriptions);
-    titles.push(titleInput);
-    console.log(titles);
-    prios.push(selectedPrio);
-    console.log(prios);
-    selectedCategory.push(currentCategory);
-    selectedColor.push(currentColor);
-    console.log(selectedCategory);
-    console.log(selectedColor);
+    let task =
+    {
+        title: titleInput,
+        descriptions: description,
+        taskDate: date,
+        prios: selectedPrio,
+        categoryNames: currentCategory,
+        categoyColors: currentColor,
+    }
+
+    allTask.push(task);
+    console.log(allTask);
+    clearInput();
+
+
+
 }
 function clearInput() {
     document.getElementById('title-Input').value = "";
