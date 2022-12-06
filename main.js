@@ -1,46 +1,48 @@
 "use strict"
 
-let tasks = [
-    {
-        "status": "To Do",
-        "category": "Design",
-        "title": "Website redesign",
-        "description": "Modify the contents of the main website",
-        "dueDate": "2022-11-15",
-        "id": 0,
-        "visibility": true
-    },
+// let tasks = [
+//     {
+//         "status": "To Do",
+//         "category": "Design",
+//         "title": "Website redesign",
+//         "description": "Modify the contents of the main website",
+//         "dueDate": "2022-11-15",
+//         "id": 0,
+//         "visibility": true
+//     },
 
-    {
-        "status": "In Progress",
-        "category": "Sales",
-        "title": "Call potencial clients",
-        "description": "Make the product presentation to prospective buyers",
-        "dueDate": "2022-11-15",
-        "id": 1,
-        "visibility": true
-    },
+//     {
+//         "status": "In Progress",
+//         "category": "Sales",
+//         "title": "Call potencial clients",
+//         "description": "Make the product presentation to prospective buyers",
+//         "dueDate": "2022-11-15",
+//         "id": 1,
+//         "visibility": true
+//     },
 
-    {
-        "status": "Awaiting Feedback",
-        "category": "Backoffice",
-        "title": "Accounting invoices",
-        "description": "Write open invoices for customer",
-        "dueDate": "2022-11-15",
-        "id": 2,
-        "visibility": true
-    },
+//     {
+//         "status": "Awaiting Feedback",
+//         "category": "Backoffice",
+//         "title": "Accounting invoices",
+//         "description": "Write open invoices for customer",
+//         "dueDate": "2022-11-15",
+//         "id": 2,
+//         "visibility": true
+//     },
 
-    {
-        "status": "Done",
-        "category": "Marketing",
-        "title": "Social media strategy",
-        "description": "Develop an ad campaign for brand positioning",
-        "dueDate": "2022-11-15",
-        "id": 3,
-        "visibility": true
-    }
-];
+//     {
+//         "status": "Done",
+//         "category": "Marketing",
+//         "title": "Social media strategy",
+//         "description": "Develop an ad campaign for brand positioning",
+//         "dueDate": "2022-11-15",
+//         "id": 3,
+//         "visibility": true
+//     }
+// ];
+
+let tasks;
 
 let catColors = {
     "Design": "color1",
@@ -49,22 +51,27 @@ let catColors = {
     "Marketing": "color4"
 };
 
-load();
-// Make all tasks visible when restarting website
-for (let i = 0; i < tasks.length; i++) {
-    tasks[i].visibility = true;    
-}
-
 let currentDraggedElement;
 let dragging = false;
 let hideArr = [];           // Array for filtering tasks (filterFunction())
 let taskForCategoryInfo;
 
+async function initTasks() {
+    setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
+    await downloadFromServer();
+    tasks = JSON.parse(backend.getItem('tasks')) || [];
+    // Make all tasks visible when restarting website
+    for (let i = 0; i < tasks.length; i++) {
+        tasks[i].visibility = true;    
+    }
+    initBoard();
+}
+
 // Filter Tasks Depending On Status
-let toDo = tasks.filter(tasks => tasks.status == "To Do");
-let inProgress = tasks.filter(tasks => tasks.status == "In Progress");
-let awaitingFeedback = tasks.filter(tasks => tasks.status == "Awaiting Feedback");
-let done = tasks.filter(tasks => tasks.status == "Done");
+let toDo;
+let inProgress;
+let awaitingFeedback;
+let done;
 
 function renderBoard() {
     emptyBoard();
@@ -209,16 +216,8 @@ function updateItem(id) {
     save();
 }
 
-function save() {
-    let tasksAsString = JSON.stringify(tasks);
-    localStorage.setItem("tasks", tasksAsString);
-}
-
-function load() {
-    let tasksAsString = localStorage.getItem("tasks");
-    if (tasksAsString) {
-        tasks = JSON.parse(tasksAsString);
-    }
+async function save() {
+    await backend.setItem('tasks', JSON.stringify(tasks));
 }
 
 function rotate(id) {
