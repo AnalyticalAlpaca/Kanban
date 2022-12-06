@@ -515,5 +515,5 @@ function clearInput() {
 }
 
 async function save(){
-    await backend.setItem('allTask');
+    await backend.setItem('allTask', JSON.stringify(allTask));
 }
