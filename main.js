@@ -170,7 +170,7 @@ function emptyBoard() {
 
 // Add New Task
 function addTask() {
-    console.log("'addTask' noch nicht gemacht!")
+    console.log('Hier kommt Add New Task');
 }
 
 // Drag Tasks
@@ -282,8 +282,6 @@ function closeRenderCategoryInfo() {
 }
 
 function changeCategoryInfo(task) {
-    // let titleUpdate = document.getElementById('titleValue').value;
-    // let descriptionUpdate = document.getElementById('descriptionValue').value;
     document.getElementById('fullscreen').innerHTML = /*html*/ `
     <div class="infoWindow changeInfo" style="padding: 3rem 6rem 6rem 6rem">
         <img class="close_icon" src="img/closeImage.png" alt="close-image" onclick="closeRenderCategoryInfo()">
@@ -298,10 +296,6 @@ function changeCategoryInfo(task) {
         <img class="change_icon change_icon2" src="img/changeImage2.png" alt="change-image" onclick="renderCategoryInfo(taskForCategoryInfo)">
     </div>
     `;
-
-    // if (titleUpdate != tasks.title) {
-    //     titleUpdate.JSON.push
-    // }
 
     document.getElementById('titleValue').value = `${task.title}`;
     document.getElementById('descriptionValue').value = `${task.description}`;
