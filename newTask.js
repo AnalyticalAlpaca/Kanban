@@ -6,13 +6,14 @@ let descriptions = [];
 let dates = [];
 let selectedCategory = [];
 let selectedColor = [];
-let allTask = [];
+let allTask;
 
 
 async function init() {
     setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     allTask = JSON.parse(backend.getItem('allTask')) || [];
+    save();
 }
 
 let selectedPrio;
