@@ -7,35 +7,14 @@ let dates = [];
 let selectedCategory = [];
 let selectedColor = [];
 let allTask = [];
-// async function loadDataFromServer() {
 
-//     setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
-// };
-// async function initLogin() {
+setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
 
-//     await loadDataFromServer();
-//     await downloadFromServer();
-//     prios = JSON.parse(backend.getItem('prios')) || [];
-//     titles = JSON.parse(backend.getItem('titles')) || [];
-//     descriptions = JSON.parse(backend.getItem('descriptions')) || [];
-//     dates = JSON.parse(backend.getItem('dates')) || [];
-//     selectedCategory = JSON.parse(backend.getItem('selectedCategory')) || [];
-//     selectedColor = JSON.parse(backend.getItem('selectedColor')) || [];
-// };
-
-// function select() {
-//     document.getElementById('menu_links').classList.add('menu_links_selected')
-// };
-
-// async function signup() {
-//     let name = checkIfNameIsComplete('name');
-//     let email = checkIfMailIsCorrect('email_signup');
-//     let password = document.getElementById('password_signup');
-
-//     userInformation.push({ fullname: name.value, password: password.value, mail: email.value });
-//     await backend.setItem('userInformation', JSON.stringify(userInformation));
-
-// }
+async function init() {
+    await downloadFromServer();
+    allTask = JSON.parse(backend.getItem('allTask')) || [];
+    backend.setItem('allTask');
+}
 
 let selectedPrio;
 function prioDefault() {
@@ -132,7 +111,7 @@ function toggleDropdown2() {
         dropdown.classList.remove('d-none');
         document.getElementById("dropdown").classList.add("d-none");
         document.getElementById("assignedMain").style.top = "500px";
-        dropdownCategory2();
+        dropdownAssigned();
 
     } else {
         dropdown.classList.add("d-none");
@@ -141,30 +120,66 @@ function toggleDropdown2() {
     }
 
 }
-function dropdownCategory2() {
+function dropdownAssigned() {
     document.getElementById("dropdown2").innerHTML = `
           
           <br>
-              <div class="category dropdownPadding" id="person1" onclick="categoryAdd()">
+              <div class="category dropdownPadding" id="person1" onclick="showPerson1()">
                   <span class="test">
                   Julius Peterson
                   </span>
               </div>
                         
-              <div class="category2 dropdownPadding" id="person2">
-                  <span class="test" onclick="toggleDropdown()">
+              <div class="category2 dropdownPadding" id="person2" onclick="showPerson2()">
+                  <span class="test">
                       Tyson Ngu
                   </span>
               </div>
               
-              <div class="category2 dropdownPadding" id="person3">
-                  <span class="test" onclick="toggleDropdown()">
+              <div class="category2 dropdownPadding" id="person3" onclick="showPerson3()">
+                  <span class="test">
                       Sebastian Mayer
                   </span>
               </div>
               `;
-
 }
+function closeAssigned() {
+    document.getElementById('assignDropdown').innerHTML = `
+    <div class="hoverDropdown" onclick="toggleDropdown2()">
+            <div class="arrowEnd dropdownPadding">
+            <span class="test" id="selPerson">
+                Select contact
+            </span>
+            
+        </div>
+        </div>
+             
+            <div id="dropdown2" class="d-none">
+            
+        </div>
+        `
+}
+
+let assignedTo;
+function showPerson1() {
+    let dropdown = document.getElementById("dropdown2");
+    dropdown.classList.add("d-none");
+    document.getElementById('selPerson').innerText = 'Julius Peterson';
+    assignedTo = "Julius Peterson";
+}
+function showPerson2() {
+    let dropdown = document.getElementById("dropdown2");
+    dropdown.classList.add("d-none");
+    document.getElementById('selPerson').innerText = 'Tyson Ngu';
+    assignedTo = "Tyson Ngu";
+}
+function showPerson3() {
+    let dropdown = document.getElementById("dropdown2");
+    dropdown.classList.add("d-none");
+    document.getElementById('selPerson').innerText = 'Sebastian Mayer';
+    assignedTo = "Sebastian Mayer";
+}
+
 function dropdownCategory() {
     document.getElementById("assignedMain").style.top = "650px";
     if (categoryNames.length > 1) {
@@ -479,6 +494,7 @@ function createTask() {
         prios: selectedPrio,
         categoryNames: currentCategory,
         categoyColors: currentColor,
+        assigned: assignedTo,
     }
 
     allTask.push(task);
@@ -494,4 +510,6 @@ function clearInput() {
     document.getElementById("dateInput").value = "";
     document.getElementById('subtask').value = "";
     prioDefault();
+    closeCategory();
+    closeAssigned();
 }

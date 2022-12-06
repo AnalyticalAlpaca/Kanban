@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task</title>
-    
+    <script src="mini_backend.js"></script>
     <link rel="stylesheet" href="newTask.css">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="body.css">
     <script src="newTask.js"></script>
-    <script src="mini_backend.js"></script>
+    
 
 </head>
-<body>
+<body onload="init()">
 
     <div class="join_base">
         <div class="sidebar">
@@ -171,7 +171,8 @@
          <div class="dropdown" id="assignDropdown">
             <div class="hoverDropdown" onclick="toggleDropdown2()">
             <div class="arrowEnd dropdownPadding">
-            <span class="test">Select task category 
+            <span class="test" id="selPerson">
+                Select contact
             </span>
             
         </div>
