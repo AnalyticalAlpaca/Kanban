@@ -43,6 +43,7 @@
 // ];
 
 let tasks;
+let rotation;
 
 let catColors = {
     "Design": "color1",
@@ -89,10 +90,11 @@ function renderBoard() {
             continue
         }
         document.getElementById("toDo").innerHTML += /*html*/`
-        <div id="container${j}" class="category_container" draggable="true" onclick="renderCategoryInfo(toDo[${i}])" ondragstart="startDragging(${toDo[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
+        <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${toDo[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[toDo[i].category]}">${toDo[i].category}</li>
-            <li class="title" contenteditable="true" onfocusout="updateItem(${toDo[i].id})">${toDo[i].title}</li>
-            <li class="description" contenteditable="true" onfocusout="updateItem(${toDo[i].id})">${toDo[i].description}</li>
+            <li class="title" onfocusout="updateItem(${toDo[i].id})">${toDo[i].title}</li>
+            <li class="description" onfocusout="updateItem(${toDo[i].id})">${toDo[i].description}</li>
+            <img src="img/edit_image.png" alt="edit-icon" onclick="renderCategoryInfo(toDo[${i}])" draggable="false" onmouseover="disableDragging(${j})" onmouseleave="enableDragging(${j})">
         </div>
     `;
         j += 1;
@@ -104,10 +106,11 @@ function renderBoard() {
             continue
         }
         document.getElementById("inProgress").innerHTML += /*html*/`
-        <div id="container${j}" class="category_container" draggable="true" onclick="renderCategoryInfo(inProgress[${i}])" ondragstart="startDragging(${inProgress[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
+        <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${inProgress[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[inProgress[i].category]}">${inProgress[i].category}</li>
-            <li class="title" contenteditable="true" onfocusout="updateItem(${inProgress[i].id})">${inProgress[i].title}</li>
-            <li class="description" contenteditable="true" onfocusout="updateItem(${inProgress[i].id})">${inProgress[i].description}</li>
+            <li class="title" onfocusout="updateItem(${inProgress[i].id})">${inProgress[i].title}</li>
+            <li class="description" onfocusout="updateItem(${inProgress[i].id})">${inProgress[i].description}</li>
+            <img src="img/edit_image.png" alt="edit-icon" onclick="renderCategoryInfo(inProgress[${i}])" draggable="false" onmouseover="disableDragging(${j})" onmouseleave="enableDragging(${j})">
         </div>
     `;
         j += 1;
@@ -119,10 +122,11 @@ function renderBoard() {
             continue
         }
         document.getElementById("awaitingFeedback").innerHTML += /*html*/`
-        <div id="container${j}" class="category_container" draggable="true" onclick="renderCategoryInfo(awaitingFeedback[${i}])" ondragstart="startDragging(${awaitingFeedback[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
+        <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${awaitingFeedback[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[awaitingFeedback[i].category]}">${awaitingFeedback[i].category}</li>
-            <li class="title" contenteditable="true" onfocusout="updateItem(${awaitingFeedback[i].id})">${awaitingFeedback[i].title}</li>
-            <li class="description" contenteditable="true" onfocusout="updateItem(${awaitingFeedback[i].id})">${awaitingFeedback[i].description}</li>
+            <li class="title" onfocusout="updateItem(${awaitingFeedback[i].id})">${awaitingFeedback[i].title}</li>
+            <li class="description" onfocusout="updateItem(${awaitingFeedback[i].id})">${awaitingFeedback[i].description}</li>
+            <img src="img/edit_image.png" alt="edit-icon" onclick="renderCategoryInfo(awaitingFeedback[${i}])" draggable="false" onmouseover="disableDragging(${j})" onmouseleave="enableDragging(${j})">
         </div>
     `;
         j += 1;
@@ -134,10 +138,11 @@ function renderBoard() {
             continue
         }
         document.getElementById("done").innerHTML += /*html*/`
-        <div id="container${j}" class="category_container" draggable="true" onclick="renderCategoryInfo(done[${i}])" ondragstart="startDragging(${done[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
+        <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${done[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
             <li class="category ${catColors[done[i].category]}">${done[i].category}</li>
-            <li class="title" contenteditable="true" onfocusout="updateItem(${done[i].id})">${done[i].title}</li>
-            <li class="description" contenteditable="true" onfocusout="updateItem(${done[i].id})">${done[i].description}</li>
+            <li class="title" onfocusout="updateItem(${done[i].id})">${done[i].title}</li>
+            <li class="description" onfocusout="updateItem(${done[i].id})">${done[i].description}</li>
+            <img src="img/edit_image.png" alt="edit-icon" onclick="renderCategoryInfo(done[${i}])" draggable="false" onmouseover="disableDragging(${j})" onmouseleave="enableDragging(${j})">
         </div>
     `;
         j += 1;
@@ -221,7 +226,9 @@ async function save() {
 }
 
 function rotate(id) {
-    document.getElementById(`container${id}`).style.transform = 'rotate(3deg)';
+    if (rotation) {
+        document.getElementById(`container${id}`).style.transform = 'rotate(3deg)';
+    }
 }
 
 function rotateBack(id) {
@@ -300,4 +307,14 @@ function changeCategoryInfo(task) {
     document.getElementById('titleValue').value = `${task.title}`;
     document.getElementById('descriptionValue').value = `${task.description}`;
     document.getElementById('dateValue').value = `${task.dueDate}`;
+}
+
+function disableDragging(j) {
+    document.getElementById(`container${j}`).draggable = false;
+    rotation = false;
+}
+
+function enableDragging(j) {
+    document.getElementById(`container${j}`).draggable = true;
+    rotation = true;
 }

@@ -128,7 +128,6 @@ button img {
     font-weight: 700;
     margin: 1.2rem 0 0.5rem 0;
     outline: none;
-    cursor: text;
     color: #000;
 }
 
@@ -136,7 +135,6 @@ button img {
     font-weight: 400;
     color: #A8A8A8;
     outline: none;
-    cursor: text;
 }
 
 .category_container {
@@ -144,13 +142,23 @@ button img {
     border-radius: 30px;
     padding: 1rem;
     margin: 10px;
-    cursor: grab;
+    cursor: all-scroll;
     border: 1px solid #fff;
     box-shadow: 2px 2px 2px 2px #808080;
+    position: relative;
 }
 
 .category_container:hover {
     box-shadow: none;
+}
+
+.category_container img {
+    width: 25px;
+    height: auto;
+    position: absolute;
+    top: 11px;
+    right: 11px;
+    cursor: pointer;
 }
 
 .sectionBox {
@@ -393,4 +401,8 @@ textarea {
     justify-content: center;
     align-items: center;
     z-index: 999;
+}
+
+textarea {
+    resize: none;
 }
