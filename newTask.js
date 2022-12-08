@@ -381,19 +381,19 @@ function closeCategory() {
 let color;
 let categoryName;
 
-var d= new Date()
-     var yr=d.getFullYear();
-      var month=d.getMonth()+1
-       if (month<10){
-         month='0'+month 
-         } 
-         var date=d.getDate(); 
-         if(date<10){
-           date='0'+date 
-           } 
-           var c_date=yr+"-"+month+"-"+date;
-          document.getElementById('d1').value=c_date;
-          
+var d = new Date()
+var yr = d.getFullYear();
+var month = d.getMonth() + 1
+if (month < 10) {
+    month = '0' + month
+}
+var date = d.getDate();
+if (date < 10) {
+    date = '0' + date
+}
+var c_date = yr + "-" + month + "-" + date;
+document.getElementById('d1').value = c_date;
+
 function selectedRed() {
     color = "rot";
     categoryName = document.getElementById('inputCategory').value
@@ -522,13 +522,13 @@ function createTask() {
 function clearInput() {
     document.getElementById('title-Input').value = "";
     document.getElementById("descriptionInput").value = "";
-    document.getElementById("dateInput").value = "";
+    document.getElementById("d1").value = "";
     document.getElementById('subtask').value = "";
     prioDefault();
     closeCategory();
     closeAssigned();
 }
 
-async function save(){
+async function save() {
     await backend.setItem('allTask', JSON.stringify(allTask));
 }
