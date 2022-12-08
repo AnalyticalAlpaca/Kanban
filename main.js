@@ -1,48 +1,52 @@
 "use strict"
 
-// let tasks = [
-//     {
-//         "status": "To Do",
-//         "category": "Design",
-//         "title": "Website redesign",
-//         "description": "Modify the contents of the main website",
-//         "dueDate": "2022-11-15",
-//         "id": 0,
-//         "visibility": true
-//     },
+let tasks = [
+    {
+        "status": "To Do",
+        "category": "Design",
+        "title": "Website redesign",
+        "description": "Modify the contents of the main website",
+        "dueDate": "2022-11-15",
+        "id": 0,
+        "visibility": true,
+        "priority": "Medium"
+    },
 
-//     {
-//         "status": "In Progress",
-//         "category": "Sales",
-//         "title": "Call potencial clients",
-//         "description": "Make the product presentation to prospective buyers",
-//         "dueDate": "2022-11-15",
-//         "id": 1,
-//         "visibility": true
-//     },
+    {
+        "status": "In Progress",
+        "category": "Sales",
+        "title": "Call potencial clients",
+        "description": "Make the product presentation to prospective buyers",
+        "dueDate": "2022-11-15",
+        "id": 1,
+        "visibility": true,
+        "priority": "Low"
+    },
 
-//     {
-//         "status": "Awaiting Feedback",
-//         "category": "Backoffice",
-//         "title": "Accounting invoices",
-//         "description": "Write open invoices for customer",
-//         "dueDate": "2022-11-15",
-//         "id": 2,
-//         "visibility": true
-//     },
+    {
+        "status": "Awaiting Feedback",
+        "category": "Backoffice",
+        "title": "Accounting invoices",
+        "description": "Write open invoices for customer",
+        "dueDate": "2022-11-15",
+        "id": 2,
+        "visibility": true,
+        "priority": "Urgent"
+    },
 
-//     {
-//         "status": "Done",
-//         "category": "Marketing",
-//         "title": "Social media strategy",
-//         "description": "Develop an ad campaign for brand positioning",
-//         "dueDate": "2022-11-15",
-//         "id": 3,
-//         "visibility": true
-//     }
-// ];
+    {
+        "status": "Done",
+        "category": "Marketing",
+        "title": "Social media strategy",
+        "description": "Develop an ad campaign for brand positioning",
+        "dueDate": "2022-11-15",
+        "id": 3,
+        "visibility": true,
+        "priority": "Low"
+    }
+];
 
-let tasks;
+// let tasks;
 let rotation;
 
 let catColors = {
@@ -51,6 +55,18 @@ let catColors = {
     "Backoffice": "color3",
     "Marketing": "color4"
 };
+
+let prioColors = {
+    "Urgent": "prio_color1",
+    "Medium": "prio_color2",
+    "Low": "prio_color3"
+};
+
+let prioImages = {
+    "Urgent": "img/urgent.png",
+    "Medium": "img/medium.png",
+    "Low": "img/low.png"
+}
 
 let currentDraggedElement;
 let dragging = false;
@@ -276,8 +292,8 @@ function renderCategoryInfo(task) {
         <li class="category ${catColors[task.category]}">${task.category}</li>
         <li class="title" contenteditable="true" onfocusout="updateItem(${task.id})">${task.title}</li>
         <li class="description" contenteditable="true" onfocusout="updateItem(${task.id})">${task.description}</li>
-        <p class="info_font">Due date:<span class="dueDate"> ${task.dueDate}</span></p>
-        <p class="info_font">Priority:<span></span></p>
+        <p class="info_font">Due date:<span class="dueDate">${task.dueDate}</span></p>
+        <p class="info_font">Priority:<span class="priority ${prioColors[task.priority]}">${task.priority}<img src="${prioImages[task.priority]}" alt="Priority-Icon"></span></p>
         <p class="info_font">Assigned to:<span></span></p>
         <img class="change_icon" src="img/changeImage.png" alt="change-image" onclick="changeCategoryInfo(taskForCategoryInfo)">
     </ul>

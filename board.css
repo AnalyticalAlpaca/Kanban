@@ -363,6 +363,7 @@ button img {
 
 .dueDate {
     font-weight: 400;
+    margin-left: 3rem;
 }
 
 .changeInfo p {
@@ -405,4 +406,25 @@ textarea {
 
 textarea {
     resize: none;
+}
+
+.priority {
+    font-weight: 400;
+    padding: 0.2rem 1.1rem;
+    border-radius: 10px;
+    color: #fff;
+    margin-left: 3rem;
+}
+
+.prio_color1 {
+    background-color: #FF3D00;
+    
+}
+
+.prio_color2 {
+    background-color: #FFA800;
+}
+
+.prio_color3 {
+    background-color: #7AE229;
 }
