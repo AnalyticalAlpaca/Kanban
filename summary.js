@@ -27,6 +27,7 @@ async function renderSummary() {
     if(window.location.search == `?msg=You%20succsessfully%20logged%20in`) {
         setTimeout(() => {  
             name_contact.innerHTML = currentUser();  
+            name_contact_guest.classList.add('d-none');
           }, 1000)}  
     
     
@@ -115,27 +116,42 @@ function renderTasksDone(){
  */
 
 function upcomingDeadline(){
+
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+
     var findnextDate;
-    var today = new Date();
+    var today = new Date().getTime(); 
+    console.log(today);
+
     duedateOutput = document.getElementById('current_date');
+    let timearray =[];
 
     for ( var i = 0; i < tasks.length; i++){
-        if(parseDate(tasks[i].dueDate) > today){
-           findnextDate = tasks[i].dueDate
-           break; 
-            }                 
-    }   
-
-    console.log(findnextDate);
-    duedateOutput.innerHTML =  findnextDate ; 
+       let timestamp = parseDate(tasks[i].dueDate).getTime();
+       timearray.push(timestamp);
+       
+        // if(parseDate(tasks[i].dueDate) > today){
+        //   findnextDate = parseDate(tasks[i].dueDate)
+        //    break; 
+        //     }                    
+    }  
+    console.log(timearray);
+     
+    
+    // duedateOutput.innerHTML = monthNames[findnextDate.getMonth()] + ' ' + findnextDate.getDay() +',' + findnextDate.getFullYear();
+    // console.log(findnextDate);   
   
 }  
 
 
 function parseDate(input) {
-    var parts = input.split('-');  
-      // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
-      return new Date(parts[2], parts[0]-1, parts[1]); // Note: months are 0-based
+
+    var parts = input.split('-'); 
+    console.log(parts); 
+      console.log(new Date(parts[0], parts[2]-1, parts[2]));
+    // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+      return new Date(parts[0], parts[1], parts[2]); // Note: months are 0-based
       
     }
     

@@ -716,7 +716,7 @@ gap:unset
         }
     
         .greeting_container{
-            flex-direction: row;
+            
             align-items: center;
            margin-left:unset;
             margin-top:10px
@@ -950,6 +950,16 @@ gap:unset
             background-size: 50px 50px;
             background-position: 20px;
             border-radius: 20px;
+        }
+
+        .summary_done_container:hover{    
+            background-size: 60px 60px;
+            background-position: 20px;
+        }
+        
+        .summary_todo_container:hover{         
+            background-size: 60px 60x;
+            background-position: 20px;
         }
         
        
