@@ -359,6 +359,7 @@ button img {
     font-weight: bold;
     line-height: 120%;
     margin-bottom: 1.5rem;
+    display: flex;
 }
 
 .dueDate {
@@ -414,6 +415,9 @@ textarea {
     border-radius: 10px;
     color: #fff;
     margin-left: 3rem;
+    display: flex;
+    align-items: center;
+    width: fit-content;
 }
 
 .prio_color1 {
@@ -427,4 +431,10 @@ textarea {
 
 .prio_color3 {
     background-color: #7AE229;
+}
+
+.prio_image {
+    width: 20px;
+    height: 20px;
+    margin-left: 0.6rem;
 }
