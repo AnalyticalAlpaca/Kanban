@@ -9,7 +9,8 @@
 //         "dueDate": "2022-11-15",
 //         "id": 0,
 //         "visibility": true,
-//         "priority": "Medium"
+//         "priority": "Medium",
+//         "assignees": ["Julius Peterson", "Tyson Ngu", "Sebastian Mayer"]
 //     },
 
 //     {
@@ -20,7 +21,8 @@
 //         "dueDate": "2022-11-15",
 //         "id": 1,
 //         "visibility": true,
-//         "priority": "Low"
+//         "priority": "Low",
+//         "assignees": ["Tyson Ngu"]
 //     },
 
 //     {
@@ -31,7 +33,8 @@
 //         "dueDate": "2022-11-15",
 //         "id": 2,
 //         "visibility": true,
-//         "priority": "Urgent"
+//         "priority": "Urgent",
+//         "assignees": ["Tyson Ngu", "Sebastian Mayer"]
 //     },
 
 //     {
@@ -42,7 +45,8 @@
 //         "dueDate": "2022-11-15",
 //         "id": 3,
 //         "visibility": true,
-//         "priority": "Low"
+//         "priority": "Low",
+//         "assignees": ["Julius Peterson", "Sebastian Mayer"]
 //     }
 // ];
 
@@ -293,18 +297,29 @@ function renderCategoryInfo(task) {
         <li class="title" contenteditable="true" onfocusout="updateItem(${task.id})">${task.title}</li>
         <li class="description" contenteditable="true" onfocusout="updateItem(${task.id})">${task.description}</li>
         <p class="info_font">Due date:<span class="dueDate">${task.dueDate}</span></p>
-        <p class="info_font">Priority:<span class="priority ${prioColors[task.priority]}">${task.priority}<img class="prio_image" src="${prioImages[task.priority]}" alt="Priority-Icon"></span></p>
-        <p class="info_font">Assigned to:<span></span></p>
+        <p class="info_font">Priority:<span id="editPrio" class="priority ${prioColors[task.priority]}">${task.priority}<img class="prio_image" src="${prioImages[task.priority]}" alt="Priority-Icon"></span></p>
+        <p class="info_font">Assigned to:</p>
+        <div id="assignees" class="assign_container">
+        </div>
         <img class="change_icon" src="img/changeImage.png" alt="change-image" onclick="changeCategoryInfo(taskForCategoryInfo)">
     </ul>
     `;
+    
+    for (let i = 0; i < task.assignees.length; i++) {
+        document.getElementById("assignees").innerHTML += /*html*/`
+        <div class="assign_div${i+1}">
+            <span class="${(getInitials(task.assignees[i])).toLowerCase()}_abbr">${getInitials(task.assignees[i])}</span><p class="assignTo">${task.assignees[i]}</p>
+        </div>
+    `;
+    }
 }
 
 function closeRenderCategoryInfo() {
     document.getElementById('fullscreen').style.visibility = 'hidden';
+    renderBoard();
 }
 
-function changeCategoryInfo(task) {
+function changeCategoryInfo(task) {    
     document.getElementById('fullscreen').innerHTML = /*html*/ `
     <div class="infoWindow changeInfo" style="padding: 3rem 6rem 6rem 6rem">
         <img class="close_icon" src="img/closeImage.png" alt="close-image" onclick="closeRenderCategoryInfo()">
@@ -315,14 +330,37 @@ function changeCategoryInfo(task) {
         <p>Due date</p>
         <input id="dateValue" type="date" class="info_section">
         <p>Prio</p>
+        <div class="prios">
+            <button id="urgent_btn" class="btn_left" onclick="urgentColor(taskForCategoryInfo)">Urgent</button>
+            <button id="medium_btn" class="btn_middle" onclick="mediumColor(taskForCategoryInfo)">Medium</button>
+            <button id="low_btn" class="btn_right" onclick="lowColor(taskForCategoryInfo)">Low</button>
+        </div>
         <p>Assigned to</p>
-        <img class="change_icon change_icon2" src="img/changeImage2.png" alt="change-image" onclick="renderCategoryInfo(taskForCategoryInfo)">
+        <select id="assignees">
+            <option>Select contacts to assign</option>
+            <option value="Julius Peterson">Julius Peterson</option>
+            <option value="Tyson Ngu">Tyson Ngu</option>
+            <option value="Sebastian Mayer">Sebastian Mayer</option>
+        </select>
+        <img class="change_icon change_icon2" src="img/changeImage2.png" alt="change-image" onclick="changeInfo(taskForCategoryInfo.id); renderCategoryInfo(taskForCategoryInfo); save()">
     </div>
     `;
+
+    if (task.priority == 'Urgent') {
+        document.getElementById("urgent_btn").className = `btn_left ${prioColors[task.priority]}`;
+    } else if (task.priority == 'Medium') {
+        document.getElementById("medium_btn").className = `btn_middle ${prioColors[task.priority]}`;
+    } else {
+        document.getElementById("low_btn").className = `btn_right ${prioColors[task.priority]}`;
+    }
 
     document.getElementById('titleValue').value = `${task.title}`;
     document.getElementById('descriptionValue').value = `${task.description}`;
     document.getElementById('dateValue').value = `${task.dueDate}`;
+}
+
+function closeChangeCategoryInfo() {
+    document.getElementById('fullscreen').style.visibility = 'hidden';
 }
 
 function disableDragging(j) {
@@ -333,4 +371,52 @@ function disableDragging(j) {
 function enableDragging(j) {
     document.getElementById(`container${j}`).draggable = true;
     rotation = true;
+}
+
+function changeInfo(id) {
+    let newTitle = document.getElementById('titleValue').value;
+    tasks[id].title = newTitle;
+    let newDescription = document.getElementById('descriptionValue').value;
+    tasks[id].description = newDescription;
+}
+
+function urgentColor(taskForCategoryInfo) {
+    document.getElementById('urgent_btn').style.backgroundColor = '#FF3D00';
+    document.getElementById('urgent_btn').style.color = '#fff';
+    document.getElementById('medium_btn').style.backgroundColor = '#fff';
+    document.getElementById('medium_btn').style.color = '#000';
+    document.getElementById('low_btn').style.backgroundColor = '#fff';
+    document.getElementById('low_btn').style.color = '#000';
+    taskForCategoryInfo.priority = 'Urgent';
+}
+
+function mediumColor(taskForCategoryInfo) {
+    document.getElementById('urgent_btn').style.backgroundColor = '#fff';
+    document.getElementById('urgent_btn').style.color = '#000';
+    document.getElementById('medium_btn').style.backgroundColor = '#FFA800';
+    document.getElementById('medium_btn').style.color = '#fff';
+    document.getElementById('low_btn').style.backgroundColor = '#fff';
+    document.getElementById('low_btn').style.color = '#000';
+    taskForCategoryInfo.priority = 'Medium';
+}
+
+function lowColor(taskForCategoryInfo) {
+    document.getElementById('urgent_btn').style.backgroundColor = '#fff';
+    document.getElementById('urgent_btn').style.color = '#000';
+    document.getElementById('medium_btn').style.backgroundColor = '#fff';
+    document.getElementById('medium_btn').style.color = '#000';
+    document.getElementById('low_btn').style.backgroundColor = '#7AE229';
+    document.getElementById('low_btn').style.color = '#fff';
+    taskForCategoryInfo.priority = 'Low';
+}
+
+function getInitials(name) {
+    let parts = name.split(' ');
+    let initials = '';
+    for (let i = 0; i < parts.length; i++) {
+        if (parts[i].length > 0 && parts[i] !== '') {
+            initials += parts[i][0]
+        }
+    }
+    return initials
 }
