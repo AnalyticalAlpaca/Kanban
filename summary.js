@@ -88,7 +88,7 @@ function renderTasksFeedback(){
 
 function renderUrgentTasks(){
     let tasksUrgentOutput = document.getElementById('urgent_task');
-    let urgent = allTask.filter(allTask => allTask.prios == "Urgent").length;
+    let urgent = tasks.filter(tasks => tasks.priority == "Urgent").length;
     console.log('Urgent tasks:' +` ${urgent}`);
     tasksUrgentOutput.innerHTML = urgent; 
 }
@@ -116,42 +116,32 @@ function renderTasksDone(){
  */
 
 function upcomingDeadline(){
-
     var monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
 
-    var findnextDate;
-    var today = new Date().getTime(); 
-    console.log(today);
-
     duedateOutput = document.getElementById('current_date');
-    let timearray =[];
-
-    for ( var i = 0; i < tasks.length; i++){
-       let timestamp = parseDate(tasks[i].dueDate).getTime();
-       timearray.push(timestamp);
-       
-        // if(parseDate(tasks[i].dueDate) > today){
-        //   findnextDate = parseDate(tasks[i].dueDate)
-        //    break; 
-        //     }                    
-    }  
-    console.log(timearray);
-     
     
-    // duedateOutput.innerHTML = monthNames[findnextDate.getMonth()] + ' ' + findnextDate.getDay() +',' + findnextDate.getFullYear();
-    // console.log(findnextDate);   
-  
-}  
-
-
-function parseDate(input) {
-
-    var parts = input.split('-'); 
-    console.log(parts); 
-      console.log(new Date(parts[0], parts[2]-1, parts[2]));
-    // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
-      return new Date(parts[0], parts[1], parts[2]); // Note: months are 0-based
+        const today = new Date().getTime();
       
+        let deadlines = allTask.map((task) => {
+          return new Date(task.taskDate).getTime();
+        });
+        console.log(deadlines);
+      
+        let deadlineDist = deadlines.filter(d => {
+          let dist = d - today;
+          return dist > 0;
+        });
+        console.log(deadlineDist);
+      
+        let closestDate = Math.min(...deadlineDist);
+        console.log(closestDate);
+        console.log(new Date(closestDate).toLocaleDateString('de-DE'));
+
+        //duedateOutput.innerHTML = new Date(closestDate).toLocaleDateString('de-DE');
+        duedateOutput.innerHTML = monthNames[new Date(closestDate).getMonth()] + ' ' + new Date(closestDate).getDate() + ',' + new Date(closestDate).getFullYear() ;
+             
     }
+
+
     

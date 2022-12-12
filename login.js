@@ -66,6 +66,7 @@ async function signup() {
     let name = checkIfNameIsComplete('name');
     let email = checkIfMailIsCorrect('email_signup');
     let password = document.getElementById('password_signup');
+    let userId;
     
     userInformation.push({fullname: name.value, password: password.value, mail: email.value});  
     await backend.setItem('userInformation', JSON.stringify(userInformation));
@@ -126,26 +127,43 @@ function findUserMail(){
     let email = document.getElementById('forgot_email');
     let user = userInformation.find( u => u.mail == email.value);
     let currentMail = user.mail;      
-    console.log(currentMail);    
-    return currentMail;
+    console.log(currentMail);  
+    let currentUserPassword = user.password;
+    console.log(currentUserPassword); 
+    return currentUserPassword ;
+    
 }
 
     
 async function changePassword() {
     let inputNewPassword = document.getElementById('input_new_password').value;
     let inputConfirmNewPassword = document.getElementById('input_new_password_confirm').value;
+    let currentUserPassword = findUserMail();
+    console.log(currentUserPassword);
+
+    if(inputNewPassword == inputConfirmNewPassword){            
+            console.log(inputNewPassword);
+                       
+            
+        } else{
+            alert(' Bitte prüfe das neue Passwort')
+        }
+
+
     
-    let email = document.getElementById('forgot_email');
-    let user = userInformation.find( u => u.mail == email.value);
-    let userPassword = user.password;
-    
-    if(inputNewPassword == inputConfirmNewPassword){
-        console.log('Passwort korrekt');
-        userInformation[i].password.push({password: inputNewPassword});  
-        await backend.setItem('userInformation', JSON.stringify(userInformation));
-    } else{
-        alert(' Bitte prüfe das neue Passwort')
-    }
+
+    // let email = document.getElementById('forgot_email');
+    // let user = userInformation.map(findUserMail());
+    // let userPassword = user.password;
+
+  
+    // if(inputNewPassword == inputConfirmNewPassword){
+    //     console.log('Passwort korrekt');
+    //     userInformation.password.push({password: inputNewPassword});  
+    //     await backend.setItem('userInformation', JSON.stringify(userInformation.password));
+    // } else{
+    //     alert(' Bitte prüfe das neue Passwort')
+    // }
 }
 
 function loadLoginAfterPasswordReset(){
