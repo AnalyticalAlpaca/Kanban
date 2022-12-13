@@ -544,3 +544,14 @@ select {
     font-size: 1.3rem;
     border: 1px solid #818181;
 }
+
+.changeInfo select {
+    cursor: pointer;
+}
+
+.assign2 img {
+    width: 15px;
+    height: auto;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}

@@ -307,8 +307,8 @@ function renderCategoryInfo(task) {
     
     for (let i = 0; i < task.assignees.length; i++) {
         document.getElementById("assignees").innerHTML += /*html*/`
-        <div class="assign_div${i+1}">
-            <span class="${(getInitials(task.assignees[i])).toLowerCase()}_abbr">${getInitials(task.assignees[i])}</span><p class="assignTo">${task.assignees[i]}</p>
+        <div class="assign_div${i+1} assign2">
+            <span class="${(getInitials(task.assignees[i])).toLowerCase()}_abbr">${getInitials(task.assignees[i])}</span><p class="assignTo"><img src="img/delete_assignee.png" alt="delete-icon" onclick="removeAssignee(taskForCategoryInfo, taskForCategoryInfo.assignees[${i}])">${task.assignees[i]}</p>
         </div>
     `;
     }
@@ -337,14 +337,19 @@ function changeCategoryInfo(task) {
         </div>
         <p>Assigned to</p>
         <select id="assignees">
-            <option>Select contacts to assign</option>
-            <option value="Julius Peterson">Julius Peterson</option>
-            <option value="Tyson Ngu">Tyson Ngu</option>
-            <option value="Sebastian Mayer">Sebastian Mayer</option>
+            <option style="display: none" selected disabled>Select contacts to assign</option>
         </select>
         <img class="change_icon change_icon2" src="img/changeImage2.png" alt="change-image" onclick="changeInfo(taskForCategoryInfo.id); renderCategoryInfo(taskForCategoryInfo); save()">
     </div>
     `;
+
+    let allAssignees = ['Julius Peterson', 'Tyson Ngu', 'Sebastian Mayer'];
+    let assis = allAssignees.filter(assi => !task.assignees.includes(assi));
+    for (let i = 0; i < assis.length; i++) {
+        document.getElementById('assignees').innerHTML += /*html*/`
+        <option value="${assis[i]}" onclick="${console.log("NET HALLO")}">${assis[i]}</option>
+        `;
+    }
 
     if (task.priority == 'Urgent') {
         document.getElementById("urgent_btn").className = `btn_left ${prioColors[task.priority]}`;
@@ -419,4 +424,14 @@ function getInitials(name) {
         }
     }
     return initials
+}
+
+function removeAssignee(task, name) {
+    task.assignees.splice(name, 1);
+    renderCategoryInfo(task);
+}
+
+function addAssignee(list, name) {
+    list.push(name, 1);
+    console.log("HI");
 }
