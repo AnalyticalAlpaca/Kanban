@@ -1,6 +1,6 @@
 let userInformation = [];
 let activeUserName = [];
-let loggedIn = false;
+
 
 const urlParams = new URLSearchParams(window.location.search); 
 
@@ -13,6 +13,7 @@ const urlParams = new URLSearchParams(window.location.search);
         setTimeout(() => {
             msgBox.innerHTML = `You successfully logged out`;  
           }, 1000)}
+
 
 
 
@@ -45,6 +46,7 @@ function loadLogIn(){
     document.getElementById('login_container').classList.remove('d-none');
     document.getElementById('signup_container').classList.add('d-none');
     document.getElementById('forgot_password_container').classList.add('d-none');
+    document.getElementById('new_password_container').classList.add('d-none');
 }
 
 function loadForgotPassword(){
@@ -52,10 +54,19 @@ function loadForgotPassword(){
     document.getElementById('forgot_password_container').classList.remove('d-none');
 }
 
+function loadNewPasswordCard(){
+    findUserMail();   
+    document.getElementById('forgot_password_container').classList.add('d-none');   
+    document.getElementById('set_new_password_container').classList.remove('d-none');
+
+}
+
+
 async function signup() {
     let name = checkIfNameIsComplete('name');
     let email = checkIfMailIsCorrect('email_signup');
     let password = document.getElementById('password_signup');
+    let userId;
     
     userInformation.push({fullname: name.value, password: password.value, mail: email.value});  
     await backend.setItem('userInformation', JSON.stringify(userInformation));
@@ -96,13 +107,12 @@ async function login(){
 
     console.log(user);
     if(user) {
-        loggedIn = true;    
-        activeUserName.push({fullnameUser: currentUser});
+         activeUserName.push({fullnameUser: currentUser});
         await backend.setItem('activeUserName', JSON.stringify(activeUserName));
         console.log(activeUserName);
         window.location.href ='summary.html?msg=You succsessfully logged in';
-       } else {
-        alert('You are not registrated yet. Please sign up.');
+       } else {    
+            alert('You are not registrated yet. Please sign up.');
        }
     }
 
@@ -113,18 +123,55 @@ function guestLogin(){
 }
 
 
-
-function loadFormForgotPassword(){
-    window.location.href ='new_password.html';
-}
-
-function loadLogInFromPasswordForm(){
-    window.location.href ='index.html';
-}
+function findUserMail(){
+    let email = document.getElementById('forgot_email');
+    let user = userInformation.find( u => u.mail == email.value);
+    let currentMail = user.mail;      
+    console.log(currentMail);  
+    let currentUserPassword = user.password;
+    console.log(currentUserPassword); 
+    return currentUserPassword ;
     
-function changePassword() {
+}
+
+    
+async function changePassword() {
+    let inputNewPassword = document.getElementById('input_new_password').value;
+    let inputConfirmNewPassword = document.getElementById('input_new_password_confirm').value;
+    let currentUserPassword = findUserMail();
+    console.log(currentUserPassword);
+
+    if(inputNewPassword == inputConfirmNewPassword){            
+            console.log(inputNewPassword);
+                       
+            
+        } else{
+            alert(' Bitte prüfe das neue Passwort')
+        }
+
+
+    
+
+    // let email = document.getElementById('forgot_email');
+    // let user = userInformation.map(findUserMail());
+    // let userPassword = user.password;
+
+  
+    // if(inputNewPassword == inputConfirmNewPassword){
+    //     console.log('Passwort korrekt');
+    //     userInformation.password.push({password: inputNewPassword});  
+    //     await backend.setItem('userInformation', JSON.stringify(userInformation.password));
+    // } else{
+    //     alert(' Bitte prüfe das neue Passwort')
+    // }
+}
+
+function loadLoginAfterPasswordReset(){
     window.location.href ='index.html';
-} 
+}
+
+
+
 
 
 

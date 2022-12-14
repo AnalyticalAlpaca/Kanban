@@ -1,52 +1,56 @@
 "use strict"
 
-let tasks = [
-    {
-        "status": "To Do",
-        "category": "Design",
-        "title": "Website redesign",
-        "description": "Modify the contents of the main website",
-        "dueDate": "2022-11-15",
-        "id": 0,
-        "visibility": true,
-        "priority": "Medium"
-    },
+// let tasks = [
+//     {
+//         "status": "To Do",
+//         "category": "Design",
+//         "title": "Website redesign",
+//         "description": "Modify the contents of the main website",
+//         "dueDate": "2022-11-15",
+//         "id": 0,
+//         "visibility": true,
+//         "priority": "Medium",
+//         "assignees": ["Julius Peterson", "Tyson Ngu", "Sebastian Mayer"]
+//     },
 
-    {
-        "status": "In Progress",
-        "category": "Sales",
-        "title": "Call potencial clients",
-        "description": "Make the product presentation to prospective buyers",
-        "dueDate": "2022-11-15",
-        "id": 1,
-        "visibility": true,
-        "priority": "Low"
-    },
+//     {
+//         "status": "In Progress",
+//         "category": "Sales",
+//         "title": "Call potencial clients",
+//         "description": "Make the product presentation to prospective buyers",
+//         "dueDate": "2022-11-15",
+//         "id": 1,
+//         "visibility": true,
+//         "priority": "Low",
+//         "assignees": ["Tyson Ngu"]
+//     },
 
-    {
-        "status": "Awaiting Feedback",
-        "category": "Backoffice",
-        "title": "Accounting invoices",
-        "description": "Write open invoices for customer",
-        "dueDate": "2022-11-15",
-        "id": 2,
-        "visibility": true,
-        "priority": "Urgent"
-    },
+//     {
+//         "status": "Awaiting Feedback",
+//         "category": "Backoffice",
+//         "title": "Accounting invoices",
+//         "description": "Write open invoices for customer",
+//         "dueDate": "2022-11-15",
+//         "id": 2,
+//         "visibility": true,
+//         "priority": "Urgent",
+//         "assignees": ["Tyson Ngu", "Sebastian Mayer"]
+//     },
 
-    {
-        "status": "Done",
-        "category": "Marketing",
-        "title": "Social media strategy",
-        "description": "Develop an ad campaign for brand positioning",
-        "dueDate": "2022-11-15",
-        "id": 3,
-        "visibility": true,
-        "priority": "Low"
-    }
-];
+//     {
+//         "status": "Done",
+//         "category": "Marketing",
+//         "title": "Social media strategy",
+//         "description": "Develop an ad campaign for brand positioning",
+//         "dueDate": "2022-11-15",
+//         "id": 3,
+//         "visibility": true,
+//         "priority": "Low",
+//         "assignees": ["Julius Peterson", "Sebastian Mayer"]
+//     }
+// ];
 
-// let tasks;
+let tasks;
 let rotation;
 
 let catColors = {
@@ -63,9 +67,9 @@ let prioColors = {
 };
 
 let prioImages = {
-    "Urgent": "img/urgent.png",
-    "Medium": "img/medium.png",
-    "Low": "img/low.png"
+    "Urgent": "img/urgent-after.png",
+    "Medium": "img/medium-after.png",
+    "Low": "img/low-after.png"
 }
 
 let currentDraggedElement;
@@ -293,18 +297,29 @@ function renderCategoryInfo(task) {
         <li class="title" contenteditable="true" onfocusout="updateItem(${task.id})">${task.title}</li>
         <li class="description" contenteditable="true" onfocusout="updateItem(${task.id})">${task.description}</li>
         <p class="info_font">Due date:<span class="dueDate">${task.dueDate}</span></p>
-        <p class="info_font">Priority:<span class="priority ${prioColors[task.priority]}">${task.priority}<img src="${prioImages[task.priority]}" alt="Priority-Icon"></span></p>
-        <p class="info_font">Assigned to:<span></span></p>
+        <p class="info_font">Priority:<span id="editPrio" class="priority ${prioColors[task.priority]}">${task.priority}<img class="prio_image" src="${prioImages[task.priority]}" alt="Priority-Icon"></span></p>
+        <p class="info_font">Assigned to:</p>
+        <div id="assignees" class="assign_container">
+        </div>
         <img class="change_icon" src="img/changeImage.png" alt="change-image" onclick="changeCategoryInfo(taskForCategoryInfo)">
     </ul>
     `;
+    
+    for (let i = 0; i < task.assignees.length; i++) {
+        document.getElementById("assignees").innerHTML += /*html*/`
+        <div class="assign_div${i+1} assign2">
+            <span class="${(getInitials(task.assignees[i])).toLowerCase()}_abbr">${getInitials(task.assignees[i])}</span><p class="assignTo"><img src="img/delete_assignee.png" alt="delete-icon" onclick="removeAssignee(taskForCategoryInfo, taskForCategoryInfo.assignees[${i}])">${task.assignees[i]}</p>
+        </div>
+    `;
+    }
 }
 
 function closeRenderCategoryInfo() {
     document.getElementById('fullscreen').style.visibility = 'hidden';
+    renderBoard();
 }
 
-function changeCategoryInfo(task) {
+function changeCategoryInfo(task) {    
     document.getElementById('fullscreen').innerHTML = /*html*/ `
     <div class="infoWindow changeInfo" style="padding: 3rem 6rem 6rem 6rem">
         <img class="close_icon" src="img/closeImage.png" alt="close-image" onclick="closeRenderCategoryInfo()">
@@ -315,14 +330,42 @@ function changeCategoryInfo(task) {
         <p>Due date</p>
         <input id="dateValue" type="date" class="info_section">
         <p>Prio</p>
+        <div class="prios">
+            <button id="urgent_btn" class="btn_left" onclick="urgentColor(taskForCategoryInfo)">Urgent</button>
+            <button id="medium_btn" class="btn_middle" onclick="mediumColor(taskForCategoryInfo)">Medium</button>
+            <button id="low_btn" class="btn_right" onclick="lowColor(taskForCategoryInfo)">Low</button>
+        </div>
         <p>Assigned to</p>
-        <img class="change_icon change_icon2" src="img/changeImage2.png" alt="change-image" onclick="renderCategoryInfo(taskForCategoryInfo)">
+        <select id="assignees">
+            <option style="display: none" selected disabled>Select contacts to assign</option>
+        </select>
+        <img class="change_icon change_icon2" src="img/changeImage2.png" alt="change-image" onclick="changeInfo(taskForCategoryInfo.id); renderCategoryInfo(taskForCategoryInfo); save()">
     </div>
     `;
+
+    let allAssignees = ['Julius Peterson', 'Tyson Ngu', 'Sebastian Mayer'];
+    let assis = allAssignees.filter(assi => !task.assignees.includes(assi));
+    for (let i = 0; i < assis.length; i++) {
+        document.getElementById('assignees').innerHTML += /*html*/`
+        <option value="${assis[i]}" onclick="${console.log("NET HALLO")}">${assis[i]}</option>
+        `;
+    }
+
+    if (task.priority == 'Urgent') {
+        document.getElementById("urgent_btn").className = `btn_left ${prioColors[task.priority]}`;
+    } else if (task.priority == 'Medium') {
+        document.getElementById("medium_btn").className = `btn_middle ${prioColors[task.priority]}`;
+    } else {
+        document.getElementById("low_btn").className = `btn_right ${prioColors[task.priority]}`;
+    }
 
     document.getElementById('titleValue').value = `${task.title}`;
     document.getElementById('descriptionValue').value = `${task.description}`;
     document.getElementById('dateValue').value = `${task.dueDate}`;
+}
+
+function closeChangeCategoryInfo() {
+    document.getElementById('fullscreen').style.visibility = 'hidden';
 }
 
 function disableDragging(j) {
@@ -333,4 +376,62 @@ function disableDragging(j) {
 function enableDragging(j) {
     document.getElementById(`container${j}`).draggable = true;
     rotation = true;
+}
+
+function changeInfo(id) {
+    let newTitle = document.getElementById('titleValue').value;
+    tasks[id].title = newTitle;
+    let newDescription = document.getElementById('descriptionValue').value;
+    tasks[id].description = newDescription;
+}
+
+function urgentColor(taskForCategoryInfo) {
+    document.getElementById('urgent_btn').style.backgroundColor = '#FF3D00';
+    document.getElementById('urgent_btn').style.color = '#fff';
+    document.getElementById('medium_btn').style.backgroundColor = '#fff';
+    document.getElementById('medium_btn').style.color = '#000';
+    document.getElementById('low_btn').style.backgroundColor = '#fff';
+    document.getElementById('low_btn').style.color = '#000';
+    taskForCategoryInfo.priority = 'Urgent';
+}
+
+function mediumColor(taskForCategoryInfo) {
+    document.getElementById('urgent_btn').style.backgroundColor = '#fff';
+    document.getElementById('urgent_btn').style.color = '#000';
+    document.getElementById('medium_btn').style.backgroundColor = '#FFA800';
+    document.getElementById('medium_btn').style.color = '#fff';
+    document.getElementById('low_btn').style.backgroundColor = '#fff';
+    document.getElementById('low_btn').style.color = '#000';
+    taskForCategoryInfo.priority = 'Medium';
+}
+
+function lowColor(taskForCategoryInfo) {
+    document.getElementById('urgent_btn').style.backgroundColor = '#fff';
+    document.getElementById('urgent_btn').style.color = '#000';
+    document.getElementById('medium_btn').style.backgroundColor = '#fff';
+    document.getElementById('medium_btn').style.color = '#000';
+    document.getElementById('low_btn').style.backgroundColor = '#7AE229';
+    document.getElementById('low_btn').style.color = '#fff';
+    taskForCategoryInfo.priority = 'Low';
+}
+
+function getInitials(name) {
+    let parts = name.split(' ');
+    let initials = '';
+    for (let i = 0; i < parts.length; i++) {
+        if (parts[i].length > 0 && parts[i] !== '') {
+            initials += parts[i][0]
+        }
+    }
+    return initials
+}
+
+function removeAssignee(task, name) {
+    task.assignees.splice(name, 1);
+    renderCategoryInfo(task);
+}
+
+function addAssignee(list, name) {
+    list.push(name, 1);
+    console.log("HI");
 }
