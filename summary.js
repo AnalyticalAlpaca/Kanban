@@ -107,13 +107,6 @@ function renderTasksDone(){
     tasksDoneOutput.innerHTML = doneTasks; 
 }
 
-/* function showUpcomingDeadline(){
-    duedateOutput = document.getElementById('current_date');
-    let dueDate = upcomingDeadline();
-    console.log(dueDate);
-    duedateOutput.innerHTML = dueDate; 
-}
- */
 
 function upcomingDeadline(){
     var monthNames = ["January", "February", "March", "April", "May", "June",
@@ -123,8 +116,8 @@ function upcomingDeadline(){
     
         const today = new Date().getTime();
       
-        let deadlines = allTask.map((task) => {
-          return new Date(task.taskDate).getTime();
+        let deadlines = tasks.map((task) => {
+          return new Date(task.dueDate).getTime();
         });
         console.log(deadlines);
       
