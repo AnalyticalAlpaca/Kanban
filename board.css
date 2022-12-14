@@ -152,7 +152,7 @@ button img {
     box-shadow: none;
 }
 
-.category_container img {
+.category_container > img {
     width: 25px;
     height: auto;
     position: absolute;
@@ -514,6 +514,7 @@ textarea {
     font-size: 1.3;
     color: #fff;
     margin-right: 3rem;
+    border: 2px solid #fff;
 }
 
 .jp_abbr {
@@ -545,13 +546,80 @@ select {
     border: 1px solid #818181;
 }
 
-.changeInfo select {
-    cursor: pointer;
-}
-
 .assign2 img {
     width: 15px;
     height: auto;
     margin-right: 0.5rem;
     cursor: pointer;
+}
+
+.label_input {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    height: 2.5rem;
+}
+
+#assignees input {
+    width: 18px;
+    cursor: pointer;
+}
+
+.assi_label {
+    color: #000;
+    font-size: 1.3rem;
+}
+
+.label_div {
+    color: #000;
+    font-size: 1.3rem;
+    min-height: 2.5rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #818181;
+    border-radius: 8px;
+}
+
+#assignees p {
+    margin-bottom: 0;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.assi_title img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.prio_image2 {
+    width: 20px;
+    height: auto;
+}
+
+.abbr_prio {
+    margin-top: 1rem;
+}
+
+.main_abbr_prio {
+    display: flex;
+}
+
+.abbr_prio_secondary_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 0.4rem;
+}
+
+.single_assi {
+    margin-right: 0;
+    margin-left: -0.4rem;
+}
+
+.abbr_var {
+    display: flex;
 }

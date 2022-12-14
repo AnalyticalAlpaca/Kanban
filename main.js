@@ -6,7 +6,7 @@
 //         "category": "Design",
 //         "title": "Website redesign",
 //         "description": "Modify the contents of the main website",
-//         "dueDate": "2022-11-15",
+//         "dueDate": new Date("2022-11-15"),
 //         "id": 0,
 //         "visibility": true,
 //         "priority": "Medium",
@@ -18,7 +18,7 @@
 //         "category": "Sales",
 //         "title": "Call potencial clients",
 //         "description": "Make the product presentation to prospective buyers",
-//         "dueDate": "2022-11-15",
+//         "dueDate": new Date("2022-11-15"),
 //         "id": 1,
 //         "visibility": true,
 //         "priority": "Low",
@@ -30,7 +30,7 @@
 //         "category": "Backoffice",
 //         "title": "Accounting invoices",
 //         "description": "Write open invoices for customer",
-//         "dueDate": "2022-11-15",
+//         "dueDate": new Date("2022-11-15"),
 //         "id": 2,
 //         "visibility": true,
 //         "priority": "Urgent",
@@ -42,7 +42,7 @@
 //         "category": "Marketing",
 //         "title": "Social media strategy",
 //         "description": "Develop an ad campaign for brand positioning",
-//         "dueDate": "2022-11-15",
+//         "dueDate": new Date("2022-11-15"),
 //         "id": 3,
 //         "visibility": true,
 //         "priority": "Low",
@@ -72,6 +72,12 @@ let prioImages = {
     "Low": "img/low-after.png"
 }
 
+let prioImagesColor = {
+    "Urgent": "img/urgent.png",
+    "Medium": "img/medium.png",
+    "Low": "img/low.png"
+}
+
 let currentDraggedElement;
 let dragging = false;
 let hideArr = [];           // Array for filtering tasks (filterFunction())
@@ -81,6 +87,10 @@ async function initTasks() {
     setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
+    // Change date format in tasks
+    for (let i = 0; i < tasks.length; i++) {
+        tasks[i].dueDate = new Date(tasks[i].dueDate);
+    }
     // Make all tasks visible when restarting website
     for (let i = 0; i < tasks.length; i++) {
         tasks[i].visibility = true;    
@@ -114,9 +124,13 @@ function renderBoard() {
             <li class="category ${catColors[toDo[i].category]}">${toDo[i].category}</li>
             <li class="title" onfocusout="updateItem(${toDo[i].id})">${toDo[i].title}</li>
             <li class="description" onfocusout="updateItem(${toDo[i].id})">${toDo[i].description}</li>
+            <div class="abbr_prio">
+                <div class="abbr_prio_secondary_div" id="abbr_prio${j}"><div class="abbr_var" id="abbr${j}"></div><div id="prio${j}"></div></div>
+            </div>
             <img src="img/edit_image.png" alt="edit-icon" onclick="renderCategoryInfo(toDo[${i}])" draggable="false" onmouseover="disableDragging(${j})" onmouseleave="enableDragging(${j})">
         </div>
     `;
+        setInitials(toDo[i], j)
         j += 1;
     }
 
@@ -130,9 +144,13 @@ function renderBoard() {
             <li class="category ${catColors[inProgress[i].category]}">${inProgress[i].category}</li>
             <li class="title" onfocusout="updateItem(${inProgress[i].id})">${inProgress[i].title}</li>
             <li class="description" onfocusout="updateItem(${inProgress[i].id})">${inProgress[i].description}</li>
+            <div class="abbr_prio">
+                <div class="abbr_prio_secondary_div" id="abbr_prio${j}"><div class="abbr_var" id="abbr${j}"></div><div id="prio${j}"></div></div>
+            </div>
             <img src="img/edit_image.png" alt="edit-icon" onclick="renderCategoryInfo(inProgress[${i}])" draggable="false" onmouseover="disableDragging(${j})" onmouseleave="enableDragging(${j})">
         </div>
     `;
+        setInitials(inProgress[i], j)
         j += 1;
     }
 
@@ -146,9 +164,13 @@ function renderBoard() {
             <li class="category ${catColors[awaitingFeedback[i].category]}">${awaitingFeedback[i].category}</li>
             <li class="title" onfocusout="updateItem(${awaitingFeedback[i].id})">${awaitingFeedback[i].title}</li>
             <li class="description" onfocusout="updateItem(${awaitingFeedback[i].id})">${awaitingFeedback[i].description}</li>
+            <div class="abbr_prio">
+                <div class="abbr_prio_secondary_div" id="abbr_prio${j}"><div class="abbr_var" id="abbr${j}"></div><div id="prio${j}"></div></div>
+            </div>
             <img src="img/edit_image.png" alt="edit-icon" onclick="renderCategoryInfo(awaitingFeedback[${i}])" draggable="false" onmouseover="disableDragging(${j})" onmouseleave="enableDragging(${j})">
         </div>
     `;
+        setInitials(awaitingFeedback[i], j)
         j += 1;
     }
 
@@ -162,9 +184,13 @@ function renderBoard() {
             <li class="category ${catColors[done[i].category]}">${done[i].category}</li>
             <li class="title" onfocusout="updateItem(${done[i].id})">${done[i].title}</li>
             <li class="description" onfocusout="updateItem(${done[i].id})">${done[i].description}</li>
+            <div class="abbr_prio">
+                <div class="abbr_prio_secondary_div" id="abbr_prio${j}"><div class="abbr_var" id="abbr${j}"></div><div id="prio${j}"></div></div>
+            </div>
             <img src="img/edit_image.png" alt="edit-icon" onclick="renderCategoryInfo(done[${i}])" draggable="false" onmouseover="disableDragging(${j})" onmouseleave="enableDragging(${j})">
         </div>
     `;
+        setInitials(done[i], j)
         j += 1;
     }
     save();
@@ -296,7 +322,7 @@ function renderCategoryInfo(task) {
         <li class="category ${catColors[task.category]}">${task.category}</li>
         <li class="title" contenteditable="true" onfocusout="updateItem(${task.id})">${task.title}</li>
         <li class="description" contenteditable="true" onfocusout="updateItem(${task.id})">${task.description}</li>
-        <p class="info_font">Due date:<span class="dueDate">${task.dueDate}</span></p>
+        <p class="info_font">Due date:<span class="dueDate">${formatDate(task.dueDate)}</span></p>
         <p class="info_font">Priority:<span id="editPrio" class="priority ${prioColors[task.priority]}">${task.priority}<img class="prio_image" src="${prioImages[task.priority]}" alt="Priority-Icon"></span></p>
         <p class="info_font">Assigned to:</p>
         <div id="assignees" class="assign_container">
@@ -316,9 +342,11 @@ function renderCategoryInfo(task) {
 
 function closeRenderCategoryInfo() {
     document.getElementById('fullscreen').style.visibility = 'hidden';
+    dropped = false;
     renderBoard();
 }
 
+let assis;
 function changeCategoryInfo(task) {    
     document.getElementById('fullscreen').innerHTML = /*html*/ `
     <div class="infoWindow changeInfo" style="padding: 3rem 6rem 6rem 6rem">
@@ -336,18 +364,19 @@ function changeCategoryInfo(task) {
             <button id="low_btn" class="btn_right" onclick="lowColor(taskForCategoryInfo)">Low</button>
         </div>
         <p>Assigned to</p>
-        <select id="assignees">
-            <option style="display: none" selected disabled>Select contacts to assign</option>
-        </select>
-        <img class="change_icon change_icon2" src="img/changeImage2.png" alt="change-image" onclick="changeInfo(taskForCategoryInfo.id); renderCategoryInfo(taskForCategoryInfo); save()">
+        <div id="assignees" class="label_div"><p class="assi_title">Select contacts to assign<img onclick="openAndCloseDrop(assis)" src="img/dropdown_icon.png" alt=""></p></div>
+        <img class="change_icon change_icon2" src="img/changeImage2.png" alt="change-image" onclick="changeInfo(taskForCategoryInfo.id, assis); renderCategoryInfo(taskForCategoryInfo); save()">
     </div>
     `;
 
     let allAssignees = ['Julius Peterson', 'Tyson Ngu', 'Sebastian Mayer'];
-    let assis = allAssignees.filter(assi => !task.assignees.includes(assi));
+    assis = allAssignees.filter(assi => !task.assignees.includes(assi));
     for (let i = 0; i < assis.length; i++) {
         document.getElementById('assignees').innerHTML += /*html*/`
-        <option value="${assis[i]}" onclick="${console.log("NET HALLO")}">${assis[i]}</option>
+        <div id="labelInput${i}" class="label_input">
+            <label class="assi_label">${assis[i]}</label>
+            <input id="assi_input${i}" class="assi_input" type="checkbox">
+        </div>
         `;
     }
 
@@ -361,7 +390,22 @@ function changeCategoryInfo(task) {
 
     document.getElementById('titleValue').value = `${task.title}`;
     document.getElementById('descriptionValue').value = `${task.description}`;
-    document.getElementById('dateValue').value = `${task.dueDate}`;
+    document.getElementById('dateValue').value = `${formatDateBack(task.dueDate)}`;
+}
+
+let dropped = false;
+function openAndCloseDrop(assis) {
+    if (dropped == false) {
+        for (let i = 0; i < assis.length; i++) {
+            document.getElementById(`labelInput${i}`).style.display = 'flex';
+        }
+        dropped = true;
+    } else {
+        for (let i = 0; i < assis.length; i++) {
+            document.getElementById(`labelInput${i}`).style.display = 'none';
+        }
+        dropped = false;
+    }
 }
 
 function closeChangeCategoryInfo() {
@@ -378,11 +422,19 @@ function enableDragging(j) {
     rotation = true;
 }
 
-function changeInfo(id) {
+function changeInfo(id, assis) {
     let newTitle = document.getElementById('titleValue').value;
     tasks[id].title = newTitle;
     let newDescription = document.getElementById('descriptionValue').value;
     tasks[id].description = newDescription;
+    for (let i = 0; i < assis.length; i++) {
+        if (document.getElementById(`assi_input${i}`).checked === true) {
+            tasks[id].assignees.push(assis[i]);
+        }
+    }
+    let newDueDate = new Date(document.getElementById('dateValue').value);
+    tasks[id].dueDate = newDueDate;
+    dropped = false;
 }
 
 function urgentColor(taskForCategoryInfo) {
@@ -431,7 +483,34 @@ function removeAssignee(task, name) {
     renderCategoryInfo(task);
 }
 
-function addAssignee(list, name) {
-    list.push(name, 1);
-    console.log("HI");
+function setInitials(task, j) {
+    document.getElementById(`abbr${j}`).innerHTML = '';
+    for (let i = 0; i < task.assignees.length; i++) {
+        document.getElementById(`abbr${j}`).innerHTML += /*html*/`
+            <span class="single_assi ${(getInitials(task.assignees[i])).toLowerCase()}_abbr">${getInitials(task.assignees[i])}</span>
+        `;
+    }
+    document.getElementById(`prio${j}`).innerHTML += /*html*/`
+        <img class="prio_image2" src="${prioImagesColor[task.priority]}" alt="Priority-Icon">
+    `;
+}
+
+function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+}
+
+function formatDate(date) {
+    return [
+      padTo2Digits(date.getDate()),
+      padTo2Digits(date.getMonth() + 1),
+      date.getFullYear(),
+    ].join('.');
+}
+
+function formatDateBack(date) {
+    return [
+      date.getFullYear(),
+      padTo2Digits(date.getMonth() + 1),
+      padTo2Digits(date.getDate()),
+    ].join('-');
 }
