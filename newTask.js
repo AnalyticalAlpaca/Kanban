@@ -95,14 +95,14 @@ function toggleDropdown() {
     let dropdown = document.getElementById("dropdown");
     document.getElementById("dropdown2").classList.add("d-none")
     if (dropdown.classList.contains("d-none")) {
-        document.getElementById("assignedMain").style.top = "650px";
+        document.getElementById("assignedMain")
         dropdown.classList.remove('d-none');
 
         dropdownCategory();
 
     } else {
         dropdown.classList.add("d-none");
-        document.getElementById("assignedMain").style.top = "500px";
+        document.getElementById("assignedMain")
     }
 }
 function toggleDropdown2() {
@@ -110,13 +110,13 @@ function toggleDropdown2() {
     if (dropdown.classList.contains("d-none")) {
         dropdown.classList.remove('d-none');
         document.getElementById("dropdown").classList.add("d-none");
-        document.getElementById("assignedMain").style.top = "500px";
+        document.getElementById("assignedMain")
         dropdownAssigned();
 
     } else {
         dropdown.classList.add("d-none");
         document.getElementById("dropdown").classList.add("d-none");
-        document.getElementById("assignedMain").style.top = "500px";
+        document.getElementById("assignedMain")
     }
 
 }
@@ -181,8 +181,8 @@ function showPerson3() {
 }
 
 function dropdownCategory() {
-    document.getElementById("assignedMain").style.top = "650px";
-    if (categoryNames.length > 1) {
+    document.getElementById("assignedMain")
+    if (categoryNames.length > 2) {
         document.getElementById("dropdown").classList.add("scrollbar")
     }
     document.getElementById("dropdown").innerHTML = `
@@ -195,13 +195,6 @@ function dropdownCategory() {
                   </span>
               </div>
                         
-              <div class="category2 dropdownPadding">
-                  <span class="test" onclick="toggleDropdown()">
-                      
-                      Select task category
-                  </span>
-              </div>
-  
               <div id="addnewCategory">
   
               </div>
@@ -226,7 +219,7 @@ function addnewCategory() {
             document.getElementById('addnewCategory').innerHTML += `
 
         <div class="category2 dropdownPadding" id="test" onclick="categoryShow(${i})">
-        <span class="test">
+        <span class="test centerNameColor">
             ${categoryName} <span id="colorCircle${i}"></span>
             
         </span>
@@ -257,7 +250,7 @@ function addnewCategory() {
 let currentCategory;
 let currentColor;
 function categoryShow(x) {
-    document.getElementById("assignedMain").style.top = "500px";
+    document.getElementById("assignedMain")
     let categoryColor = categoryColors[x];
     currentColor = categoryColors[x];
     currentCategory = categoryNames[x];
@@ -266,34 +259,53 @@ function categoryShow(x) {
     if (categoryColor == "lila") {
 
         document.getElementById("selCategory").innerHTML = `
-        <span class="selectPurple" id="selCategory">${categoryNames[x]}</span>
+        <div class="centerNameColor">
+        <span>${categoryNames[x]}</span>
+        <span class="selectPurple" id="selCategory"></span>
+        </div>
         `
     }
     else if (categoryColor == "rot") {
         document.getElementById("selCategory").innerHTML = `
-        <span class="selectRed" id="selCategory">${categoryNames[x]}</span>
+        <div class="centerNameColor">
+        <span>${categoryNames[x]}</span>
+        <span class="selectRed" id="selCategory"></span>
+        </div>
         `
     }
     else if (categoryColor == "blau") {
         document.getElementById("selCategory").innerHTML = `
-        <span class="selectBlue" id="selCategory">${categoryNames[x]}</span>
+        <div class="centerNameColor">
+        <span>${categoryNames[x]}</span>
+        <span class="selectBlue" id="selCategory"></span>
+        </div>
         `
     }
     else if (categoryColor == "grün") {
 
         document.getElementById("selCategory").innerHTML = `
-        <span class="selectGreen" id="selCategory">${categoryNames[x]}</span>
+        <div class="centerNameColor">
+        <span>${categoryNames[x]}</span>
+        <span class="selectGreen" id="selCategory"></span>
+        </div>
         `
     }
     else if (categoryColor == "hellblau") {
         document.getElementById("selCategory").innerHTML = `
-        <span class="selectLightBlue" id="selCategory">${categoryNames[x]}</span>
+        <div class="centerNameColor">
+        <span>${categoryNames[x]}</span>
+        <span class="selectLightBlue" id="selCategory"></span>
+        </div>
         `
     }
     else if (categoryColor == "orange") {
         document.getElementById("selCategory").innerHTML = `
-        <span class="selectOrange" id="selCategory">${categoryNames[x]}</span>
+        <div class="centerNameColor">
+        <span>${categoryNames[x]}</span>
+        <span class="selectOrange" id="selCategory"></span>
+        </div>
         `
+
     }
 
 
@@ -317,7 +329,7 @@ function categoryAdd() {
     document.getElementById('selectColor').classList.remove('d-none');
     document.getElementById('arrowEnd').classList.remove('arrowEnd');
     document.getElementById('arrowEnd').classList.remove('dropdownPadding');
-    document.getElementById('assignedMain').style.top = "560px";
+    document.getElementById('assignedMain')
 }
 
 
@@ -499,7 +511,7 @@ function selectedBlue() {
 function createTask() {
     let titleInput = document.getElementById('title-Input').value;
     let description = document.getElementById("descriptionInput").value;
-    let date = document.getElementById("dateInput").value;
+    let date = document.getElementById("d1").value;
     let task =
     {
         title: titleInput,
