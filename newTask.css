@@ -2,16 +2,15 @@
     color: black;
     font-size: 45px;
     margin-bottom: 60px;
+    margin-top: 150px;
 }
 
 
 .vr1{
-position: absolute;
 width: 0px;
-height: 600px;
-right: 50%;
-top: 10%;
+height: 420px;
 border: 1px solid #D1D1D1;
+
 }
 
 .input{
@@ -56,7 +55,7 @@ flex-grow: 0;
     padding: 13px 21px;
     gap: 10px;
     font-family: 'Inter';
-    width: 352px;
+    width: 351px;
     height: 49px;
     background: #FFFFFF;
     border: transparent;
@@ -132,7 +131,6 @@ border-radius: 10px;
 flex: none;
 order: 1;
 flex-grow: 0;
-background-image: url(img/Vector.png);
 background-repeat: no-repeat;
 background-position: 375px;
 cursor: pointer;
@@ -153,24 +151,18 @@ z-index: 0;
 }
 .add-task-section{
     display: flex;
-    position: absolute;
-    top: 20%;
-    left: 25%;
     color: black;
 }
-
-.flex{
-    display: flex;
-    flex-direction: column;
+.margin-right2{
+    margin-right: 100px;
 }
 
 .flex2{
     display: flex;
-    flex-direction: row;
 }
 
-.margin{
-    margin-left: 200px;
+.margin-bottom{
+    padding-bottom: 40px;
 }
 
 .prio{
@@ -207,9 +199,14 @@ transition: ease-in-out 150ms;
 margin: 0 auto;
 width: 422px;
 display: flex;
+flex-direction: column;
 justify-content: space-between;
 }
-
+.row{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
 .prio-after-urgent{
     background: #FF3D00;
     color:white;
@@ -277,18 +274,10 @@ margin-right: 10px;
     
 }
 .categoryMain{
-    position: absolute;
-    left: 0px;
-    top: 400px;
+    display: block;  
     overflow: hidden;
-    
 }
-.assignedMain{
-    position: absolute;
-    left: 0px;
-    top: 500px;
-    
-}
+
 .category:hover{
     background-color: rgb(224, 222, 222);
    
@@ -328,11 +317,14 @@ margin-right: 10px;
     border-radius: 9px;
     cursor: pointer;
 }
-
+.centerNameColor{
+    display: flex;
+    align-items: center;
+}
 .category2{
     overflow:auto;
     box-sizing: border-box;
-    width: 420px;
+
     background: #FFFFFF;
     border: 1 solid transparent;
     border-bottom-left-radius: 9px;
@@ -533,7 +525,7 @@ margin-right: 10px;
     padding: 13px 21px;
     gap: 5px;
     font-family: 'Inter';
-    width: 368px;
+    width: 367px;
     height: 49px;
     background: #FFFFFF;
     border: transparent;
@@ -551,9 +543,6 @@ margin-right: 10px;
 }
 
 .createTaskBtn{
-position: absolute;
-bottom: -200px;
-left: 870px;
 padding: 18px 10px;
 gap: 10px;
 width: 177px;
@@ -593,18 +582,14 @@ flex-grow: 0;
 }
 
 .clearBtn{
-position: absolute;
-bottom: -200px;
-left: 690px;
+
 gap: 10px;
 width: 150px;
 height: 61px;
 background: transparent;
 border-radius: 10px;
-flex: none;
 border: 1px solid #2A3647;
 order: 1;
-flex-grow: 0;
 cursor: pointer;
 color: #2A3647;
 background-image: url(img/close.png);
@@ -637,6 +622,9 @@ flex-grow: 0;
     overflow: hidden; 
     overflow-y: scroll;
 }
+.drodpwdownMargin{
+    min-height: 230px;
+}
 @media(max-width:1400px){
     .flex2{
         display: flex;
@@ -649,23 +637,10 @@ flex-grow: 0;
         display: none;
     }
 .categoryMain{
-    position: absolute;
-    left: 0px;
-    top: 600px;
     overflow: hidden;
     
 }
-.assignedMain{
-    position: absolute;
-    left: 0px;
-    top: 500px;
-    
-}
-.container{
-    margin: 0 auto;
-    width: 422px;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 400px;
+.margin-right2{
+    margin-right: 0px;
 }
 }
