@@ -94,15 +94,17 @@
         </div>
 
 <form class="add-task-section">
-
-    <div>
-        <h1 class="title">Add Task</h1>
+    
+    <div class="centery">
+        <h1 class="title">Add Task</h1>   
+    
     <div id="addTask" class="flex2">
+    
     <div class="margin-right2">
         
         <div>
             
-        <span >Title</span>
+        <span>Title</span>
         <input class="input" placeholder="Enter a title" id="title-Input" required  style="margin-top: 10px;">
     </div>
         
@@ -161,7 +163,7 @@
     </div>
     <div class="vr1 margin-right2"></div>
     <div>
-    <div>
+    
     <div>
             
     <div class="container">
@@ -169,7 +171,7 @@
             <span>Due date</span>
             <input class="date-input" type="date" id="d1" name="d1" placeholder="dd/mm/yyyy" required style="margin-top: 10px;">
         </div>
-        <span>Prio</span>
+        <span style="margin-top: 10px;">Prio</span>
         <div class="row">
         <div class="prio" id="urgent" onclick="afterUrgent()">Urgent <img src="img/urgent.png" id="urgent-img" width="20px" height="20px"></div>
         <div class="prio" id="medium" onclick="afterMedium()">Medium <img src="img/medium.png" id="medium-img"width="20px" height="20px"></div>
@@ -192,17 +194,15 @@
 </div>
 <div class="subtask" id="subtaskCheck"></div>
 
-        </div>
+        
         
     </div>
           
-<div>
+<div class="margin-bottom2" style="margin-top: 10px;">
     <button class="clearBtn" onclick="clearInput()"> <span class="clearFont"><span style="margin-left: -30px;">Clear</span></span></button>
     <button class="createTaskBtn" onclick="createTask()"><span class="createTaskFont"><span>Create Task</span> <span><img src="img/accept.png" class="createTasKImg"></span></span></button>
 </div>
 </div>
-         
-        
     </div>
     </div>
 </form>
