@@ -107,13 +107,6 @@ function renderTasksDone(){
     tasksDoneOutput.innerHTML = doneTasks; 
 }
 
-/* function showUpcomingDeadline(){
-    duedateOutput = document.getElementById('current_date');
-    let dueDate = upcomingDeadline();
-    console.log(dueDate);
-    duedateOutput.innerHTML = dueDate; 
-}
- */
 
 function upcomingDeadline(){
     var monthNames = ["January", "February", "March", "April", "May", "June",

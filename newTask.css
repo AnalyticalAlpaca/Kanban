@@ -3,6 +3,8 @@
     font-size: 45px;
     margin-bottom: 60px;
     margin-top: 150px;
+    display: flex;
+    flex-direction: column!important;
 }
 
 
@@ -12,7 +14,10 @@ height: 420px;
 border: 1px solid #D1D1D1;
 
 }
-
+.centers{
+    display: flex;
+    align-items: center;
+}
 .input{
 box-sizing: border-box;
 display: flex;
@@ -642,5 +647,18 @@ flex-grow: 0;
 }
 .margin-right2{
     margin-right: 0px;
+}
+}
+@media(max-width:800px){
+.margin-right2{
+    margin-right: 0px;
+}
+
+.title{
+    margin-top: 200px;
+    
+}
+.margin-bottom2{
+    margin-bottom: 100px;
 }
 }
