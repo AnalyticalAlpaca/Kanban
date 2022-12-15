@@ -661,4 +661,8 @@ flex-grow: 0;
 .margin-bottom2{
     margin-bottom: 100px;
 }
+.center3{
+    display: flex;
+    align-items: center;
+}
 }
