@@ -221,6 +221,7 @@ function emptyBoard() {
 
 // Add New Task
 function addTask() {
+    document.getElementById('addTask').style.display = 'flex';
     console.log('Hier kommt Add New Task');
 }
 
