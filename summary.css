@@ -705,6 +705,10 @@ gap:unset
 
 @media (min-width:801px) and (max-width:1000px){
    
+    #content {
+        justify-content: unset;
+        margin-top: 140px
+    }
         .container{            
             margin-left: unset;
             margin-right: unset;
@@ -863,6 +867,9 @@ gap:unset
 
 @media (min-width:1001px) and (max-width:1360px){
     
+    #content {
+        justify-content:unset;
+    }
     .container{
         margin-left: unset;
         margin-right: unset;
