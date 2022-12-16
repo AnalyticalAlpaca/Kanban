@@ -17,6 +17,7 @@
     <script src="board.js"></script>
     <script src="nav.js"></script>
     <script src="./mini_backend.js"></script>
+    <script src="newTask_forBoard.js"></script>
 
 </head>
 <body onload="initTasks()">
@@ -98,7 +99,7 @@
                         <div id="DropdownMain">
                         <div class="addTask_dropdown" id="ctgDropdown">
                             <div class="addTask_hoverDropdown" id="delFunc" onclick="toggleDropdown()">
-                            <div class="addTask_arrowEnd dropdownPadding" id="arrowEnd">
+                            <div class="addTask_arrowEnd addTask_dropdownPadding" id="arrowEnd">
                             <span class="addTask_test" id="selCategory">Select task category</span>
                             
                         </div>
@@ -165,7 +166,7 @@
                 <input class="addTask_input-trans" placeholder="Add new subtask" onclick="changeBtn(event)" id="subtask" required >
                 <div class="addTask_sub-task-btn">
                 <button id="addBtn1" onclick="changeBtn(event)"><img src="img/add.png" width="15px"></button>
-                <button id="addBtn2" class="d-none" onclick="closeSubtask(event)"><img src="img/close.png" width="12px"></button>
+                <button id="addBtn2" class="addTask_d-none" onclick="closeSubtask(event)"><img src="img/close.png" width="12px"></button>
                 <div class="addTask_vl2 addTask_d-none" id="vl2"></div>
                 <button id="addBtn3" class="addTask_d-none" onclick="submitSubtask(event)"><img src="img/accept.png" width="15px"></button>
                 
