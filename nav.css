@@ -142,7 +142,7 @@ a{
 }
 
 .logout_box{
-    z-index:999;
+    z-index:1000;
     width:100px;
     height:50px;
     background-color:#091931;
@@ -192,7 +192,10 @@ a{
     width: 60px;
     height:60px;
     cursor:pointer;
+    margin-right: 40px
 }
+
+
 
 
 .display_column img{
@@ -285,7 +288,15 @@ a{
     align-items: center;
     width:100%; 
     margin-left:20px;
-    margin-right:20px
+    margin-right:31px
+}
+
+.display_column_clicked{
+    display:flex;
+    flex-direction:column;
+    align-items:center;    
+    gap:10px;
+    padding-top:129px
 }
 
 .img_logo_header_mobile{

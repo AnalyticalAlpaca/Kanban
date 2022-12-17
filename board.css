@@ -229,7 +229,7 @@ button img {
 
 @media (max-width: 800px) {
     .board_div {
-        position: inherit;
+        /* position: inherit; */
         display: flex;
         flex-direction: column;
         width: 100vw;

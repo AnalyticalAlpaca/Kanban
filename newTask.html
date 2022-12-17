@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task</title>
     <script src="mini_backend.js"></script>
+   
     <link rel="stylesheet" href="newTask.css">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="body.css">
+    <link rel="stylesheet" href="keyframes.css">
+    <script src="nav.js"></script>
     <script src="newTask.js"></script>
     
 
@@ -59,15 +62,32 @@
                 <h3>Kanban Project Management Tool</h3>
                 <div class="img_header">
                     <img src="./img/img_header_help.png">
-                    <img src="./img/img_profil.png">
-                </div>   
+                    <div id="display_column" class="display_column d-none">
+                        <img src="./img/img_profil.png" onclick="renderLogoutBox()">  
+                        <div id="logout_box" class=" d-none" onclick="logout()">Logout</div>    
+    
+                    </div>
+                                
+                </div> 
+                  
             </div>
+
 
             <div class="headline_mobil">
                 <img class="img_logo_header_mobile" src="./img/logo_join_dark.png">
-                <img src="./img/img_profil.png">    
+                <div id="display_column_mobil" class="display_column">
+                    <img src="./img/img_profil.png" onclick="renderLogoutBoxMobil()">    
+                    <div id="logout_box_mobil" class="d-none" onclick="logout()">
+                        <a href="./index.html">Logout</a><br>
+                        <a href="./privacy.html">Privacy</a><br>
+                        <a href="./imprint.html">Imprint</a><br>
+                        <a href="">Help</a>
+                    
+                    </div>   
+                </div>
             </div>           
         </div>
+        
         <div class="main_headline_mobile">
             <h4>Kanban Project Management Tool</h4>
         </div>
