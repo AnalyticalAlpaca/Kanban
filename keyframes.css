@@ -11,6 +11,11 @@
     animation: slidingIn 5s normal forwards;
 }
 
+.animateOpacitiyOutAndIn {
+    animation: fadeOpacityOutAndIn 1s ease 0s 1 normal forwards;
+
+}
+
 
 @keyframes joinlogo {
     0% {
@@ -53,6 +58,31 @@
 
     to {
         opacity: 1;
+    }
+}
+
+@keyframes fadeOpacityOutAndIn {
+
+    0% {
+        opacity: 1;
+    }
+
+    /* 25% {
+        opacity: 1;
+    } */
+
+    50% {
+        opacity: 0;
+    }
+
+    /* 75% {
+        opacity: 1;
+    } */
+
+
+    
+    100% {
+        opacity: 1
     }
 }
 
