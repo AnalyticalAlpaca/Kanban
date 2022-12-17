@@ -7,6 +7,9 @@
     animation: fadeOpacityIn 1s ease 0s 1 normal forwards;
 }
 
+.animateSlidingIn {
+    animation: slidingIn 5s normal forwards;
+}
 
 
 @keyframes joinlogo {
@@ -53,3 +56,20 @@
     }
 }
 
+@keyframes slidingIn {
+   from {
+        transform: translateX(800px);
+      /* }
+      25% {
+        transform: translateX(-400px)
+      }
+      50% {
+        transform: translateX(-200px)
+      }
+      75% {
+        transform: translateX(-100px)*/
+      } 
+      to {
+        transform: translateX(0px);
+      }
+}

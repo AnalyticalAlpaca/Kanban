@@ -786,6 +786,7 @@ z-index: 0;
     background-color: #fff;
     padding: 3rem;
     border-radius: 30px;
+    animation: slidingIn 1s normal forwards;
 }
 .addTask_margin-right2{
     margin-right: 100px;
