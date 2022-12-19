@@ -6,13 +6,12 @@ let descriptions = [];
 let dates = [];
 let selectedCategory = [];
 let selectedColor = [];
-let allTask;
+let colorForCategory;
 
 
 async function init() {
     setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
-    allTask = JSON.parse(backend.getItem('allTask')) || [];
     save();
 }
 
@@ -54,16 +53,6 @@ function afterLow() {
     document.getElementById('medium-img').src = "img/medium.png";
     document.getElementById('low-img').src = "img/low-after.png";
     selectedPrio = "Low";
-}
-
-function changeBtn(event) {
-    document.getElementById('subtask').classList.remove('addTask_input-trans')
-    document.getElementById('subtask').classList.add('addTask_input-trans-after')
-    document.getElementById('addBtn1').classList.add('addTask_d-none')
-    document.getElementById('addBtn2').classList.remove('addTask_d-none')
-    document.getElementById('addBtn3').classList.remove('addTask_d-none')
-    document.getElementById('vl2').classList.remove('addTask_d-none')
-    event.preventDefault();
 }
 
 function submitSubtask(event) {
@@ -238,7 +227,7 @@ function addnewCategory() {
                 document.getElementById(`colorCircle${i}`).classList.add('addTask_selectGreen');
             }
             else if (categoryColor == "hellblau") {
-                document.getElementById(`colorCircle${i}`).classList.add('addTask_selectLightBlue');
+                document.getElementById(`colorCircle${i}`).classList.add('addTask_selectTurquoise');
             }
             else if (categoryColor == "orange")
                 document.getElementById(`colorCircle${i}`).classList.add('addTask_selectOrange');
@@ -294,7 +283,7 @@ function categoryShow(x) {
         document.getElementById("selCategory").innerHTML = `
         <div class="addTask_centerNameColor">
         <span>${categoryNames[x]}</span>
-        <span class="addTask_selectLightBlue" id="selCategory"></span>
+        <span class="addTask_selectTurquoise" id="selCategory"></span>
         </div>
         `
     }
@@ -317,7 +306,7 @@ function categoryAdd() {
     document.getElementById("dropdown").classList.remove("addTask_scrollbar");
     document.getElementById('delFunc').removeAttribute("onclick");
     document.getElementById("selCategory").innerHTML = `
-    <div class="addTask_flex3"><input class="addTask_input-trans2 addTask_widthCategory" placeholder="Category name ..." id="inputCategory" required><div class="sub-task-btn">
+    <div class="addTask_flex3"><input class="addTask_input-trans2 addTask_widthCategory" placeholder="Category name ..." id="inputCategory"><div class="sub-task-btn">
     <button id="addBtn2"><img src="img/close.png" width="12px" onclick="closeCategory()"></button>
     <div class="addTask_vl2" id="vl2"></div>
     <button id="addBtn3"><img src="img/accept.png" width="15px" onclick="categoryPush(event)"></button>
@@ -338,8 +327,6 @@ function categoryPush(event) {
     if (categoryName == "" || color == null) {
         alert("bitte etwas eingeben")
     } else {
-
-
         document.getElementById("dropdown").classList.remove("addTask_scrollbar");
         categoryNames.push(categoryName);
         categoryColors.push(color);
@@ -381,7 +368,7 @@ function closeCategory() {
     <span class="addTask_selectGreen" id="selectGreen" onclick="selectedGreen()"></span>
     <span class="addTask_selectOrange" id="selectOrange" onclick="selectedOrange()"></span>
     <span class="addTask_selectPurple" id="selectPurple" onclick="selectedPurple()"></span>
-    <span class="addTask_selectLightBlue" id="selectLightBlue" onclick="selectedLightBlue()"></span>
+    <span class="addTask_selectTurquoise" id="selectTurquoise" onclick="selectedTurquoise()"></span>
     <span class="addTask_selectBlue" id="selectBlue" onclick="selectedBlue()"></span>
     </div>
 
@@ -393,19 +380,6 @@ function closeCategory() {
 let color;
 let categoryName;
 
-var d = new Date()
-var yr = d.getFullYear();
-var month = d.getMonth() + 1
-if (month < 10) {
-    month = '0' + month
-}
-var date = d.getDate();
-if (date < 10) {
-    date = '0' + date
-}
-var c_date = yr + "-" + month + "-" + date;
-document.getElementById('d1').value = c_date;
-
 function selectedRed() {
     color = "rot";
     categoryName = document.getElementById('inputCategory').value
@@ -414,15 +388,16 @@ function selectedRed() {
     document.getElementById('selectBlue').classList.add('addTask_selectBlue');
     document.getElementById('selectPurple').classList.add('addTask_selectPurple');
     document.getElementById('selectOrange').classList.add('addTask_selectOrange');
-    document.getElementById('selectLightBlue').classList.add('addTask_selectLightBlue');
+    document.getElementById('selectTurquoise').classList.add('addTask_selectTurquoise');
     document.getElementById('selectRed').classList.remove('addTask_selectRed');
     document.getElementById('selectGreen').classList.remove('addTask_selectedGreen');
     document.getElementById('selectOrange').classList.remove('addTask_selectedOrange');
     document.getElementById('selectPurple').classList.remove('addTask_selectedPurple');
     document.getElementById('selectBlue').classList.remove('addTask_selectedBlue');
-    document.getElementById('selectLightBlue').classList.remove('addTask_selectedLightBlue');
+    document.getElementById('selectTurquoise').classList.remove('addTask_selectedTurquoise');
 
 }
+
 function selectedGreen() {
     color = "grün";
     categoryName = document.getElementById('inputCategory').value
@@ -431,15 +406,16 @@ function selectedGreen() {
     document.getElementById('selectBlue').classList.add('addTask_selectBlue');
     document.getElementById('selectPurple').classList.add('addTask_selectPurple');
     document.getElementById('selectOrange').classList.add('addTask_selectOrange');
-    document.getElementById('selectBlue').classList.add('addTask_selectLightBlue');
+    document.getElementById('selectTurquoise').classList.add('addTask_selectTurquoise');
     document.getElementById('selectGreen').classList.remove('addTask_selectGreen');
     document.getElementById('selectRed').classList.remove('addTask_selectedRed');
     document.getElementById('selectOrange').classList.remove('addTask_selectedOrange');
     document.getElementById('selectPurple').classList.remove('addTask_selectedPurple');
     document.getElementById('selectBlue').classList.remove('addTask_selectedBlue');
-    document.getElementById('selectLightBlue').classList.remove('addTask_selectedLightBlue');
+    document.getElementById('selectTurquoise').classList.remove('addTask_selectedTurquoise');
 
 }
+
 function selectedOrange() {
     color = "orange";
     categoryName = document.getElementById('inputCategory').value
@@ -447,16 +423,17 @@ function selectedOrange() {
     document.getElementById('selectRed').classList.add('addTask_selectRed');
     document.getElementById('selectBlue').classList.add('addTask_selectBlue');
     document.getElementById('selectPurple').classList.add('addTask_selectPurple');
-    document.getElementById('selectLightBlue').classList.add('addTask_selectLightBlue');
+    document.getElementById('selectTurquoise').classList.add('addTask_selectTurquoise');
     document.getElementById('selectGreen').classList.add('addTask_selectGreen');
     document.getElementById('selectOrange').classList.remove('addTask_selectOrange');
     document.getElementById('selectRed').classList.remove('addTask_selectedRed');
     document.getElementById('selectGreen').classList.remove('addTask_selectedGreen');
     document.getElementById('selectPurple').classList.remove('addTask_selectedPurple');
     document.getElementById('selectBlue').classList.remove('addTask_selectedBlue');
-    document.getElementById('selectLightBlue').classList.remove('addTask_selectedLightBlue');
+    document.getElementById('selectTurquoise').classList.remove('addTask_selectedTurquoise');
 
 }
+
 function selectedPurple() {
     color = "lila";
     categoryName = document.getElementById('inputCategory').value
@@ -465,19 +442,20 @@ function selectedPurple() {
     document.getElementById('selectOrange').classList.add('addTask_selectOrange');
     document.getElementById('selectGreen').classList.add('addTask_selectGreen');
     document.getElementById('selectBlue').classList.add('addTask_selectBlue');
-    document.getElementById('selectLightBlue').classList.add('addTask_selectLightBlue');
+    document.getElementById('selectTurquoise').classList.add('addTask_selectTurquoise');
     document.getElementById('selectRed').classList.remove('addTask_selectedRed');
     document.getElementById('selectGreen').classList.remove('addTask_selectedGreen');
     document.getElementById('selectOrange').classList.remove('addTask_selectedOrange');
     document.getElementById('selectPurple').classList.remove('addTask_selectPurple');
     document.getElementById('selectBlue').classList.remove('addTask_selectedBlue');
-    document.getElementById('selectLightBlue').classList.remove('addTask_selectedLightBlue');
+    document.getElementById('selectTurquoise').classList.remove('addTask_selectedTurquoise');
 
 }
-function selectedLightBlue() {
+
+function selectedTurquoise() {
     color = "hellblau";
     categoryName = document.getElementById('inputCategory').value
-    document.getElementById('selectLightBlue').classList.add('addTask_selectedLightBlue');
+    document.getElementById('selectTurquoise').classList.add('addTask_selectedTurquoise');
     document.getElementById('selectRed').classList.add('addTask_selectRed');
     document.getElementById('selectPurple').classList.add('addTask_selectPurple');
     document.getElementById('selectOrange').classList.add('addTask_selectOrange');
@@ -488,14 +466,16 @@ function selectedLightBlue() {
     document.getElementById('selectOrange').classList.remove('addTask_selectedOrange');
     document.getElementById('selectPurple').classList.remove('addTask_selectedPurple');
     document.getElementById('selectBlue').classList.remove('addTask_selectedBlue');
+    document.getElementById('selectTurquoise').classList.remove('addTask_selectTurquoise');
 
 
 }
+
 function selectedBlue() {
     color = "blau";
     categoryName = document.getElementById('inputCategory').value
     document.getElementById('selectBlue').classList.add('addTask_selectedBlue');
-    document.getElementById('selectLightBlue').classList.add('addTask_selectLightBlue');
+    document.getElementById('selectTurquoise').classList.add('addTask_selectTurquoise');
     document.getElementById('selectPurple').classList.add('addTask_selectPurple');
     document.getElementById('selectOrange').classList.add('addTask_selectOrange');
     document.getElementById('selectGreen').classList.add('addTask_selectGreen');
@@ -504,7 +484,8 @@ function selectedBlue() {
     document.getElementById('selectGreen').classList.remove('addTask_selectedGreen');
     document.getElementById('selectOrange').classList.remove('addTask_selectedOrange');
     document.getElementById('selectPurple').classList.remove('addTask_selectedPurple');
-    document.getElementById('selectLightBlue').classList.remove('addTask_selectedLightBlue');
+    document.getElementById('selectBlue').classList.remove('addTask_selectBlue');
+    document.getElementById('selectTurquoise').classList.remove('addTask_selectedTurquoise');
 
 }
 
@@ -512,25 +493,45 @@ function createTask() {
     let titleInput = document.getElementById('title-Input').value;
     let description = document.getElementById("descriptionInput").value;
     let date = document.getElementById("d1").value;
+    getSelectedColor();
+    if ([titleInput, description, date].includes('')){
+        alert("Please enter a title, a description and a date")
+        return
+    }
+    if (document.getElementById('inputCategory')==null || document.getElementById('inputCategory').value=='' || colorForCategory==undefined) {
+        alert("Please enter a category and choose a color")
+        return
+    } 
+    if (selectedPrio==undefined) {
+        alert("Please set a priority")
+        return
+    }
+    if (assignedTo==undefined) {
+        alert("Please choose an assignee")
+        return
+    }
+    let newCategory = document.getElementById('inputCategory').value;
     let task =
     {
-        title: titleInput,
-        descriptions: description,
-        taskDate: date,
-        prios: selectedPrio,
-        categoryNames: currentCategory,
-        categoyColors: currentColor,
-        assigned: assignedTo,
+        "status": "To Do",
+        "category": newCategory,
+        "color": colorForCategory,
+        "title": titleInput,
+        "description": description,
+        "dueDate": new Date(date),
+        "id": 0,
+        "visibility": true,
+        "priority": selectedPrio,
+        "assignees": [assignedTo]
     }
 
-    allTask.push(task);
+    tasks.push(task);
     save();
-    console.log(allTask);
     clearInput();
-
-
-
+    document.getElementById('addTask').style.display = 'none';
+    initBoard();
 }
+
 function clearInput() {
     document.getElementById('title-Input').value = "";
     document.getElementById("descriptionInput").value = "";
@@ -541,6 +542,32 @@ function clearInput() {
     closeAssigned();
 }
 
-async function save() {
-    await backend.setItem('allTask', JSON.stringify(allTask));
+function getSelectedPriority() {
+    if (document.getElementById('urgent').className === 'addTask_prio-after-urgent') {
+        let selectedPriority = "Urgent"
+        return selectedPriority
+    } else if (document.getElementById('medium').className === 'addTask_prio-after-medium') {
+        let selectedPriority = "Medium"
+        return selectedPriority
+    } else if (document.getElementById('low').className === 'addTask_prio-after-low') {
+        let selectedPriority = "Low"
+        return selectedPriority
+    }
 }
+
+function getSelectedColor() {
+    if (document.getElementById('selectRed').className === "addTask_selectedRed") {
+        colorForCategory = "Red";
+    } else if (document.getElementById('selectGreen').className === "addTask_selectedGreen") {
+        colorForCategory = "Green";
+    } else if (document.getElementById('selectOrange').className === "addTask_selectedOrange") {
+        colorForCategory = "Orange";
+    } else if (document.getElementById('selectPurple').className === "addTask_selectedPurple") {
+        colorForCategory = "Purple";
+    } else if (document.getElementById('selectTurquoise').className === "addTask_selectedTurquoise") {
+        colorForCategory = "Turquoise";
+    } else if (document.getElementById('selectBlue').className === "addTask_selectedBlue") {
+        colorForCategory = "Blue";
+    }
+}
+

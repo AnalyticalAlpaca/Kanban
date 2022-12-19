@@ -4,6 +4,7 @@ let tasks = [
     {
         "status": "To Do",
         "category": "Design",
+        "color": "Orange",
         "title": "Website redesign",
         "description": "Modify the contents of the main website",
         "dueDate": new Date("2022-11-15"),
@@ -16,6 +17,7 @@ let tasks = [
     {
         "status": "In Progress",
         "category": "Sales",
+        "color": "Purple",
         "title": "Call potencial clients",
         "description": "Make the product presentation to prospective buyers",
         "dueDate": new Date("2022-11-15"),
@@ -28,6 +30,7 @@ let tasks = [
     {
         "status": "Awaiting Feedback",
         "category": "Backoffice",
+        "color": "Turquoise",
         "title": "Accounting invoices",
         "description": "Write open invoices for customer",
         "dueDate": new Date("2022-11-15"),
@@ -40,6 +43,7 @@ let tasks = [
     {
         "status": "Done",
         "category": "Marketing",
+        "color": "Blue",
         "title": "Social media strategy",
         "description": "Develop an ad campaign for brand positioning",
         "dueDate": new Date("2022-11-15"),
@@ -54,10 +58,12 @@ let tasks = [
 let rotation;
 
 let catColors = {
-    "Design": "color1",
-    "Sales": "color2",
-    "Backoffice": "color3",
-    "Marketing": "color4"
+    "Red": "color1",
+    "Green": "color2",
+    "Orange": "color3",
+    "Purple": "color4",
+    "Turquoise": "color5",
+    "Blue": "color6"
 };
 
 let prioColors = {
@@ -87,6 +93,60 @@ async function initTasks() {
     setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
+    // tasks = [
+    //     {
+    //         "status": "To Do",
+    //         "category": "Design",
+    //         "color": "Orange",
+    //         "title": "Website redesign",
+    //         "description": "Modify the contents of the main website",
+    //         "dueDate": new Date("2022-11-15"),
+    //         "id": 0,
+    //         "visibility": true,
+    //         "priority": "Medium",
+    //         "assignees": ["Julius Peterson", "Tyson Ngu", "Sebastian Mayer"]
+    //     },
+    
+    //     {
+    //         "status": "In Progress",
+    //         "category": "Sales",
+    //         "color": "Purple",
+    //         "title": "Call potencial clients",
+    //         "description": "Make the product presentation to prospective buyers",
+    //         "dueDate": new Date("2022-11-15"),
+    //         "id": 1,
+    //         "visibility": true,
+    //         "priority": "Low",
+    //         "assignees": ["Tyson Ngu"]
+    //     },
+    
+    //     {
+    //         "status": "Awaiting Feedback",
+    //         "category": "Backoffice",
+    //         "color": "Turquoise",
+    //         "title": "Accounting invoices",
+    //         "description": "Write open invoices for customer",
+    //         "dueDate": new Date("2022-11-15"),
+    //         "id": 2,
+    //         "visibility": true,
+    //         "priority": "Urgent",
+    //         "assignees": ["Tyson Ngu", "Sebastian Mayer"]
+    //     },
+    
+    //     {
+    //         "status": "Done",
+    //         "category": "Marketing",
+    //         "color": "Blue",
+    //         "title": "Social media strategy",
+    //         "description": "Develop an ad campaign for brand positioning",
+    //         "dueDate": new Date("2022-11-15"),
+    //         "id": 3,
+    //         "visibility": true,
+    //         "priority": "Low",
+    //         "assignees": ["Julius Peterson", "Sebastian Mayer"]
+    //     }
+    // ];
+    // save();
     // Change date format in tasks
     for (let i = 0; i < tasks.length; i++) {
         tasks[i].dueDate = new Date(tasks[i].dueDate);
@@ -106,6 +166,7 @@ let done;
 
 function renderBoard() {
     emptyBoard();
+    setTasksID();
 
     // Filter Tasks Depending On Status
     toDo = tasks.filter(tasks => tasks.status == "To Do");
@@ -121,7 +182,7 @@ function renderBoard() {
         }
         document.getElementById("toDo").innerHTML += /*html*/`
         <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${toDo[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
-            <li class="category ${catColors[toDo[i].category]}">${toDo[i].category}</li>
+            <li class="category ${catColors[toDo[i].color]}">${toDo[i].category}</li>
             <li class="title" onfocusout="updateItem(${toDo[i].id})">${toDo[i].title}</li>
             <li class="description" onfocusout="updateItem(${toDo[i].id})">${toDo[i].description}</li>
             <div class="abbr_prio">
@@ -141,7 +202,7 @@ function renderBoard() {
         }
         document.getElementById("inProgress").innerHTML += /*html*/`
         <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${inProgress[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
-            <li class="category ${catColors[inProgress[i].category]}">${inProgress[i].category}</li>
+            <li class="category ${catColors[inProgress[i].color]}">${inProgress[i].category}</li>
             <li class="title" onfocusout="updateItem(${inProgress[i].id})">${inProgress[i].title}</li>
             <li class="description" onfocusout="updateItem(${inProgress[i].id})">${inProgress[i].description}</li>
             <div class="abbr_prio">
@@ -161,7 +222,7 @@ function renderBoard() {
         }
         document.getElementById("awaitingFeedback").innerHTML += /*html*/`
         <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${awaitingFeedback[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
-            <li class="category ${catColors[awaitingFeedback[i].category]}">${awaitingFeedback[i].category}</li>
+            <li class="category ${catColors[awaitingFeedback[i].color]}">${awaitingFeedback[i].category}</li>
             <li class="title" onfocusout="updateItem(${awaitingFeedback[i].id})">${awaitingFeedback[i].title}</li>
             <li class="description" onfocusout="updateItem(${awaitingFeedback[i].id})">${awaitingFeedback[i].description}</li>
             <div class="abbr_prio">
@@ -180,8 +241,8 @@ function renderBoard() {
             continue
         }
         document.getElementById("done").innerHTML += /*html*/`
-        <div id="container${j}" class="category_container" draggable="true" ondragstart="startDragging(${done[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
-            <li class="category ${catColors[done[i].category]}">${done[i].category}</li>
+        <div id="container${j}" class="category_container done_margin" draggable="true" ondragstart="startDragging(${done[i].id})" onmousedown="rotate(${j})" onmouseup="rotateBack(${j})">
+            <li class="category ${catColors[done[i].color]}">${done[i].category}</li>
             <li class="title" onfocusout="updateItem(${done[i].id})">${done[i].title}</li>
             <li class="description" onfocusout="updateItem(${done[i].id})">${done[i].description}</li>
             <div class="abbr_prio">
@@ -222,7 +283,18 @@ function emptyBoard() {
 // Add New Task
 function addTask() {
     document.getElementById('addTask').style.display = 'flex';
-    console.log('Hier kommt Add New Task');
+    var d = new Date()
+    var yr = d.getFullYear();
+    var month = d.getMonth() + 1
+    if (month < 10) {
+        month = '0' + month
+    }
+    var date = d.getDate();
+    if (date < 10) {
+        date = '0' + date
+    }
+    var c_date = yr + "-" + month + "-" + date;
+    document.getElementById('d1').value = c_date;
 }
 
 // Drag Tasks
@@ -514,4 +586,10 @@ function formatDateBack(date) {
       padTo2Digits(date.getMonth() + 1),
       padTo2Digits(date.getDate()),
     ].join('-');
+}
+
+function setTasksID() {
+    for (let i = 0; i < tasks.length; i++) {
+        tasks[i].id = i;        
+    }
 }

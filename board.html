@@ -90,11 +90,14 @@
         <div id="fullscreen" class="fullscreen"></div>
         <div id="fullscreen2" class="fullscreen2"></div>
         <div id="addTask" class="addTask">
-            <form class="addTask_add-task-section">
+            <div class="addTask_add-task-section">
     
                 <div class="addTask_centery">
-                    <h1 class="addTask_title">Add Task</h1>   
-                
+                    <div class="first_div">
+                        <h1 class="addTask_title">Add Task</h1>  
+                        <img onclick="closeAddTask()" src="img/closeImage.png" alt="close-icon"> 
+                    </div>
+                    
                 <div id="addTask" class="addTask_flex2">
                 
                 <div class="addTask_margin-right2">
@@ -102,12 +105,12 @@
                     <div>
                         
                     <span>Title</span>
-                    <input class="addTask_input" placeholder="Enter a title" id="title-Input" required  style="margin-top: 10px;">
+                    <input class="addTask_input" placeholder="Enter a title" id="title-Input" style="margin-top: 10px;">
                 </div>
                     
                 <div style="margin-top: 10px;">
                     <span>Description</span>
-                    <textarea class="addTask_text-area" id="descriptionInput" placeholder="Enter a Description" required  style="margin-top: 10px;"></textarea>
+                    <textarea class="addTask_text-area" id="descriptionInput" placeholder="Enter a Description" style="margin-top: 10px;"></textarea>
                     </div>
                     <div class="addTask_categoryMain" style="margin-top: 10px;" id="cattyMain">
                         Category 
@@ -132,7 +135,7 @@
                     <span class="addTask_selectGreen" id="selectGreen" onclick="selectedGreen()"></span>
                     <span class="addTask_selectOrange" id="selectOrange" onclick="selectedOrange()"></span>
                     <span class="addTask_selectPurple" id="selectPurple" onclick="selectedPurple()"></span>
-                    <span class="addTask_selectLightBlue" id="selectLightBlue" onclick="selectedLightBlue()"></span>
+                    <span class="addTask_selectTurquoise" id="selectTurquoise" onclick="selectedTurquoise()"></span>
                     <span class="addTask_selectBlue" id="selectBlue" onclick="selectedBlue()"></span>
                     </div>  
                 </div>
@@ -166,7 +169,7 @@
                 <div class="addTask_container">
                     <div>
                         <span>Due date</span>
-                        <input class="addTask_date-input" type="date" id="d1" name="d1" placeholder="dd/mm/yyyy" required style="margin-top: 10px;">
+                        <input class="addTask_date-input" type="date" id="d1" name="d1" placeholder="dd/mm/yyyy" style="margin-top: 10px;">
                     </div>
                     <span style="margin-top: 10px;">Prio</span>
                     <div class="addTask_row">
@@ -179,9 +182,9 @@
                 <div style="margin-top: 10px;">
                 <span style="margin-top: 10px;">Subtask</span>
                 <div class="addTask_flex3 addTask_input" style="margin-top: 10px;">
-                <input class="addTask_input-trans" placeholder="Add new subtask" onclick="changeBtn(event)" id="subtask" required >
+                <input class="addTask_input-trans" placeholder="Add new subtask" onclick="changeBtn(event)" id="subtask">
                 <div class="addTask_sub-task-btn">
-                <button id="addBtn1" onclick="changeBtn(event)"><img src="img/add.png" width="15px"></button>
+                <button id="addBtn1" onclick="changeBtn(event)"><img src="img/add.png" class="addBtn1_icon" width="15px"></button>
                 <button id="addBtn2" class="addTask_d-none" onclick="closeSubtask(event)"><img src="img/close.png" width="12px"></button>
                 <div class="addTask_vl2 addTask_d-none" id="vl2"></div>
                 <button id="addBtn3" class="addTask_d-none" onclick="submitSubtask(event)"><img src="img/accept.png" width="15px"></button>
@@ -197,12 +200,12 @@
                       
             <div class="addTask_margin-bottom2" style="margin-top: 10px;">
                 <button class="addTask_clearBtn" onclick="clearInput()"> <span class="addTask_clearFont"><span style="margin-left: -30px;">Clear</span></span></button>
-                <button class="addTask_createTaskBtn" onclick="createTask()"><span class="addTask_createTaskFont"><span>Create Task</span> <span><img src="img/accept.png" class="addTask_createTasKImg"></span></span></button>
+                <button class="addTask_createTaskBtn" onclick="createTask()"><span class="addTask_createTaskFont"><span>Create Task</span> <span><img src="img/accept.png" class="addTask_createTasKImg createTask_icon"></span></span></button>
             </div>
             </div>
                 </div>
                 </div>
-            </form>
+            </div>
         </div>
     
         <div class="footer_mobil">

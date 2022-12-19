@@ -101,19 +101,26 @@ button img {
 }
 
 .color1 {
-    background: #FF7A00;
+    background: red;
 }
 
 .color2 {
-    background: #FC71FF;
+    background: green;
 }
 
 .color3 {
-    background: #1FD7C1;
+    background: orange;
 }
 
 .color4 {
-    background: #0038FF;
+    background: purple;
+}
+
+.color5 {
+    background: turquoise;
+}
+.color6 {
+    background: blue;
 }
 
 .heading {
@@ -129,12 +136,15 @@ button img {
     margin: 1.2rem 0 0.5rem 0;
     outline: none;
     color: #000;
+    word-wrap: break-word;
+
 }
 
 .description {
     font-weight: 400;
     color: #A8A8A8;
     outline: none;
+    word-wrap: break-word;
 }
 
 .category_container {
@@ -163,7 +173,7 @@ button img {
 
 .sectionBox {
     overflow-y: auto;
-    max-height: 54vh;
+    max-height: 52vh;
   }
   
 .sectionBox::-webkit-scrollbar-track {
@@ -229,10 +239,10 @@ button img {
 
 @media (max-width: 800px) {
     .board_div {
-        /* position: inherit; */
+        position: inherit;
         display: flex;
         flex-direction: column;
-        width: 100vw;
+        width: 100%;
         margin-top: 9rem;
         padding-right: 2rem;
         padding-left: 3rem;
@@ -279,6 +289,16 @@ button img {
 
     #content_board {
         margin-left: 0;
+    }
+
+    .done_margin {
+        margin-bottom: 8rem;
+    }
+}
+
+@media (max-width: 400px) {
+    #myInput {
+        width: 220px;
     }
 }
 
@@ -677,6 +697,7 @@ border-radius: 10px;
 flex: none;
 order: 1;
 flex-grow: 0;
+outline: none;
 }
 .addTask_input-trans-after{
     box-sizing: border-box;
@@ -859,6 +880,7 @@ justify-content: space-between;
 .addTask_flex3{
     display: flex;
     flex-direction: row-reverse;
+    justify-content: flex-end;
 }
 .addTask_d-none{
     display: none;
@@ -1083,9 +1105,9 @@ margin-right: 10px;
     box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.41);
 
 }
-.addTask_selectLightBlue{
+.addTask_selectTurquoise{
     border: 1px solid rgb(0, 0, 0);
-    background-color: lightblue;
+    background-color: Turquoise;
     border-radius: 100%;
     width: 20px;
     height: 20px;
@@ -1095,9 +1117,9 @@ margin-right: 10px;
     margin-right: 7px;
     
 }
-.addTask_selectedLightBlue{
+.addTask_selectedTurquoise{
     border: 1px solid rgb(3, 3, 3);
-    background-color: lightblue;
+    background-color: turquoise;
     border-radius: 100%;
     width: 20px;
     height: 20px;
@@ -1108,7 +1130,7 @@ margin-right: 10px;
     box-shadow: 0px 0px 9px 3px rgba(0, 0, 0, 0.856);
     transform:scale(1.2);
 }
-.addTask_selectLightBlue:hover{
+.addTask_selectTurquoise:hover{
     box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.41);
 }
 
@@ -1169,6 +1191,7 @@ margin-right: 10px;
     order: 1;
     flex-grow: 0;
     margin-right: 4px;
+    outline: none;
 }
 
 .addTask_subtask{
@@ -1284,10 +1307,10 @@ flex-grow: 0;
     margin-right: 0px;
 }
 
-.title{
+/* .title{
     margin-top: 200px;
     
-}
+} */
 .margin-bottom2{
     margin-bottom: 100px;
 }
@@ -1297,4 +1320,23 @@ flex-grow: 0;
     display: none;
     align-items: center;
     z-index: 999;
+}
+
+.createTask_icon {
+    position: inherit;
+}
+
+.addBtn1_icon {
+    position: inherit;
+}
+
+.addTask_centery .first_div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addTask_centery .first_div img {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
 }
