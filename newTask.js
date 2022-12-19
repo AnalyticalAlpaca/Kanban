@@ -508,7 +508,7 @@ function selectedBlue() {
 
 }
 
-function createTask() {
+function createTask(event) {
     let titleInput = document.getElementById('title-Input').value;
     let description = document.getElementById("descriptionInput").value;
     let date = document.getElementById("d1").value;
@@ -527,11 +527,11 @@ function createTask() {
     save();
     console.log(allTask);
     clearInput();
-
+    event.preventDefault();
 
 
 }
-function clearInput() {
+function clearInput(event) {
     document.getElementById('title-Input').value = "";
     document.getElementById("descriptionInput").value = "";
     document.getElementById("d1").value = "";
@@ -539,6 +539,7 @@ function clearInput() {
     prioDefault();
     closeCategory();
     closeAssigned();
+    event.preventDefault();
 }
 
 async function save() {
