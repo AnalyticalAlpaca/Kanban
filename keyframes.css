@@ -84,7 +84,7 @@
 
 @keyframes slidingIn {
    from {
-        transform: translateX(800px);
+        transform: translateX(1800px);
       } 
       to {
         transform: translateX(0px);
@@ -96,7 +96,7 @@
          transform: translateX(0px);          
        } 
        to {
-         transform: translateX(800px);                     
+         transform: translateX(1800px);                     
         }
 
  }

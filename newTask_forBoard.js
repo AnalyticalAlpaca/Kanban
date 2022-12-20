@@ -528,7 +528,7 @@ function createTask() {
     tasks.push(task);
     save();
     clearInput();
-    document.getElementById('addTask').style.display = 'none';
+    hideInfoBox();
     initBoard();
 }
 

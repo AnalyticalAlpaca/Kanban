@@ -283,6 +283,7 @@ function emptyBoard() {
 // Add New Task
 function addTask() {
     document.getElementById('addTask').style.display = 'flex';
+    document.getElementById('addTask_add-task-section').className = "addTask_add-task-section";
     var d = new Date()
     var yr = d.getFullYear();
     var month = d.getMonth() + 1
@@ -592,4 +593,14 @@ function setTasksID() {
     for (let i = 0; i < tasks.length; i++) {
         tasks[i].id = i;        
     }
+}
+
+async function hideInfoBox() {
+    document.getElementById('addTask_add-task-section').className = "addTask_remove-task-section";
+    await delay(1000);
+    document.getElementById('addTask').style.display = 'none';
+}
+
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
 }

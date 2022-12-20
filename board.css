@@ -810,6 +810,15 @@ z-index: 0;
     animation: slidingIn 1s normal forwards;
 }
 
+.addTask_remove-task-section{
+    /* display: flex; */
+    color: black;
+    background-color: #fff;
+    padding: 3rem;
+    border-radius: 30px;
+    animation: slidingOut 1s normal forwards;
+}
+
 .animation_slide_out{
     /* display: flex; */
     color: black;
