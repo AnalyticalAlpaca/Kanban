@@ -93,13 +93,10 @@
 
 @keyframes slidingOut {
     from {
-         transform: translateX(0px);
-         visibility: visible;  
+         transform: translateX(0px);          
        } 
        to {
-         transform: translateX(800px);
-         visibility: hidden;               
-        
-       }
+         transform: translateX(800px);                     
+        }
 
  }
