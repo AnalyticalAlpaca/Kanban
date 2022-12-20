@@ -537,6 +537,11 @@ function clearInput() {
     document.getElementById("descriptionInput").value = "";
     document.getElementById("d1").value = "";
     document.getElementById('subtask').value = "";
+    document.getElementById('addTask').classList.remove('addTask_add-task-section');     
+    document.getElementById('addTask_add-task-section').classList.add('animation_slide_out');
+    //setTimeout(addClassList, 2000, 'addTask_add-task-section', 'addTask_d-none');
+    
+
     prioDefault();
     closeCategory();
     closeAssigned();

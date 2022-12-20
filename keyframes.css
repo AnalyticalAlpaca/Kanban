@@ -11,6 +11,10 @@
     animation: slidingIn 5s normal forwards;
 }
 
+.animateSlidingOut {
+    animation: slidingOut 5s normal forwards;
+}
+
 .animateOpacitiyOutAndIn {
     animation: fadeOpacityOutAndIn 1s ease 0s 1 normal forwards;
 
@@ -67,18 +71,10 @@
         opacity: 1;
     }
 
-    /* 25% {
-        opacity: 1;
-    } */
 
     50% {
         opacity: 0;
-    }
-
-    /* 75% {
-        opacity: 1;
-    } */
-
+    }   
 
     
     100% {
@@ -89,17 +85,21 @@
 @keyframes slidingIn {
    from {
         transform: translateX(800px);
-      /* }
-      25% {
-        transform: translateX(-400px)
-      }
-      50% {
-        transform: translateX(-200px)
-      }
-      75% {
-        transform: translateX(-100px)*/
       } 
       to {
         transform: translateX(0px);
       }
 }
+
+@keyframes slidingOut {
+    from {
+         transform: translateX(0px);
+         visibility: visible;  
+       } 
+       to {
+         transform: translateX(800px);
+         visibility: hidden;               
+        
+       }
+
+ }
