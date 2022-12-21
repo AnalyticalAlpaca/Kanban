@@ -113,33 +113,40 @@ function upcomingDeadline(){
     "July", "August", "September", "October", "November", "December"];
 
     duedateOutput = document.getElementById('current_date');
-    
         const today = new Date().getTime();
+        let todayDate = new Date();
       
         let deadlines = tasks.map((task) => {
           return new Date(task.dueDate).getTime();
         });
-        console.log(deadlines);
-      
-        let deadlineDist = deadlines.filter(d => {
-          let dist = d - today;
-          if(dist > 0){
-          return dist > 0;
-        } else {
-            console.log(today);
-            return today;
+
+        let futureDeadlines = [];
+        for (let i = 0; i < deadlines.length; i++) {
+            if (deadlines[i] < today) {
+                continue
+            } else {
+                futureDeadlines.push(deadlines[i]);
+            }
         }
-        });
-        console.log(deadlineDist);
-      
-        let closestDate = Math.min(...deadlineDist);
-        console.log(closestDate);
-        console.log(new Date(closestDate).toLocaleDateString('de-DE'));
 
-        //duedateOutput.innerHTML = new Date(closestDate).toLocaleDateString('de-DE');
+        if (futureDeadlines.length === 0) {
+            duedateOutput.innerHTML = monthNames[todayDate.getMonth()] + ' ' + todayDate.getDate() + ',' + todayDate.getFullYear();
+            document.getElementById('forNoDate').innerHTML = 'No upcoming deadlines';
+            return
+        }
+
+        let closestDate = Math.min(...futureDeadlines);
         duedateOutput.innerHTML = monthNames[new Date(closestDate).getMonth()] + ' ' + new Date(closestDate).getDate() + ',' + new Date(closestDate).getFullYear() ;
-             
-    }
+}
 
+function formatDate(date) {
+    return [
+        padTo2Digits(date.getDate()),
+        padTo2Digits(date.getMonth() + 1),
+        date.getFullYear(),
+    ].join('.');
+}
 
-    
+function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+}

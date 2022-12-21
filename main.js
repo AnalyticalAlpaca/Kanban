@@ -1,60 +1,60 @@
 "use strict"
 
-let tasks = [
-    {
-        "status": "To Do",
-        "category": "Design",
-        "color": "Orange",
-        "title": "Website redesign",
-        "description": "Modify the contents of the main website",
-        "dueDate": new Date("2022-11-15"),
-        "id": 0,
-        "visibility": true,
-        "priority": "Medium",
-        "assignees": ["Julius Peterson", "Tyson Ngu", "Sebastian Mayer"]
-    },
+// let tasks = [
+//     {
+//         "status": "To Do",
+//         "category": "Design",
+//         "color": "Orange",
+//         "title": "Website redesign",
+//         "description": "Modify the contents of the main website",
+//         "dueDate": new Date("2022-11-15"),
+//         "id": 0,
+//         "visibility": true,
+//         "priority": "Medium",
+//         "assignees": ["Julius Peterson", "Tyson Ngu", "Sebastian Mayer"]
+//     },
 
-    {
-        "status": "In Progress",
-        "category": "Sales",
-        "color": "Purple",
-        "title": "Call potencial clients",
-        "description": "Make the product presentation to prospective buyers",
-        "dueDate": new Date("2022-11-15"),
-        "id": 1,
-        "visibility": true,
-        "priority": "Low",
-        "assignees": ["Tyson Ngu"]
-    },
+//     {
+//         "status": "In Progress",
+//         "category": "Sales",
+//         "color": "Purple",
+//         "title": "Call potencial clients",
+//         "description": "Make the product presentation to prospective buyers",
+//         "dueDate": new Date("2022-11-15"),
+//         "id": 1,
+//         "visibility": true,
+//         "priority": "Low",
+//         "assignees": ["Tyson Ngu"]
+//     },
 
-    {
-        "status": "Awaiting Feedback",
-        "category": "Backoffice",
-        "color": "Turquoise",
-        "title": "Accounting invoices",
-        "description": "Write open invoices for customer",
-        "dueDate": new Date("2022-11-15"),
-        "id": 2,
-        "visibility": true,
-        "priority": "Urgent",
-        "assignees": ["Tyson Ngu", "Sebastian Mayer"]
-    },
+//     {
+//         "status": "Awaiting Feedback",
+//         "category": "Backoffice",
+//         "color": "Turquoise",
+//         "title": "Accounting invoices",
+//         "description": "Write open invoices for customer",
+//         "dueDate": new Date("2022-11-15"),
+//         "id": 2,
+//         "visibility": true,
+//         "priority": "Urgent",
+//         "assignees": ["Tyson Ngu", "Sebastian Mayer"]
+//     },
 
-    {
-        "status": "Done",
-        "category": "Marketing",
-        "color": "Blue",
-        "title": "Social media strategy",
-        "description": "Develop an ad campaign for brand positioning",
-        "dueDate": new Date("2022-11-15"),
-        "id": 3,
-        "visibility": true,
-        "priority": "Low",
-        "assignees": ["Julius Peterson", "Sebastian Mayer"]
-    }
-];
+//     {
+//         "status": "Done",
+//         "category": "Marketing",
+//         "color": "Blue",
+//         "title": "Social media strategy",
+//         "description": "Develop an ad campaign for brand positioning",
+//         "dueDate": new Date("2022-11-15"),
+//         "id": 3,
+//         "visibility": true,
+//         "priority": "Low",
+//         "assignees": ["Julius Peterson", "Sebastian Mayer"]
+//     }
+// ];
 
-// let tasks;
+let tasks;
 let rotation;
 
 let catColors = {
