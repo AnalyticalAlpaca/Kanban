@@ -6,13 +6,12 @@ let descriptions = [];
 let dates = [];
 let selectedCategory = [];
 let selectedColor = [];
-let allTask;
-
+let colorForCategory;
 
 async function init() {
     setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
-    allTask = JSON.parse(backend.getItem('allTask')) || [];
+    tasks = JSON.parse(backend.getItem('tasks')) || [];
     save();
 }
 
@@ -393,18 +392,18 @@ function closeCategory() {
 let color;
 let categoryName;
 
-var d = new Date()
-var yr = d.getFullYear();
-var month = d.getMonth() + 1
-if (month < 10) {
-    month = '0' + month
-}
-var date = d.getDate();
-if (date < 10) {
-    date = '0' + date
-}
-var c_date = yr + "-" + month + "-" + date;
-document.getElementById('d1').value = c_date;
+// var d = new Date()
+// var yr = d.getFullYear();
+// var month = d.getMonth() + 1
+// if (month < 10) {
+//     month = '0' + month
+// }
+// var date = d.getDate();
+// if (date < 10) {
+//     date = '0' + date
+// }
+// var c_date = yr + "-" + month + "-" + date;
+// document.getElementById('d1').value = c_date;
 
 function selectedRed() {
     color = "rot";
@@ -512,24 +511,42 @@ function createTask(event) {
     let titleInput = document.getElementById('title-Input').value;
     let description = document.getElementById("descriptionInput").value;
     let date = document.getElementById("d1").value;
+    getSelectedColor();
+    if ([titleInput, description, date].includes('')){
+        alert("Please enter a title, a description and a date")
+        return
+    }
+    if (document.getElementById('inputCategory')==null || document.getElementById('inputCategory').value=='' || colorForCategory==undefined) {
+        alert("Please enter a category and choose a color")
+        return
+    } 
+    if (selectedPrio==undefined) {
+        alert("Please set a priority")
+        return
+    }
+    if (assignedTo==undefined) {
+        alert("Please choose an assignee")
+        return
+    }
+    let newCategory = document.getElementById('inputCategory').value;
     let task =
     {
-        title: titleInput,
-        descriptions: description,
-        taskDate: date,
-        prios: selectedPrio,
-        categoryNames: currentCategory,
-        categoyColors: currentColor,
-        assigned: assignedTo,
+        "status": "To Do",
+        "category": newCategory,
+        "color": colorForCategory,
+        "title": titleInput,
+        "description": description,
+        "dueDate": new Date(date),
+        "id": 0,
+        "visibility": true,
+        "priority": selectedPrio,
+        "assignees": [assignedTo]
     }
 
-    allTask.push(task);
+    tasks.push(task);
     save();
-    console.log(allTask);
     clearInput();
-    event.preventDefault();
-
-
+    initBoard();
 }
 function clearInput(event) {
     document.getElementById('title-Input').value = "";
@@ -543,5 +560,5 @@ function clearInput(event) {
 }
 
 async function save() {
-    await backend.setItem('allTask', JSON.stringify(allTask));
+    await backend.setItem('tasks', JSON.stringify(tasks));
 }

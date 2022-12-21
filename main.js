@@ -93,60 +93,6 @@ async function initTasks() {
     setURL('https://gruppe-374.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
-    // tasks = [
-    //     {
-    //         "status": "To Do",
-    //         "category": "Design",
-    //         "color": "Orange",
-    //         "title": "Website redesign",
-    //         "description": "Modify the contents of the main website",
-    //         "dueDate": new Date("2022-11-15"),
-    //         "id": 0,
-    //         "visibility": true,
-    //         "priority": "Medium",
-    //         "assignees": ["Julius Peterson", "Tyson Ngu", "Sebastian Mayer"]
-    //     },
-    
-    //     {
-    //         "status": "In Progress",
-    //         "category": "Sales",
-    //         "color": "Purple",
-    //         "title": "Call potencial clients",
-    //         "description": "Make the product presentation to prospective buyers",
-    //         "dueDate": new Date("2022-11-15"),
-    //         "id": 1,
-    //         "visibility": true,
-    //         "priority": "Low",
-    //         "assignees": ["Tyson Ngu"]
-    //     },
-    
-    //     {
-    //         "status": "Awaiting Feedback",
-    //         "category": "Backoffice",
-    //         "color": "Turquoise",
-    //         "title": "Accounting invoices",
-    //         "description": "Write open invoices for customer",
-    //         "dueDate": new Date("2022-11-15"),
-    //         "id": 2,
-    //         "visibility": true,
-    //         "priority": "Urgent",
-    //         "assignees": ["Tyson Ngu", "Sebastian Mayer"]
-    //     },
-    
-    //     {
-    //         "status": "Done",
-    //         "category": "Marketing",
-    //         "color": "Blue",
-    //         "title": "Social media strategy",
-    //         "description": "Develop an ad campaign for brand positioning",
-    //         "dueDate": new Date("2022-11-15"),
-    //         "id": 3,
-    //         "visibility": true,
-    //         "priority": "Low",
-    //         "assignees": ["Julius Peterson", "Sebastian Mayer"]
-    //     }
-    // ];
-    // save();
     // Change date format in tasks
     for (let i = 0; i < tasks.length; i++) {
         tasks[i].dueDate = new Date(tasks[i].dueDate);
