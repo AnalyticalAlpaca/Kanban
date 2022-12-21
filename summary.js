@@ -122,22 +122,21 @@ function upcomingDeadline(){
         console.log(deadlines);
       
         let deadlineDist = deadlines.filter(d => {
-          let dist = d - today;
-          if(dist > 0){
-          return dist > 0;
-        } else {
-            console.log(today);
-            return today;
-        }
-        });
-        console.log(deadlineDist);
-      
+          let dist = d - today;        
+              return dist > 0;
+                });
+        console.log(deadlineDist);      
         let closestDate = Math.min(...deadlineDist);
         console.log(closestDate);
         console.log(new Date(closestDate).toLocaleDateString('de-DE'));
+                if(closestDate > today){
+                    duedateOutput.innerHTML = monthNames[new Date(closestDate).getMonth()] + ' ' + new Date(closestDate).getDate() + ',' + new Date(closestDate).getFullYear() ;
+                } else {
+                    return today
+                };
 
-        //duedateOutput.innerHTML = new Date(closestDate).toLocaleDateString('de-DE');
-        duedateOutput.innerHTML = monthNames[new Date(closestDate).getMonth()] + ' ' + new Date(closestDate).getDate() + ',' + new Date(closestDate).getFullYear() ;
+       
+        
              
     }
 
