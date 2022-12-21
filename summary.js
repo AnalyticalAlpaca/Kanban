@@ -116,8 +116,8 @@ function upcomingDeadline(){
     
         const today = new Date().getTime();
       
-        let deadlines = allTask.map((task) => {
-          return new Date(task.taskDate).getTime();
+        let deadlines = tasks.map((task) => {
+          return new Date(task.dueDate).getTime();
         });
         console.log(deadlines);
       

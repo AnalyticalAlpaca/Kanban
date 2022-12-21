@@ -1,6 +1,7 @@
 #content_board {
     animation: fadeOpacityIn 1s ease 0s 1 normal forwards;
-    margin-left:30px
+    margin-left:30px;
+    height: 100vh;
 }
 
 .board_div {

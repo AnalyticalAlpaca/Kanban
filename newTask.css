@@ -157,6 +157,7 @@ z-index: 0;
 .add-task-section{
     display: flex;
     color: black;
+    height:100vh;
 }
 .margin-right2{
     margin-right: 100px;
