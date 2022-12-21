@@ -123,7 +123,12 @@ function upcomingDeadline(){
       
         let deadlineDist = deadlines.filter(d => {
           let dist = d - today;
+          if(dist > 0){
           return dist > 0;
+        } else {
+            console.log(today);
+            return today;
+        }
         });
         console.log(deadlineDist);
       
