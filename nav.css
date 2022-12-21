@@ -4,6 +4,7 @@
     align-items: center;
     flex-direction: column;
     margin-left:100px;
+    height:100vh;
 }
 
 .d-none{
